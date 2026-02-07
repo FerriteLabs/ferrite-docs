@@ -1,0 +1,38 @@
+name: Link Check
+
+on:
+  push:
+    branches: [main]
+    paths: ['**/*.md', '**/*.mdx', 'website/**']
+  pull_request:
+    branches: [main]
+    paths: ['**/*.md', '**/*.mdx', 'website/**']
+  schedule:
+    - cron: '0 6 * * 1' # Weekly on Monday at 06:00 UTC
+
+jobs:
+  link-check:
+    name: Check Links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Link Checker
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --verbose
+            --no-progress
+            --accept 100..=399
+            --exclude-path './website/node_modules'
+            --exclude-path './website/build'
+            --exclude 'localhost'
+            --exclude '127\.0\.0\.1'
+            --exclude 'example\.com'
+            --exclude 'your-domain'
+            './website/docs/**/*.md'
+            './website/docs/**/*.mdx'
+            './website/blog/**/*.md'
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,251 @@
+.benchmarksPage {
+  padding: 2rem 0 4rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.header p {
+  font-size: 1.25rem;
+  color: var(--ifm-color-emphasis-700);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.benchmarkSection {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: var(--ifm-background-surface-color);
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.benchmarkSection h2 {
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: var(--ifm-color-emphasis-600);
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.benchmarkTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.benchmarkTable th,
+.benchmarkTable td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+}
+
+.benchmarkTable th {
+  background-color: var(--ifm-color-emphasis-100);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.benchmarkTable code {
+  font-size: 0.9rem;
+  padding: 0.2rem 0.4rem;
+  background: var(--ifm-color-emphasis-200);
+  border-radius: 4px;
+}
+
+.highlight {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+.methodology {
+  margin-top: 4rem;
+  padding: 2rem;
+  background: var(--ifm-background-surface-color);
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.methodology h2 {
+  margin-bottom: 1.5rem;
+}
+
+.methodologyContent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .methodologyContent {
+    grid-template-columns: 1fr;
+  }
+}
+
+.methodologyItem h3 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  color: var(--ifm-color-primary);
+}
+
+.methodologyItem ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.methodologyItem li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.runYourOwn {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--ifm-color-emphasis-300);
+}
+
+.runYourOwn h3 {
+  margin-bottom: 1rem;
+}
+
+.runYourOwn pre {
+  background: #1e1e1e;
+  border-radius: 8px;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.runYourOwn code {
+  font-size: 0.9rem;
+  color: #d4d4d4;
+}
+
+/* Comparison Charts */
+.comparisonSection {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: var(--ifm-background-surface-color);
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.chartContainer {
+  margin-top: 1.5rem;
+}
+
+.chartRow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.chartLabel {
+  width: 120px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.chartBars {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.chartBar {
+  height: 24px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+  transition: width 0.5s ease;
+}
+
+.chartBarFerrite {
+  background: linear-gradient(90deg, #e87b4f, #b7410e);
+}
+
+.chartBarRedis {
+  background: linear-gradient(90deg, #dc382d, #a12921);
+}
+
+.chartBarDragonfly {
+  background: linear-gradient(90deg, #6366f1, #4f46e5);
+}
+
+.chartBarGarnet {
+  background: linear-gradient(90deg, #059669, #047857);
+}
+
+.chartLegend {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.legendColor {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+}
+
+.legendFerrite {
+  background: linear-gradient(90deg, #e87b4f, #b7410e);
+}
+
+.legendRedis {
+  background: linear-gradient(90deg, #dc382d, #a12921);
+}
+
+.legendDragonfly {
+  background: linear-gradient(90deg, #6366f1, #4f46e5);
+}
+
+.legendGarnet {
+  background: linear-gradient(90deg, #059669, #047857);
+}
+
+.chartValue {
+  margin-left: auto;
+  padding-left: 8px;
+}
+
+@media screen and (max-width: 576px) {
+  .chartLabel {
+    width: 80px;
+    font-size: 0.8rem;
+  }
+
+  .chartBar {
+    font-size: 0.7rem;
+  }
+}

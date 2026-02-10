@@ -1,0 +1,17 @@
+{
+  "name": "Ferrite Documentation",
+  "short_name": "Ferrite",
+  "description": "The speed of memory, the capacity of disk, the economics of cloud. High-performance Redis-compatible database.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1b1b1d",
+  "theme_color": "#b7410e",
+  "icons": [
+    {
+      "src": "/img/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

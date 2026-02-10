@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1b1b1d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2a2a2e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="ferriteGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e87b4f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b7410e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="coreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff9d7a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e87b4f;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+
+  <!-- Decorative hexagon pattern (faded, background) -->
+  <g opacity="0.05" fill="none" stroke="#e87b4f" stroke-width="1">
+    <path d="M100 50 L140 73 L140 119 L100 142 L60 119 L60 73 Z"/>
+    <path d="M1050 500 L1090 523 L1090 569 L1050 592 L1010 569 L1010 523 Z"/>
+    <path d="M1100 100 L1140 123 L1140 169 L1100 192 L1060 169 L1060 123 Z"/>
+    <path d="M150 450 L190 473 L190 519 L150 542 L110 519 L110 473 Z"/>
+  </g>
+
+  <!-- Logo -->
+  <g transform="translate(100, 215)">
+    <!-- Outer hexagon -->
+    <path d="M100 0 L200 58 L200 174 L100 232 L0 174 L0 58 Z"
+          fill="url(#ferriteGradient)"/>
+    <!-- Middle tier ring -->
+    <path d="M100 30 L170 70 L170 162 L100 202 L30 162 L30 70 Z"
+          fill="none"
+          stroke="rgba(255,255,255,0.25)"
+          stroke-width="3"/>
+    <!-- Inner hexagon -->
+    <path d="M100 60 L150 89 L150 145 L100 174 L50 145 L50 89 Z"
+          fill="url(#coreGradient)"/>
+    <!-- Center circle -->
+    <circle cx="100" cy="116" r="28" fill="#fff"/>
+    <!-- Stylized "F" -->
+    <path d="M90 100 L90 132 M90 100 L114 100 M90 114 L108 114"
+          stroke="#b7410e"
+          stroke-width="7"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          fill="none"/>
+  </g>
+
+  <!-- Title -->
+  <text x="360" y="280"
+        font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="96"
+        font-weight="700"
+        fill="#ffffff">Ferrite</text>
+
+  <!-- Tagline -->
+  <text x="360" y="350"
+        font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="28"
+        fill="#a0a0a0">The speed of memory, the capacity of disk,</text>
+  <text x="360" y="390"
+        font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="28"
+        fill="#a0a0a0">the economics of cloud.</text>
+
+  <!-- Feature badges -->
+  <g transform="translate(360, 440)">
+    <rect x="0" y="0" width="180" height="40" rx="20" fill="rgba(232, 123, 79, 0.2)"/>
+    <text x="90" y="26"
+          font-family="system-ui, sans-serif"
+          font-size="16"
+          fill="#e87b4f"
+          text-anchor="middle">Redis Compatible</text>
+
+    <rect x="200" y="0" width="160" height="40" rx="20" fill="rgba(232, 123, 79, 0.2)"/>
+    <text x="280" y="26"
+          font-family="system-ui, sans-serif"
+          font-size="16"
+          fill="#e87b4f"
+          text-anchor="middle">Vector Search</text>
+
+    <rect x="380" y="0" width="180" height="40" rx="20" fill="rgba(232, 123, 79, 0.2)"/>
+    <text x="470" y="26"
+          font-family="system-ui, sans-serif"
+          font-size="16"
+          fill="#e87b4f"
+          text-anchor="middle">Tiered Storage</text>
+  </g>
+
+  <!-- URL -->
+  <text x="360" y="560"
+        font-family="ui-monospace, SFMono-Regular, monospace"
+        font-size="20"
+        fill="#666">github.com/ferrite-rs/ferrite</text>
+</svg>

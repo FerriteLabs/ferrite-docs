@@ -1,0 +1,9 @@
+{
+  "label": "Client SDKs",
+  "position": 11,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "description": "Guides for connecting to Ferrite using standard Redis clients and Ferrite-specific extensions."
+  }
+}

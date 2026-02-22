@@ -393,6 +393,30 @@ ferrite-cli COMMAND INFO commandname
 6. **Document changes** - Track configuration differences
 7. **Train team** - Familiarize with Ferrite-specific features
 
+## Known Behavioral Differences
+
+While Ferrite aims for Redis compatibility, some behaviors differ by design:
+
+| Behavior | Redis | Ferrite | Impact |
+|----------|-------|---------|--------|
+| **Memory eviction** | LRU/LFU in-memory only | Automatic tier demotion to disk | Data is preserved, not evicted |
+| **`OBJECT FREQ/IDLETIME`** | Supported | Not yet implemented | Monitor scripts may need updates |
+| **`MODULE LOAD`** | Native C modules | WASM modules only (`WASM.LOAD`) | Existing modules need porting |
+| **`FUNCTION`** | Redis Functions (7.0+) | Not yet implemented | Use Lua or WASM instead |
+| **Cluster slot migration** | `CLUSTER SETSLOT` | `CLUSTER SETSLOT` + auto-resharding | Additional automation available |
+| **Default persistence** | AOF off, RDB on | AOF on, checkpoints on | More durable by default |
+| **Max key size** | 512MB | 512MB | Same |
+| **Max value size** | 512MB | Configurable (default 512MB) | Same default, can increase |
+
+### Tiered Storage Implications
+
+Unlike Redis which evicts data when memory is full, Ferrite demotes cold data to disk. This means:
+
+- `DBSIZE` returns total keys across all tiers, not just in-memory keys
+- `INFO memory` shows memory usage for the mutable tier; use `INFO storage` for full tier breakdown
+- `RANDOMKEY` may return a key from disk tier (slightly higher latency)
+- Background compaction may cause brief I/O spikes — monitor with `INFO hybridlog`
+
 ## Next Steps
 
 - [Compatibility](/docs/migration/compatibility) - Detailed compatibility matrix

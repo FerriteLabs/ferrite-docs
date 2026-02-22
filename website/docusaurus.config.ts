@@ -44,6 +44,7 @@ const config: Config = {
 
   onBrokenLinks: 'throw',
   onBrokenAnchors: 'warn',
+  onDuplicateRoutes: 'warn',
 
   i18n: {
     defaultLocale: 'en',

@@ -161,6 +161,7 @@ const config: Config = {
           label: 'Docs',
         },
         {to: '/benchmarks', label: 'Benchmarks', position: 'left'},
+        {to: '/cost-calculator', label: 'Cost Calculator', position: 'left'},
         {to: '/playground', label: 'Playground', position: 'left'},
         {to: '/blog', label: 'Blog', position: 'left'},
         {

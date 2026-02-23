@@ -38,6 +38,7 @@ const sidebars: SidebarsConfig = {
         'guides/lua-scripting',
         'guides/ttl-expiration',
         'guides/connection-pooling',
+        'guides/monitoring',
       ],
     },
     {

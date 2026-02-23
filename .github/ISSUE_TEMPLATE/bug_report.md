@@ -8,6 +8,13 @@ labels: bug
 ## Description
 A clear description of the bug.
 
+## Affected Area
+- [ ] Documentation content (incorrect or outdated)
+- [ ] Website build / rendering
+- [ ] Search functionality
+- [ ] Navigation / links
+- [ ] Other: ___
+
 ## Steps to Reproduce
 1. ...
 2. ...
@@ -16,8 +23,9 @@ A clear description of the bug.
 What you expected to happen.
 
 ## Actual Behavior
-What actually happened.
+What actually happened. Include screenshots if applicable.
 
 ## Environment
+- Browser:
 - OS:
-- Version:
+- Node version (if build issue):

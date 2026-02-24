@@ -18,6 +18,29 @@ cert_file = "/etc/ferrite/server.crt"
 key_file = "/etc/ferrite/server.key"
 ```
 
+### Harden TLS for Production
+
+```toml
+[tls]
+enabled = true
+cert_file = "/etc/ferrite/server.crt"
+key_file = "/etc/ferrite/server.key"
+min_protocol_version = "1.3"  # Require TLS 1.3 (default: "1.2")
+```
+
+Supported values for `min_protocol_version`: `"1.2"` (default) or `"1.3"`.
+
+### Enable mTLS (Client Certificates)
+
+```toml
+[tls]
+enabled = true
+cert_file = "/etc/ferrite/server.crt"
+key_file = "/etc/ferrite/server.key"
+ca_file = "/etc/ferrite/ca.crt"
+require_client_cert = true
+```
+
 ### Generate Certificates
 
 #### Self-Signed (Development)

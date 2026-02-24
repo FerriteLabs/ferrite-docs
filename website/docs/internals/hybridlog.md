@@ -44,6 +44,15 @@ flowchart LR
 
 **Log Direction:** HEAD (oldest) → TAIL (newest)
 
+### Tiered Storage Architecture Diagram
+
+The diagram above illustrates the three-tier data flow within HybridLog. For a
+high-level architecture diagram showing how tiered storage integrates with the
+rest of the Ferrite server (hash index, epoch framework, and I/O subsystem),
+see the [Architecture Overview](/docs/core-concepts/architecture).
+
+<!-- TODO: add a dedicated SVG architecture diagram (static/img/tiered-storage-architecture.svg) -->
+
 ## Key Concepts
 
 ### Log-Structured Storage

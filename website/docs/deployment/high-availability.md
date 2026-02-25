@@ -488,6 +488,67 @@ groups:
 - [ ] Client libraries configured with connection pooling and retry logic
 - [ ] Recovery from full-resync tested (kill replica, restart, verify catch-up)
 
+## Clustering with Replication Examples
+
+### Setting Up a 3-Node Cluster with Replication
+
+Each primary shard can have one or more replicas. The following example
+configures a minimal 3-primary / 3-replica cluster where every shard is
+replicated once for fault tolerance.
+
+```toml
+# Node 1 — primary for slots 0-5460
+[cluster]
+enabled = true
+announce_ip = "10.0.1.1"
+announce_port = 6379
+
+[replication]
+role = "primary"
+```
+
+```toml
+# Node 2 — replica of Node 1
+[cluster]
+enabled = true
+announce_ip = "10.0.1.2"
+announce_port = 6379
+
+[replication]
+role = "replica"
+primary_host = "10.0.1.1"
+primary_port = 6379
+```
+
+After starting all six nodes, form the cluster and assign replicas:
+
+```bash
+# Create the cluster (3 primaries, 1 replica each)
+ferrite-cli --cluster create \
+  10.0.1.1:6379 10.0.1.3:6379 10.0.1.5:6379 \
+  10.0.1.2:6379 10.0.1.4:6379 10.0.1.6:6379 \
+  --cluster-replicas 1
+
+# Verify cluster health
+ferrite-cli --cluster info
+ferrite-cli --cluster check 10.0.1.1:6379
+```
+
+### Verifying Replication Status
+
+Use the `INFO replication` command on any node to inspect replication state:
+
+```bash
+$ ferrite-cli -h 10.0.1.1 -p 6379 INFO replication
+role:master
+connected_slaves:1
+slave0:ip=10.0.1.2,port=6379,state=online,offset=12345,lag=0
+master_replid:abc123def456
+master_repl_offset:12345
+```
+
+A `lag=0` value confirms the replica is fully caught up with the primary.
+
 ## Next Steps
 
 - [Replication Runbook](/docs/advanced/replication) — Detailed PSYNC2 protocol, troubleshooting, configuration reference

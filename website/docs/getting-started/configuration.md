@@ -195,6 +195,6 @@ port = 9090
 
 ## Next Steps
 
-- [Embedded Mode](/docs/guides/embedded-mode) - Use Ferrite as a library
-- [Persistence](/docs/guides/persistence) - Learn about durability options
-- [Security](/docs/advanced/security) - Configure TLS and ACLs
+- [Embedded Mode](../guides/embedded-mode) - Use Ferrite as a library
+- [Persistence](../guides/persistence) - Learn about durability options
+- [Security](../advanced/security) - Configure TLS and ACLs

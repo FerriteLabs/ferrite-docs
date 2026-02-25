@@ -97,6 +97,18 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/ferrite-rs/ferrite/tree/main/website/',
+          // Versioned docs: v0.3 and v0.4 defined under website/versioned_docs/
+          lastVersion: 'current',
+          versions: {
+            current: {
+              label: 'v0.4 (Next)',
+              path: '',
+            },
+            '0.3': {
+              label: 'v0.3',
+              banner: 'unmaintained',
+            },
+          },
         },
         blog: {
           showReadingTime: true,
@@ -172,6 +184,10 @@ const config: Config = {
         {
           href: 'https://github.com/ferrite-rs/ferrite',
           label: 'GitHub',
+          position: 'right',
+        },
+        {
+          type: 'docsVersionDropdown',
           position: 'right',
         },
       ],

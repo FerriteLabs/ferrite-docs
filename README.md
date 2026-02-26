@@ -1,5 +1,8 @@
 # Ferrite Documentation
 
+[![CI](https://github.com/ferritelabs/ferrite-docs/actions/workflows/ci.yml/badge.svg)](https://github.com/ferritelabs/ferrite-docs/actions/workflows/ci.yml)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue)](LICENSE)
+
 Official documentation for [Ferrite](https://github.com/ferritelabs/ferrite) — a high-performance, tiered-storage key-value store.
 
 ## Structure
@@ -28,6 +31,10 @@ npm run build  # Production build
 | [jetbrains-ferrite](https://github.com/ferritelabs/jetbrains-ferrite) | JetBrains IDE plugin |
 | [homebrew-tap](https://github.com/ferritelabs/homebrew-tap) | Homebrew formula |
 | [ferrite-bench](https://github.com/ferritelabs/ferrite-bench) | Performance benchmarks |
+
+## Contributing
+
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## License
 

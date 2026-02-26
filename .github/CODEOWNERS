@@ -1,1 +1,11 @@
+# Default owners for everything
 * @josedab
+
+# Documentation content
+/docs/ @josedab
+/website/ @josedab
+/blog/ @josedab
+/specs/ @josedab
+
+# CI/CD and infrastructure
+/.github/ @josedab

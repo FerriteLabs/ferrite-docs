@@ -30,9 +30,11 @@ jobs:
             --exclude '127\.0\.0\.1'
             --exclude 'example\.com'
             --exclude 'your-domain'
+            './docs/**/*.md'
             './website/docs/**/*.md'
             './website/docs/**/*.mdx'
             './website/blog/**/*.md'
+            './README.md'
           fail: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

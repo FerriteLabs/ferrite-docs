@@ -162,6 +162,16 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: 'category',
+          label: 'API Reference',
+          collapsed: false,
+          items: [
+            'reference/api',
+            'reference/configuration',
+            'reference/errors',
+          ],
+        },
+        {
+          type: 'category',
           label: 'Commands',
           items: [
             'reference/commands/strings',
@@ -193,11 +203,14 @@ const sidebars: SidebarsConfig = {
             'reference/commands/tenant',
           ],
         },
-        'reference/configuration',
-        'reference/api',
-        'reference/cli',
-        'reference/tui',
-        'reference/errors',
+        {
+          type: 'category',
+          label: 'Tools',
+          items: [
+            'reference/cli',
+            'reference/tui',
+          ],
+        },
         'reference/glossary',
       ],
     },

@@ -16,6 +16,25 @@ Ferrite's tiered storage architecture automatically manages data across memory, 
 > Current config values are bytes/seconds; examples below use human-readable
 > units.
 
+## Architecture Diagram
+
+```mermaid
+flowchart TB
+    Client["Client Request"] --> Router["Storage Router"]
+    Router --> Hot["Hot Tier\n(Memory)\nSub-ms latency"]
+    Router --> Warm["Warm Tier\n(mmap/SSD)\n1-5ms latency"]
+    Router --> Cold["Cold Tier\n(Disk/Cloud)\n5-50ms latency"]
+
+    Hot -- "Eviction\n(memory pressure)" --> Warm
+    Warm -- "Aging\n(time-based)" --> Cold
+    Cold -- "Promotion\n(on access)" --> Warm
+    Warm -- "Promotion\n(on access)" --> Hot
+
+    style Hot fill:#e74c3c,stroke:#c0392b,color:#fff
+    style Warm fill:#f39c12,stroke:#d68910,color:#fff
+    style Cold fill:#3498db,stroke:#2980b9,color:#fff
+```
+
 ## Overview
 
 Ferrite uses a three-tier storage hierarchy:

@@ -495,6 +495,17 @@ impl Drop for EpochManager {
 }
 ```
 
+## Reclamation Strategy Summary
+
+Ferrite's epoch-based reclamation follows a deliberate strategy to balance memory efficiency with throughput:
+
+1. **Batched Reclamation**: Garbage is collected in epoch-sized batches rather than individually, amortizing the cost of memory reclamation across many operations.
+2. **Lazy Advancement**: The global epoch only advances when all active threads have caught up, ensuring no thread ever accesses freed memory.
+3. **Backpressure on Garbage Growth**: When garbage lists exceed `max_garbage_items`, the epoch manager forces an advancement attempt, preventing unbounded memory growth under heavy write workloads.
+4. **Graceful Shutdown**: During shutdown, all remaining garbage lists are drained synchronously to prevent memory leaks reported by sanitizers or allocation trackers.
+
+This strategy means Ferrite trades a small amount of extra memory (up to two epochs worth of garbage) for significantly higher throughput compared to reference-counted or hazard-pointer-based approaches.
+
 ## References
 
 - [Epoch-Based Reclamation](https://aturon.github.io/blog/2015/08/27/epoch/)

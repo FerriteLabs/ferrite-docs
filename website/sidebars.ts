@@ -336,7 +336,7 @@ const sidebars: SidebarsConfig = {
       label: 'Internals',
       items: [
         'internals/hybridlog',
-        'internals/epoch-reclamation',
+        'internals/epoch-reclamation',  // includes mermaid architecture diagram
         'internals/io-uring',
         'internals/resp-protocol',
         'internals/testing',

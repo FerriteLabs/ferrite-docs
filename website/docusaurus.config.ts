@@ -136,7 +136,7 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Configure Algolia DocSearch when ready:
+    // Configure Algolia DocSearch — credentials pending registration:
     // algolia: {
     //   appId: 'YOUR_APP_ID',
     //   apiKey: 'YOUR_SEARCH_API_KEY',

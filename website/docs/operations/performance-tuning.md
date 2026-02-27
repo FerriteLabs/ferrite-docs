@@ -365,6 +365,19 @@ CONFIG SET slowlog-max-len 128
 5. **Document changes** - Track what works
 6. **Plan for growth** - Leave headroom
 
+## Production Deployment Checklist
+
+Before deploying Ferrite to production, verify the following tuning parameters are configured:
+
+- [ ] **Set `maxmemory`** to no more than 75% of available system RAM to leave room for OS caches and fork-based persistence.
+- [ ] **Enable `thread_affinity`** on dedicated hardware to eliminate CPU migration overhead and improve cache hit rates.
+- [ ] **Configure `io_backend = "io_uring"`** on Linux 5.11+ kernels for optimal async I/O performance on the cold storage tier.
+- [ ] **Set `fsync = "everysec"`** for AOF persistence as the default production trade-off between durability and throughput.
+- [ ] **Enable tiered storage** with appropriate tier sizes based on your dataset's hot/warm/cold access distribution.
+- [ ] **Set `tcp_nodelay = true`** and tune `tcp_backlog` to at least 1024 for latency-sensitive workloads.
+- [ ] **Run `ferrite-benchmark`** with your expected key/value sizes and concurrency level to validate throughput targets before go-live.
+- [ ] **Configure Prometheus scraping** and set up alerts on `ferrite_command_duration_seconds` P99 latency and `ferrite_memory_used_bytes`.
+
 ## Next Steps
 
 - [Monitoring](/docs/operations/monitoring) - Track performance metrics

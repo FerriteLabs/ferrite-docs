@@ -172,7 +172,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
-          label: 'Commands',
+          label: 'Commands Reference',
           items: [
             'reference/commands/strings',
             'reference/commands/lists',

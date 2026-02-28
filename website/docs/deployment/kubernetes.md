@@ -16,7 +16,7 @@ Deploy Ferrite on Kubernetes with the official operator.
 
 ```bash
 # Add Helm repo
-helm repo add ferrite https://charts.ferrite.io
+helm repo add ferrite https://charts.ferrite.dev
 helm repo update
 
 # Install operator

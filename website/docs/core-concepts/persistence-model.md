@@ -395,3 +395,10 @@ rdb_last_bgsave_time_sec: 2
 - [Consistency Model](/docs/core-concepts/consistency-model) - Consistency guarantees
 - [Backup & Restore](/docs/operations/backup-restore) - Backup strategies
 - [High Availability](/docs/deployment/high-availability) - HA setup
+
+## Performance Tuning
+
+When using the Hybrid persistence mode, consider the following tuning parameters:
+
+- `checkpoint_interval`: Controls how frequently snapshots are taken (default: 300s)
+- `aof_fsync_policy`: Set to `everysec` for a balance between durability and throughput

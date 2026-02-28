@@ -3,7 +3,7 @@ sidebar_position: 2
 title: Kubernetes Deployment
 description: Deploy Ferrite on Kubernetes with the official operator. Includes Helm charts, StatefulSets, clustering, and production configurations.
 keywords: [kubernetes, k8s, helm, operator, statefulset, cluster, devops]
-maturity: beta
+maturity: stable
 ---
 
 # Kubernetes Deployment

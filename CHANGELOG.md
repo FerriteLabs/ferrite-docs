@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-02-28
+
 ### Added
 - Consolidated duplicate SDK sidebar entries (merged `sdk/` and `sdks/` into unified "Client SDKs" section)
 
@@ -31,5 +33,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Formal Specifications**: TLA+ specs for 2PC, CRDT GCounter, cluster failover
 - **CI/CD**: Automated builds, link checking (weekly + PRs), gitleaks secret scanning, GitHub Pages deployment
 
-[Unreleased]: https://github.com/ferritelabs/ferrite-docs/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/ferritelabs/ferrite-docs/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/ferritelabs/ferrite-docs/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/ferritelabs/ferrite-docs/releases/tag/v0.1.0

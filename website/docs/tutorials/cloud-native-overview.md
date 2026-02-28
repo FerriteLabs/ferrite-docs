@@ -22,7 +22,7 @@ Ferrite is designed to run as a high-performance, stateful service in modern inf
 
 A typical cloud-native Ferrite deployment consists of:
 
-```
+```text
 ┌─────────────────────────────────────────────────┐
 │                  Kubernetes Cluster              │
 │                                                  │

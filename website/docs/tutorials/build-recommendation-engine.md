@@ -24,7 +24,7 @@ A complete recommendation engine with:
 
 ## Architecture
 
-```
+```text
 ┌───────────────┐     ┌────────────────┐     ┌─────────────────────┐
 │  User Events  │────▶│  Event Handler │────▶│      Ferrite        │
 └───────────────┘     └────────────────┘     │                     │

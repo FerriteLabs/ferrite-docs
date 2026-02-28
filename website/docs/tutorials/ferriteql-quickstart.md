@@ -45,7 +45,7 @@ Retrieve all users:
 QUERY.EXECUTE "SELECT * FROM hash:user:*"
 ```
 
-```
+```text
 +----+----------+-----------------------+-------+-----+----------+
 | id | name     | email                 | state | age | status   |
 +----+----------+-----------------------+-------+-----+----------+
@@ -72,7 +72,7 @@ SELECT name, age FROM hash:user:*
 WHERE status = 'active' AND state = 'CA'
 ```
 
-```
+```text
 +-------+-----+
 | name  | age |
 +-------+-----+
@@ -105,7 +105,7 @@ WHERE status = 'active'
 ORDER BY age DESC
 ```
 
-```
+```text
 +-------+-----+-------+
 | name  | age | state |
 +-------+-----+-------+
@@ -136,7 +136,7 @@ WHERE o.status = 'completed'
 ORDER BY o.total DESC
 ```
 
-```
+```text
 +-------+----------+--------+-------------+
 | name  | order_id | total  | category    |
 +-------+----------+--------+-------------+
@@ -158,7 +158,7 @@ GROUP BY u.id, u.name
 ORDER BY order_count DESC
 ```
 
-```
+```text
 +---------+-------------+
 | name    | order_count |
 +---------+-------------+
@@ -182,7 +182,7 @@ GROUP BY state
 ORDER BY user_count DESC
 ```
 
-```
+```text
 +-------+------------+
 | state | user_count |
 +-------+------------+
@@ -209,7 +209,7 @@ HAVING revenue > 100
 ORDER BY revenue DESC
 ```
 
-```
+```text
 +-------------+--------+---------+-----------+-----------+-----------+
 | category    | orders | revenue | avg_order | min_order | max_order |
 +-------------+--------+---------+-----------+-----------+-----------+
@@ -309,7 +309,7 @@ QUERY.DROP users_by_state
 QUERY.EXPLAIN "SELECT state, COUNT(*) FROM hash:user:* WHERE age > 21 GROUP BY state"
 ```
 
-```
+```text
 Plan:
   Scan: hash:user:*
   → Filter: age > 21

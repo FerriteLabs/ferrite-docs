@@ -131,7 +131,7 @@ persistence:
 
 Inside the pod, Ferrite stores data at `/var/lib/ferrite/data`, mounted from the PVC:
 
-```
+```text
 /var/lib/ferrite/data/
 ├── appendonly.aof        # Append-only file for durability
 ├── checkpoint/           # Periodic checkpoint files

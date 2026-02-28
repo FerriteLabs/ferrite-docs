@@ -41,7 +41,7 @@ curl http://localhost:9090/metrics
 
 You should see Prometheus-formatted metrics like:
 
-```
+```text
 # HELP ferrite_commands_total Total number of commands processed
 # TYPE ferrite_commands_total counter
 ferrite_commands_total{cmd="GET"} 1542

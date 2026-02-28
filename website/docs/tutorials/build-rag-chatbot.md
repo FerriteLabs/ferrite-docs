@@ -24,7 +24,7 @@ An intelligent chatbot with:
 
 ## Architecture
 
-```
+```text
 ┌──────────────┐     ┌──────────────┐     ┌──────────────┐
 │    User      │────▶│   Chatbot    │────▶│   Ferrite    │
 │   Question   │     │   Service    │     │              │

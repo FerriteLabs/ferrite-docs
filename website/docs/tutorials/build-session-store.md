@@ -23,7 +23,7 @@ A production-ready session store with:
 
 ## Architecture
 
-```
+```text
 ┌─────────────┐     ┌───────────┐     ┌─────────────┐
 │   Browser   │────▶│  Web App  │────▶│   Ferrite   │
 └─────────────┘     └───────────┘     └─────────────┘
@@ -33,7 +33,7 @@ A production-ready session store with:
 
 ## Data Model
 
-```
+```text
 # Session storage
 session:{token}                → Hash (user_id, data, created_at, last_access)
 user:{user_id}:sessions        → Set of session tokens

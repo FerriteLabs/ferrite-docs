@@ -23,7 +23,7 @@ A complete multi-tenant platform with:
 
 ## Architecture
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────┐
 │                      API Gateway                             │
 │                  (Tenant Identification)                     │

@@ -10,6 +10,7 @@ Learn how to build a powerful semantic search system using Ferrite's vector data
 ## What You'll Build
 
 A semantic search application with:
+
 - Document ingestion with automatic embedding
 - Similarity-based search
 - Hybrid search (vector + keyword)
@@ -24,7 +25,7 @@ A semantic search application with:
 
 ## Architecture
 
-```
+```text
 ┌─────────────┐     ┌─────────────────┐     ┌─────────────┐
 │  Documents  │────▶│ Embedding Model │────▶│   Ferrite   │
 └─────────────┘     └─────────────────┘     │             │

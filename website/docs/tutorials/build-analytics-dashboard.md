@@ -23,7 +23,7 @@ A complete analytics system with:
 
 ## Architecture
 
-```
+```text
 ┌─────────────┐     ┌─────────────┐     ┌─────────────────────────┐
 │   Events    │────▶│  Ingestion  │────▶│        Ferrite          │
 │   (HTTP)    │     │   Service   │     │  ┌─────────────────┐    │

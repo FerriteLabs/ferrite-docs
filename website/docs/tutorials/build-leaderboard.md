@@ -24,7 +24,7 @@ A high-performance leaderboard system with:
 
 ## Architecture Overview
 
-```
+```text
 ┌──────────────┐     ┌──────────────────┐     ┌──────────────┐
 │  Game Server │────▶│     Ferrite      │◀────│   API Server │
 └──────────────┘     │                  │     └──────────────┘
@@ -39,7 +39,7 @@ A high-performance leaderboard system with:
 
 ### Key Patterns
 
-```
+```text
 # Leaderboard scores (sorted sets)
 leaderboard:global                    → ZSET (player_id -> score)
 leaderboard:daily:{date}              → ZSET (player_id -> score)

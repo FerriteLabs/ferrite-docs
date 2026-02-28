@@ -23,7 +23,7 @@ A complete event sourcing system with:
 
 ## Architecture
 
-```
+```text
 ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
 │   Command   │────▶│   Handler   │────▶│ Event Store │
 └─────────────┘     └─────────────┘     │  (Stream)   │

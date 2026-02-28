@@ -49,7 +49,7 @@ sequenceDiagram
 
 ### Key Patterns
 
-```
+```text
 # User data
 user:{user_id}                    → Hash (name, avatar, status)
 user:{user_id}:rooms              → Set of room IDs

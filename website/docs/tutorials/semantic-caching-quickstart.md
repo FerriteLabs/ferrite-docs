@@ -134,7 +134,7 @@ print(f"[{result2['source']}] {result2['latency_ms']}ms — score={result2['scor
 
 Expected output:
 
-```
+```text
 [llm] 823.45ms — Machine learning is a subset of artificial intelligence that enables...
 [cache] 2.31ms — score=0.91
 ```
@@ -223,7 +223,7 @@ Monitor your cache performance in real-time:
 SEMANTIC.CACHE.STATS
 ```
 
-```
+```text
 entries: 1523
 hits: 8472
 misses: 2104
@@ -245,7 +245,7 @@ Key metrics to track:
 
 Ferrite exposes cache metrics at the `/metrics` endpoint:
 
-```
+```text
 ferrite_semantic_cache_hits_total 8472
 ferrite_semantic_cache_misses_total 2104
 ferrite_semantic_cache_hit_rate 0.801

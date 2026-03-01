@@ -56,7 +56,7 @@ Add the sidecar to your application's Helm values:
 ferriteSidecar:
   enabled: true
   image:
-    repository: ghcr.io/ferrite-rs/ferrite
+    repository: ghcr.io/ferritelabs/ferrite
     tag: "latest"
   resources:
     requests:
@@ -91,7 +91,7 @@ spec:
           value: "redis://localhost:6379"
 
     - name: ferrite
-      image: ghcr.io/ferrite-rs/ferrite:latest
+      image: ghcr.io/ferritelabs/ferrite:latest
       ports:
         - containerPort: 6379
           name: ferrite
@@ -239,7 +239,7 @@ helm install ferrite-sidecar ferrite/ferrite-sidecar -f values.yaml
 
 Read the full [Kubernetes Sidecar guide](/docs/deployment/kubernetes-sidecar) for advanced configuration, including TLS between sidecar and application, persistent sidecars for durable caching, and multi-container init ordering.
 
-Have questions or want to share your sidecar deployment experience? Join us on [Discord](https://discord.gg/ferrite) or open a discussion on [GitHub](https://github.com/ferrite-rs/ferrite/discussions).
+Have questions or want to share your sidecar deployment experience? Join us on [Discord](https://discord.gg/ferrite) or open a discussion on [GitHub](https://github.com/ferritelabs/ferrite/discussions).
 
 ---
 

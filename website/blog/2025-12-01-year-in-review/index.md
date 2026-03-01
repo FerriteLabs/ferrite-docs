@@ -81,7 +81,7 @@ Open source is a collaborative effort, and Ferrite would not be where it is with
 
 To everyone who filed an issue, opened a pull request, answered a question on Discord, or simply gave us a star on GitHub: thank you. You shaped this project in ways we could not have planned.
 
-Here is to an even bigger 2026. If you want to get involved, check out our [good first issues](https://github.com/ferrite-rs/ferrite/labels/good%20first%20issue), join us on [Discord](https://discord.gg/ferrite), or just try Ferrite in your next project and tell us what you think.
+Here is to an even bigger 2026. If you want to get involved, check out our [good first issues](https://github.com/ferritelabs/ferrite/labels/good%20first%20issue), join us on [Discord](https://discord.gg/ferrite), or just try Ferrite in your next project and tell us what you think.
 
 ---
 

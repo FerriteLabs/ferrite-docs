@@ -205,7 +205,7 @@ cargo build --release --features ai
 Or pull the pre-built Docker image, which includes all features:
 
 ```bash
-docker pull ghcr.io/ferrite-rs/ferrite:latest
+docker pull ghcr.io/ferritelabs/ferrite:latest
 ```
 
 Read the full [Vector Search guide](/docs/guides/vector-search) and the [Semantic Caching tutorial](/docs/tutorials/semantic-caching-quickstart) for detailed setup instructions.

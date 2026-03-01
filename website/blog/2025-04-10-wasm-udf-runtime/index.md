@@ -160,7 +160,7 @@ cargo build --release --features wasm
 
 Check out the [WASM UDF guide](/docs/extensibility/wasm-functions) for a full walkthrough, including the SDK setup, debugging tips, and more examples.
 
-We want your feedback. This is an experimental feature, and the API surface is still evolving. Open an issue on [GitHub](https://github.com/ferrite-rs/ferrite) or join the discussion on [Discord](https://discord.gg/ferrite).
+We want your feedback. This is an experimental feature, and the API surface is still evolving. Open an issue on [GitHub](https://github.com/ferritelabs/ferrite) or join the discussion on [Discord](https://discord.gg/ferrite).
 
 ---
 

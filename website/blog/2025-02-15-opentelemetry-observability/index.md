@@ -58,7 +58,7 @@ Here is a production-ready setup using Docker Compose with the OpenTelemetry Col
 version: "3.9"
 services:
   ferrite:
-    image: ghcr.io/ferrite-rs/ferrite:latest
+    image: ghcr.io/ferritelabs/ferrite:latest
     environment:
       FERRITE_OTEL_ENDPOINT: "http://otel-collector:4317"
       FERRITE_OTEL_SERVICE_NAME: "ferrite-prod"
@@ -173,7 +173,7 @@ For Kubernetes deployments, the Helm chart in `ferrite-ops` includes a `telemetr
 
 We are working on adaptive sampling that automatically increases trace collection for slow or errored commands, and on a built-in diagnostics endpoint that serves a flame graph of recent operations without any external tooling.
 
-If you run into issues or have feature requests for our OTel integration, open an issue on [GitHub](https://github.com/ferrite-rs/ferrite) or reach out on [Discord](https://discord.gg/ferrite).
+If you run into issues or have feature requests for our OTel integration, open an issue on [GitHub](https://github.com/ferritelabs/ferrite) or reach out on [Discord](https://discord.gg/ferrite).
 
 ---
 

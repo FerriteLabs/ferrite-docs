@@ -6,8 +6,8 @@ keywords: [clustering, redis cluster, sharding, hash slots, failover, high avail
 maturity: experimental
 ---
 
-:::info Beta Feature
-This feature is in **beta**. It is feature-complete but still undergoing testing. APIs may change in minor ways before stabilization.
+:::info[Beta Feature]
+This feature is in the **Beta** tier (🧪). Core functionality is complete but APIs may change. See the project ROADMAP for graduation criteria.
 :::
 
 # Clustering

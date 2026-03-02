@@ -269,6 +269,6 @@ Ferrite follows a regular release schedule:
 
 ## Links
 
-- [GitHub Releases](https://github.com/ferrite-rs/ferrite/releases)
+- [GitHub Releases](https://github.com/ferritelabs/ferrite/releases)
 - [Docker Hub](https://hub.docker.com/r/ferrite/ferrite)
 - [Upgrade Guides](/docs/migration/from-redis)

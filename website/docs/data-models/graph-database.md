@@ -6,8 +6,8 @@ keywords: [graph database, property graph, cypher, pagerank, shortest path, trav
 maturity: experimental
 ---
 
-:::caution Experimental Feature
-This feature is **experimental** and subject to change. APIs, behavior, and performance characteristics may evolve significantly between releases. Use with caution in production environments.
+:::caution[Experimental Feature]
+This feature is in the **Experimental** tier (🔬). APIs will change and it is not recommended for production use. See the project ROADMAP for graduation criteria.
 :::
 
 # Graph Database

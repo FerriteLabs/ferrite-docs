@@ -14,7 +14,7 @@ There are several ways to get help with Ferrite, from community resources to com
 
 The best place for questions and discussions:
 
-[github.com/ferrite-rs/ferrite/discussions](https://github.com/ferrite-rs/ferrite/discussions)
+[github.com/ferritelabs/ferrite/discussions](https://github.com/ferritelabs/ferrite/discussions)
 
 Categories:
 - **Q&A**: Ask questions and get answers
@@ -70,7 +70,7 @@ Generated API documentation:
 
 Example projects and configurations:
 
-[github.com/ferrite-rs/examples](https://github.com/ferrite-rs/examples)
+[github.com/ferritelabs/examples](https://github.com/ferritelabs/examples)
 
 ## Reporting Issues
 
@@ -78,7 +78,7 @@ Example projects and configurations:
 
 Report bugs on GitHub:
 
-[github.com/ferrite-rs/ferrite/issues/new?template=bug_report.md](https://github.com/ferrite-rs/ferrite/issues/new)
+[github.com/ferritelabs/ferrite/issues/new?template=bug_report.md](https://github.com/ferritelabs/ferrite/issues/new)
 
 Include:
 1. **Version**: Output of `ferrite --version`
@@ -93,7 +93,7 @@ Include:
 
 Suggest features on GitHub:
 
-[github.com/ferrite-rs/ferrite/issues/new?template=feature_request.md](https://github.com/ferrite-rs/ferrite/issues/new)
+[github.com/ferritelabs/ferrite/issues/new?template=feature_request.md](https://github.com/ferritelabs/ferrite/issues/new)
 
 Include:
 1. **Use case**: What problem does this solve?

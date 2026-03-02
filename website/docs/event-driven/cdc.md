@@ -3,6 +3,10 @@ sidebar_position: 1
 maturity: beta
 ---
 
+:::info[Beta Feature]
+This feature is in the **Beta** tier (🧪). Core functionality is complete but APIs may change. See the project ROADMAP for graduation criteria.
+:::
+
 # Change Data Capture (CDC)
 
 Ferrite provides first-class Change Data Capture for streaming data changes to external systems.

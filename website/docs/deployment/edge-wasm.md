@@ -6,13 +6,13 @@ keywords: [wasm, webassembly, edge, cloudflare, vercel, fastly, serverless, expe
 maturity: experimental
 ---
 
+:::caution[Experimental Feature]
+This feature is in the **Experimental** tier (🔬). APIs will change and it is not recommended for production use. See the project ROADMAP for graduation criteria.
+:::
+
 # Edge & WASM Runtime
 
 Run Ferrite at the edge as a WebAssembly module — lightweight, memory-only caching inside edge runtimes.
-
-:::caution Experimental
-Edge WASM support is **experimental**. APIs and capabilities may change. See [ADR-006](https://github.com/ferritelabs/ferrite/blob/main/docs/adr/006-edge-wasm-computing.md) for design rationale and status.
-:::
 
 ## Overview
 

@@ -3,6 +3,10 @@ sidebar_position: 3
 maturity: beta
 ---
 
+:::info[Beta Feature]
+This feature is in the **Beta** tier (🧪). Core functionality is complete but APIs may change. See the project ROADMAP for graduation criteria.
+:::
+
 # Streams
 
 Process real-time data with Redis Streams and Ferrite's stream processing engine.

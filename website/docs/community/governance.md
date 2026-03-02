@@ -115,7 +115,7 @@ What needs more discussion?
 
 ## Code of Conduct
 
-All participants must follow our [Code of Conduct](https://github.com/ferrite-rs/ferrite/blob/main/CODE_OF_CONDUCT.md).
+All participants must follow our [Code of Conduct](https://github.com/ferritelabs/ferrite/blob/main/CODE_OF_CONDUCT.md).
 
 Key principles:
 - Be respectful and inclusive
@@ -240,7 +240,7 @@ Process:
 
 ### Official Channels
 
-- **GitHub**: [github.com/ferrite-rs/ferrite](https://github.com/ferrite-rs/ferrite)
+- **GitHub**: [github.com/ferritelabs/ferrite](https://github.com/ferritelabs/ferrite)
 - **Discord**: [discord.gg/ferrite](https://discord.gg/ferrite)
 - **Twitter**: [@ferritedb](https://twitter.com/ferritedb)
 - **Blog**: [ferrite.rs/blog](/blog)

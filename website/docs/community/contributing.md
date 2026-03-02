@@ -34,7 +34,7 @@ git clone https://github.com/YOUR_USERNAME/ferrite.git
 cd ferrite
 
 # Add upstream remote
-git remote add upstream https://github.com/ferrite-rs/ferrite.git
+git remote add upstream https://github.com/ferritelabs/ferrite.git
 
 # Build
 cargo build

@@ -474,7 +474,7 @@ CONFIG SET auto-aof-rewrite-min-size 64mb
 
 ### How do I report a bug?
 
-1. Check [GitHub Issues](https://github.com/ferrite-rs/ferrite/issues) for existing reports
+1. Check [GitHub Issues](https://github.com/ferritelabs/ferrite/issues) for existing reports
 2. Gather: version, config, error messages, steps to reproduce
 3. Create a new issue with the bug report template
 4. For security issues, email security@ferrite.dev
@@ -516,6 +516,6 @@ See our [Contributing Guide](/docs/community/contributing). We welcome:
 ## Still Have Questions?
 
 - [Discord Community](https://discord.gg/ferrite)
-- [GitHub Discussions](https://github.com/ferrite-rs/ferrite/discussions)
+- [GitHub Discussions](https://github.com/ferritelabs/ferrite/discussions)
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/ferrite)
 - [Email Support](mailto:support@ferrite.dev)

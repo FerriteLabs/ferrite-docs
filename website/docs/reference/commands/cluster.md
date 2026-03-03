@@ -3,6 +3,10 @@ sidebar_position: 14
 maturity: experimental
 ---
 
+:::info[Beta Feature]
+This feature is in the **Beta** tier (🧪). Core functionality is complete but APIs may change. See the project ROADMAP for graduation criteria.
+:::
+
 # Cluster Commands
 
 Commands for managing Ferrite cluster deployments.

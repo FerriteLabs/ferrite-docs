@@ -28,7 +28,7 @@ include breaking changes, especially in beta/experimental modules.
 |----------|-------------|
 | **[docs.rs/ferrite](https://docs.rs/ferrite)** | Full API documentation with all types and functions |
 | **[Playground](/playground)** | Try commands interactively in your browser |
-| **[Examples](https://github.com/ferrite-rs/ferrite/tree/main/examples)** | Complete runnable examples |
+| **[Examples](https://github.com/ferritelabs/ferrite/tree/main/examples)** | Complete runnable examples |
 
 ## Quick Links
 

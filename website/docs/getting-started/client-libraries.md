@@ -16,7 +16,7 @@ These SDKs are developed and maintained by the Ferrite team with full feature co
 | **Rust** | `ferrite-client` | [Rust SDK Guide](/docs/sdk/rust) |
 | **Python** | `ferrite-py` | [Python SDK Guide](/docs/sdk/python) |
 | **TypeScript/Node.js** | `@ferrite/client` | [TypeScript SDK Guide](/docs/sdk/typescript) |
-| **Go** | `github.com/ferrite-rs/ferrite-go` | [Go SDK Guide](/docs/sdk/go) |
+| **Go** | `github.com/ferritelabs/ferrite-go` | [Go SDK Guide](/docs/sdk/go) |
 | **Java** | `io.ferrite:ferrite-client` | [Java SDK Guide](/docs/sdk/java) |
 
 ### Quick Installation
@@ -32,7 +32,7 @@ pip install ferrite-py
 npm install @ferrite/client
 
 # Go
-go get github.com/ferrite-rs/ferrite-go
+go get github.com/ferritelabs/ferrite-go
 ```
 
 ## Redis Client Libraries
@@ -262,11 +262,11 @@ func main() {
 ### Using Official SDK (Recommended)
 
 ```bash
-go get github.com/ferrite-rs/ferrite-go
+go get github.com/ferritelabs/ferrite-go
 ```
 
 ```go
-import "github.com/ferrite-rs/ferrite-go"
+import "github.com/ferritelabs/ferrite-go"
 
 client, _ := ferrite.NewClient(ctx, &ferrite.Options{
     Addr: "localhost:6380",

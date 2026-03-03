@@ -60,7 +60,7 @@ Build from source for maximum control:
 
 ```bash
 # Clone the repository
-git clone https://github.com/ferrite-rs/ferrite.git
+git clone https://github.com/ferritelabs/ferrite.git
 cd ferrite
 
 # Build release version
@@ -79,7 +79,7 @@ Install via Homebrew on macOS:
 
 ```bash
 # Add the tap
-brew tap ferrite-rs/ferrite
+brew tap ferritelabs/ferrite
 
 # Install
 brew install ferrite

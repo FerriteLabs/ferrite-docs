@@ -51,7 +51,52 @@ high-level architecture diagram showing how tiered storage integrates with the
 rest of the Ferrite server (hash index, epoch framework, and I/O subsystem),
 see the [Architecture Overview](/docs/core-concepts/architecture).
 
-<!-- TODO: add a dedicated SVG architecture diagram (static/img/tiered-storage-architecture.svg) -->
+```mermaid
+flowchart TB
+    subgraph EpochFramework["🔒 Epoch-Based Reclamation"]
+        direction TB
+        EpochCounter["Global Epoch Counter"]
+        ThreadEpoch["Per-Thread Epoch Tracking"]
+        SafeReclaim["Safe Reclamation Barrier"]
+    end
+
+    subgraph Clients["Client Operations"]
+        Write["✏️ Write / Update"]
+        Read["🔍 Read / Lookup"]
+        Compact["♻️ Compaction"]
+    end
+
+    subgraph Mutable["🔴 Mutable Region (Memory)"]
+        direction LR
+        HotData["Hot Data\n(recent writes)"]
+        AppendTail["Append @ Tail"]
+    end
+
+    subgraph ReadOnly["🟠 Read-Only Region (mmap)"]
+        direction LR
+        WarmData["Warm Data\n(cooling pages)"]
+        MmapPages["Memory-Mapped Pages"]
+    end
+
+    subgraph Disk["🔵 Disk Region (io_uring)"]
+        direction LR
+        ColdData["Cold Data\n(persisted)"]
+        AsyncIO["Async I/O Reads"]
+    end
+
+    Write -->|"append to tail"| Mutable
+    Read -->|"1. check mutable"| Mutable
+    Read -->|"2. check read-only"| ReadOnly
+    Read -->|"3. fetch from disk"| Disk
+    Compact -->|"reclaim stale records"| Disk
+
+    Mutable -->|"page flush\n(head advance)"| ReadOnly
+    ReadOnly -->|"evict to disk"| Disk
+
+    EpochCounter -->|"protects"| Mutable
+    ThreadEpoch -->|"guards concurrent access"| ReadOnly
+    SafeReclaim -->|"safe page eviction"| Disk
+```
 
 ## Key Concepts
 

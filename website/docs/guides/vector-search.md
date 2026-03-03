@@ -6,6 +6,10 @@ keywords: [vector search, hnsw, ivf, similarity search, embeddings, ai ml]
 maturity: beta
 ---
 
+:::info[Beta Feature]
+This feature is in the **Beta** tier (🧪). Core functionality is complete but APIs may change. See the project ROADMAP for graduation criteria.
+:::
+
 # Vector Search
 
 Ferrite includes native vector similarity search for AI/ML workloads, supporting HNSW, IVF, and flat indexes.

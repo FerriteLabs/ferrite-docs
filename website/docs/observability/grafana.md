@@ -75,11 +75,11 @@ scrape_configs:
 
 ### Using the ferrite-ops Pre-built Dashboard
 
-The [`ferrite-ops`](https://github.com/ferrite-rs/ferrite-ops) repository includes a production-ready Grafana dashboard:
+The [`ferrite-ops`](https://github.com/ferritelabs/ferrite-ops) repository includes a production-ready Grafana dashboard:
 
 ```bash
 # Clone ferrite-ops if you haven't already
-git clone https://github.com/ferrite-rs/ferrite-ops.git
+git clone https://github.com/ferritelabs/ferrite-ops.git
 
 # The dashboard JSON is at:
 # ferrite-ops/grafana/dashboards/ferrite-overview.json

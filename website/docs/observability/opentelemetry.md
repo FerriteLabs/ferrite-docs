@@ -215,7 +215,7 @@ version: "3.9"
 
 services:
   ferrite:
-    image: ghcr.io/ferrite-rs/ferrite:latest
+    image: ghcr.io/ferritelabs/ferrite:latest
     ports:
       - "6379:6379"    # Redis-compatible port
       - "9090:9090"    # Prometheus metrics
@@ -569,7 +569,7 @@ version: "3.9"
 services:
   # --- Ferrite ---
   ferrite:
-    image: ghcr.io/ferrite-rs/ferrite:latest
+    image: ghcr.io/ferritelabs/ferrite:latest
     ports:
       - "6379:6379"
       - "9090:9090"

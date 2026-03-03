@@ -215,120 +215,94 @@ scrape_configs:
 
 ## Grafana Dashboards
 
-### Import Dashboard
+Pre-built Grafana dashboards are available in `ferrite-ops/grafana/`. Import the JSON files into your Grafana instance via **Dashboards → Import → Upload JSON file**, or use the provisioning configuration in `ferrite-ops/grafana/provisioning/`.
 
-```json
-{
-  "dashboard": {
-    "title": "Ferrite Overview",
-    "panels": [
-      {
-        "title": "Commands/sec",
-        "type": "graph",
-        "targets": [
-          {
-            "expr": "sum(rate(ferrite_commands_total[1m]))",
-            "legendFormat": "Total"
-          },
-          {
-            "expr": "rate(ferrite_commands_total{command=\"GET\"}[1m])",
-            "legendFormat": "GET"
-          },
-          {
-            "expr": "rate(ferrite_commands_total{command=\"SET\"}[1m])",
-            "legendFormat": "SET"
-          }
-        ]
-      },
-      {
-        "title": "P99 Latency",
-        "type": "graph",
-        "targets": [
-          {
-            "expr": "histogram_quantile(0.99, rate(ferrite_command_duration_seconds_bucket[5m]))",
-            "legendFormat": "p99"
-          }
-        ]
-      },
-      {
-        "title": "Memory Usage",
-        "type": "gauge",
-        "targets": [
-          {
-            "expr": "ferrite_memory_used_bytes / ferrite_memory_max_bytes",
-            "legendFormat": "Usage"
-          }
-        ]
-      },
-      {
-        "title": "Connections",
-        "type": "stat",
-        "targets": [
-          {
-            "expr": "ferrite_connections_active",
-            "legendFormat": "Active"
-          }
-        ]
-      }
-    ]
-  }
-}
-```
+### ferrite-dashboard.json — Overview (32 panels)
+
+The main operational dashboard with six panel rows covering all key metrics at a glance:
+
+- **Overview** — Memory usage gauge, operations/sec, connected clients, total keys, cache hit rate, and P99 latency stat panels for instant health assessment.
+- **Performance** — Operations rate broken down by command type (GET, SET, DEL, etc.) and latency percentile time series (P50/P95/P99).
+- **Memory & Storage** — Memory usage over time and HybridLog tier distribution (mutable, read-only, disk regions).
+- **Connections & Network** — Client connection counts, network I/O bytes (sent/received), and cache hit/miss rate trends.
+- **Observability & Slow Queries** — Slow query counts, P99 latency heatmap, memory tier distribution, active connection gauge, and operations per second.
+- **Persistence & Replication** — AOF size growth, connected replica count, replication lag (offset-based), connection open rate, key eviction/expiration rates, AOF write performance, and replication event counts.
+
+### ferrite-memory-tiers.json — Memory Tier Distribution (9 panels)
+
+Focused on Ferrite's three-tier HybridLog storage engine:
+
+- **Tier Overview** — Time series showing data distribution across mutable (memory), read-only (mmap), and disk (io_uring) tiers, plus a pie chart of current tier ratios.
+- **Memory & Pressure** — Memory savings stat (bytes saved by tiering), memory pressure gauge, and tier promotion rate over time.
+- **Eviction & Tiering Activity** — Eviction vs. tiering activity comparison to identify when data is being moved between tiers or evicted under pressure.
+
+### ferrite-query-performance.json — Query Performance (9 panels)
+
+Deep-dive into command execution performance:
+
+- **Command Throughput** — Top 10 commands by volume (bar chart) and QPS breakdown split by read vs. write operations.
+- **Latency** — Per-command P99 latency and combined P50/P95/P99/P99.9 latency percentile time series.
+- **Errors & Slow Queries** — Error rate by type (timeout, OOM, auth failure) and a slow query count stat panel.
+
+### ferrite-cluster.json — Cluster & Replication (11 panels)
+
+Cluster topology and replication health:
+
+- **Cluster Overview** — Cluster state indicator (ok/fail), known node count, slot coverage gauge, and connected replica count.
+- **Replication** — Per-replica replication lag (bytes) and replication delay (seconds) time series.
+- **Failover & Resync** — Failover event timeline and full resync event counts for diagnosing cluster instability.
+
+### ferrite-streaming.json — CDC & Streaming (9 panels)
+
+Change Data Capture and streaming pipeline metrics:
+
+- **CDC & Streaming Overview** — CDC events per second and consumer group lag time series.
+- **Pipeline & Streams** — Pipeline processing latency and stream length over time.
+- **Backpressure & Pending** — Pending message count stat and backpressure indicator gauge for identifying pipeline bottlenecks.
+
+### ferrite-vector.json — Vector Search & AI (9 panels)
+
+Vector search and AI workload monitoring:
+
+- **Vector Search Overview** — Vector search QPS and search latency (P50/P99) time series.
+- **Embedding & Index** — Embedding ingestion rate and current index size stat.
+- **Semantic Cache** — Semantic cache hit rate gauge and semantic cache latency time series.
 
 ## Alerting
 
 ### Prometheus Alert Rules
 
+Production-ready alert rules are available in `ferrite-ops/monitoring/prometheus-alerts.yml`. Add them to your Prometheus configuration:
+
 ```yaml
-groups:
-  - name: ferrite
-    rules:
-      # High latency
-      - alert: FerriteHighLatency
-        expr: histogram_quantile(0.99, rate(ferrite_command_duration_seconds_bucket[5m])) > 0.01
-        for: 5m
-        labels:
-          severity: warning
-        annotations:
-          summary: "P99 latency above 10ms"
-          description: "Ferrite P99 latency is {{ $value | humanizeDuration }}"
-
-      # Memory usage
-      - alert: FerriteMemoryHigh
-        expr: ferrite_memory_used_bytes / ferrite_memory_max_bytes > 0.9
-        for: 5m
-        labels:
-          severity: critical
-        annotations:
-          summary: "Memory usage above 90%"
-
-      # Connection limit
-      - alert: FerriteConnectionsHigh
-        expr: ferrite_connections_active > 1000
-        for: 5m
-        labels:
-          severity: warning
-        annotations:
-          summary: "Active connections above 1000"
-
-      # Replication lag
-      - alert: FerriteReplicaLag
-        expr: ferrite_replica_lag_bytes > 1048576
-        for: 5m
-        labels:
-          severity: warning
-        annotations:
-          summary: "Replica lag above 1MB"
-
-      # Instance down
-      - alert: FerriteDown
-        expr: up{job="ferrite"} == 0
-        for: 1m
-        labels:
-          severity: critical
-        annotations:
-          summary: "Ferrite instance is down"
+# prometheus.yml
+rule_files:
+  - "prometheus-alerts.yml"
 ```
+
+The alert rules cover the following categories:
+
+| Category | Alerts | Severity |
+|----------|--------|----------|
+| **Memory** | `FerriteHighMemoryUsage` (>85%), `FerriteCriticalMemoryUsage` (>95%) | warning / critical |
+| **Latency** | `FerriteHighLatencyP99` (>5ms), `FerriteHighLatencyP999` (>10ms) | warning |
+| **Connections** | `FerriteNoConnections`, `FerriteHighConnectionCount` (>1000), `FerriteRejectedConnections` | warning |
+| **Cache** | `FerriteLowHitRate` (below 80%) | warning |
+| **Eviction** | `FerriteEvictions` (>100 keys/sec) | warning |
+| **Replication** | `FerriteReplicationLag` (>10s) | warning |
+
+### Runbooks
+
+Each alert has a corresponding runbook in `ferrite-ops/monitoring/runbooks/` with diagnosis steps and remediation procedures:
+
+| Runbook | Triggered By |
+|---------|-------------|
+| `high-memory.md` | `HighMemoryUsage` (>80%), `CriticalMemoryUsage` (>95%) |
+| `high-latency.md` | `HighLatencyP99` (>10ms), `HighLatencyP999` (>50ms) |
+| `replication-lag.md` | `ReplicationLag` (>1s), `ReplicationBroken` (link down >30s) |
+| `cluster-failure.md` | `ClusterStateNotOk`, `ClusterNodeDown`, `ClusterSplitBrain` |
+| `disk-full.md` | `DiskHighUsage` (>80%), `DiskCriticalUsage` (>95%) |
+| `backup-failure.md` | `BackupOverdue` (no successful backup in >24h) |
 
 ## Health Checks
 

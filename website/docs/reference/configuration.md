@@ -12,6 +12,44 @@ Complete reference for the supported `ferrite.toml` schema and CLI overrides.
 > are integer seconds. Advanced feature modules (vector, semantic, temporal,
 > etc.) use in-code defaults and are not loaded from `ferrite.toml` yet.
 
+## Hot-Reload & Restart Matrix
+
+The following table shows which config keys can be changed at runtime via
+`CONFIG SET` and which require a server restart:
+
+| Config Key | TOML Path | Hot-Reload | Restart Required |
+|-----------|-----------|:----------:|:----------------:|
+| `server.bind` | `server.bind` | ❌ | ✅ |
+| `server.port` | `server.port` | ❌ | ✅ |
+| `server.max_connections` | `server.max_connections` | ✅ | — |
+| `server.tcp_keepalive` | `server.tcp_keepalive` | ✅ | — |
+| `server.timeout` | `server.timeout` | ✅ | — |
+| `server.proto_max_bulk_len` | `server.proto_max_bulk_len` | ✅ | — |
+| `server.proto_max_multi_bulk_len` | `server.proto_max_multi_bulk_len` | ✅ | — |
+| `server.proto_max_nesting_depth` | `server.proto_max_nesting_depth` | ✅ | — |
+| `storage.backend` | `storage.backend` | ❌ | ✅ |
+| `storage.databases` | `storage.databases` | ❌ | ✅ |
+| `storage.max_memory` | `storage.max_memory` | ❌ | ✅ |
+| `storage.max_key_size` | `storage.max_key_size` | ✅ | — |
+| `storage.max_value_size` | `storage.max_value_size` | ✅ | — |
+| `persistence.aof_enabled` | `persistence.aof_enabled` | ✅ | — |
+| `persistence.aof_sync` | `persistence.aof_sync` | ✅ | — |
+| `persistence.checkpoint_enabled` | `persistence.checkpoint_enabled` | ✅ | — |
+| `metrics.enabled` | `metrics.enabled` | ✅ | — |
+| `metrics.bind` | `metrics.bind` | ✅ | — |
+| `metrics.port` | `metrics.port` | ✅ | — |
+| `logging.level` | `logging.level` | ✅ | — |
+| `logging.format` | `logging.format` | ✅ | — |
+| `tls.enabled` | `tls.enabled` | ❌ | ✅ |
+| `tls.port` | `tls.port` | ❌ | ✅ |
+| `tls.cert_file` | `tls.cert_file` | ❌ | ✅ |
+| `tls.key_file` | `tls.key_file` | ❌ | ✅ |
+| `encryption.enabled` | `encryption.enabled` | ❌ | ✅ |
+| `encryption.algorithm` | `encryption.algorithm` | ✅ | — |
+| `encryption.key_file` | `encryption.key_file` | ❌ | ✅ |
+| `cluster.enabled` | `cluster.enabled` | ❌ | ✅ |
+| `audit.enabled` | `audit.enabled` | ✅ | — |
+
 ## Configuration File
 
 Ferrite uses TOML format for configuration. Default location: `ferrite.toml`

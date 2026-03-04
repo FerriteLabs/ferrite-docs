@@ -456,6 +456,40 @@ Ferrite errors follow the Redis RESP error format:
 
 ## Error Handling Best Practices
 
+### FerriteError Complete Reference
+
+All 27 internal error types and their RESP protocol mapping:
+
+| Error Type | RESP Message | Fatal? | Category |
+|-----------|-------------|--------|----------|
+| `Protocol` | `ERR Protocol error: {detail}` | No | Protocol |
+| `UnknownCommand` | `ERR unknown command '{name}'` | No | Protocol |
+| `WrongArity` | `ERR wrong number of arguments for '{cmd}' command` | No | Protocol |
+| `InvalidArgument` | `ERR Invalid argument: {detail}` | No | Protocol |
+| `Syntax` | `ERR syntax error` | No | Protocol |
+| `WrongType` | `WRONGTYPE Operation against a key holding the wrong kind of value` | No | Type |
+| `NotInteger` | `ERR value is not an integer or out of range` | No | Type |
+| `NotFloat` | `ERR value is not a valid float` | No | Type |
+| `IndexOutOfRange` | `ERR index out of range` | No | Type |
+| `OutOfMemory` | `OOM command not allowed when used memory > 'maxmemory'` | No | Memory |
+| `InvalidDbIndex` | `ERR invalid DB index` | No | Type |
+| `KeyNotFound` | `ERR Key not found: {key}` | No | Storage |
+| `Aof` | `ERR AOF error: {detail}` | No | Storage |
+| `Rdb` | `ERR RDB error: {detail}` | No | Storage |
+| `Checkpoint` | `ERR Checkpoint error: {detail}` | No | Storage |
+| `Recovery` | `ERR Recovery error: {detail}` | No | Storage |
+| `Io` | `ERR I/O error: {detail}` | **Yes** | System |
+| `Config` | `ERR Configuration error: {detail}` | No | System |
+| `NoAuth` | `NOAUTH Authentication required` | No | Security |
+| `NoPermission` | `NOPERM this user has no permissions to run the '{cmd}' command` | No | Security |
+| `InvalidPassword` | `ERR invalid password` | No | Security |
+| `ConnectionClosed` | *(connection terminated)* | **Yes** | System |
+| `Connection` | `ERR Connection error: {detail}` | No | System |
+| `Internal` | `ERR Internal error: {detail}` | **Yes** | System |
+| `Encryption` | `ERR Encryption error: {detail}` | No | Security |
+
+**Fatal errors** close the client connection immediately. All other errors return a RESP error frame and the connection remains usable.
+
 ### Retry Logic
 
 ```rust

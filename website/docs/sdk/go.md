@@ -13,7 +13,7 @@ The official Ferrite Go SDK provides idiomatic Go access to all Ferrite features
 ## Installation
 
 ```bash
-go get github.com/ferrite-rs/ferrite-go
+go get github.com/ferritelabs/ferrite-go
 ```
 
 Requires Go 1.21 or later.
@@ -28,7 +28,7 @@ import (
     "fmt"
     "log"
 
-    "github.com/ferrite-rs/ferrite-go"
+    "github.com/ferritelabs/ferrite-go"
 )
 
 func main() {
@@ -62,7 +62,7 @@ func main() {
 ### Single Connection
 
 ```go
-import "github.com/ferrite-rs/ferrite-go"
+import "github.com/ferritelabs/ferrite-go"
 
 client, err := ferrite.NewClient(ctx, &ferrite.Options{
     Addr:     "localhost:6380",
@@ -289,7 +289,7 @@ for _, stream := range streams {
 ### Vector Search
 
 ```go
-import "github.com/ferrite-rs/ferrite-go/vector"
+import "github.com/ferritelabs/ferrite-go/vector"
 
 // Create index
 err := client.Do(ctx,
@@ -321,7 +321,7 @@ for _, r := range results {
 ### Document Store
 
 ```go
-import "github.com/ferrite-rs/ferrite-go/document"
+import "github.com/ferritelabs/ferrite-go/document"
 
 type Article struct {
     Title  string   `json:"title"`
@@ -363,7 +363,7 @@ results, err := document.Aggregate(ctx, client, "articles", pipeline)
 ### Graph Database
 
 ```go
-import "github.com/ferrite-rs/ferrite-go/graph"
+import "github.com/ferritelabs/ferrite-go/graph"
 
 // Create vertices
 err := graph.AddVertex(ctx, client, "social", "user:alice", "User", map[string]string{
@@ -401,7 +401,7 @@ results, err := graph.Query(ctx, client, "social",
 
 ```go
 import (
-    "github.com/ferrite-rs/ferrite-go/timeseries"
+    "github.com/ferritelabs/ferrite-go/timeseries"
     "time"
 )
 
@@ -435,7 +435,7 @@ hourlyAvg, err := timeseries.Range(ctx, client, "temperature:room1",
 ### Semantic Search
 
 ```go
-import "github.com/ferrite-rs/ferrite-go/semantic"
+import "github.com/ferritelabs/ferrite-go/semantic"
 
 // Configure embedding provider
 err := semantic.Config(ctx, client, &semantic.ProviderConfig{
@@ -559,7 +559,7 @@ if result != nil {
 ## Error Handling
 
 ```go
-import "github.com/ferrite-rs/ferrite-go"
+import "github.com/ferritelabs/ferrite-go"
 
 val, err := client.Get(ctx, "key").Result()
 switch {
@@ -608,7 +608,7 @@ if errors.Is(err, context.Canceled) {
 ## Generics (Go 1.21+)
 
 ```go
-import "github.com/ferrite-rs/ferrite-go/generic"
+import "github.com/ferritelabs/ferrite-go/generic"
 
 // Type-safe get/set
 count, err := generic.Get[int](ctx, client, "counter")
@@ -634,7 +634,7 @@ err = generic.HSet(ctx, client, "user:1", User{
 ```go
 import (
     "net/http"
-    "github.com/ferrite-rs/ferrite-go"
+    "github.com/ferritelabs/ferrite-go"
 )
 
 var client *ferrite.Client
@@ -672,7 +672,7 @@ func main() {
 ```go
 import (
     "github.com/gin-gonic/gin"
-    "github.com/ferrite-rs/ferrite-go"
+    "github.com/ferritelabs/ferrite-go"
 )
 
 func main() {
@@ -708,7 +708,7 @@ func main() {
 ## Configuration Reference
 
 ```go
-import "github.com/ferrite-rs/ferrite-go"
+import "github.com/ferritelabs/ferrite-go"
 
 options := &ferrite.Options{
     // Connection
@@ -798,7 +798,7 @@ func main() {
 ```go
 import (
     "log/slog"
-    "github.com/ferrite-rs/ferrite-go"
+    "github.com/ferritelabs/ferrite-go"
 )
 
 // Create client with logging hook

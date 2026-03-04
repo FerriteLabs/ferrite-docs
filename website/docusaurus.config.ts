@@ -13,6 +13,9 @@ const config: Config = {
 
   markdown: {
     mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
   },
 
   themes: [
@@ -38,13 +41,12 @@ const config: Config = {
   baseUrl: '/',
 
   // GitHub pages deployment config
-  organizationName: 'ferrite-rs',
+  organizationName: 'ferritelabs',
   projectName: 'ferrite',
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
   onBrokenAnchors: 'warn',
-  onBrokenMarkdownLinks: 'warn',
   onDuplicateRoutes: 'warn',
 
   i18n: {
@@ -96,17 +98,12 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/ferrite-rs/ferrite/tree/main/website/',
-          // Versioned docs: v0.3 and v0.4 defined under website/versioned_docs/
+          editUrl: 'https://github.com/ferritelabs/ferrite-docs/tree/main/website/',
           lastVersion: 'current',
           versions: {
             current: {
               label: 'v0.4 (Next)',
               path: '',
-            },
-            '0.3': {
-              label: 'v0.3',
-              banner: 'unmaintained',
             },
           },
         },
@@ -116,7 +113,7 @@ const config: Config = {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          editUrl: 'https://github.com/ferrite-rs/ferrite/tree/main/website/',
+          editUrl: 'https://github.com/ferritelabs/ferrite-docs/tree/main/website/',
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
@@ -145,7 +142,7 @@ const config: Config = {
     announcementBar: {
       id: 'announcement',
       content:
-        '⭐️ If you like Ferrite, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/ferrite-rs/ferrite">GitHub</a>!',
+        '⭐️ If you like Ferrite, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/ferritelabs/ferrite">GitHub</a>!',
       backgroundColor: '#b7410e',
       textColor: '#ffffff',
       isCloseable: true,
@@ -182,7 +179,7 @@ const config: Config = {
           position: 'left',
         },
         {
-          href: 'https://github.com/ferrite-rs/ferrite',
+          href: 'https://github.com/ferritelabs/ferrite',
           label: 'GitHub',
           position: 'right',
         },
@@ -217,7 +214,7 @@ const config: Config = {
           items: [
             {
               label: 'GitHub Discussions',
-              href: 'https://github.com/ferrite-rs/ferrite/discussions',
+              href: 'https://github.com/ferritelabs/ferrite/discussions',
             },
             {
               label: 'Discord',
@@ -238,7 +235,7 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/ferrite-rs/ferrite',
+              href: 'https://github.com/ferritelabs/ferrite',
             },
             {
               label: 'Benchmarks',

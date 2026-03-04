@@ -13,7 +13,7 @@ The official Ferrite Swift SDK provides native Swift access to all Ferrite featu
 ```swift
 // Package.swift
 dependencies: [
-    .package(url: "https://github.com/ferrite-rs/ferrite-swift.git", from: "1.0.0")
+    .package(url: "https://github.com/ferritelabs/ferrite-swift.git", from: "1.0.0")
 ]
 ```
 
@@ -35,7 +35,7 @@ pod 'Ferrite', '~> 1.0'
 ### Carthage
 
 ```
-github "ferrite-rs/ferrite-swift" ~> 1.0
+github "ferritelabs/ferrite-swift" ~> 1.0
 ```
 
 **Requirements:**

@@ -47,8 +47,8 @@ function InstallCommand() {
 function Badges() {
   return (
     <div className={styles.badges}>
-      <a href="https://github.com/ferrite-rs/ferrite/actions" target="_blank" rel="noopener noreferrer">
-        <img src="https://img.shields.io/github/actions/workflow/status/ferrite-rs/ferrite/ci.yml?branch=main&style=flat-square&logo=github&label=build" alt="Build Status" />
+      <a href="https://github.com/ferritelabs/ferrite/actions" target="_blank" rel="noopener noreferrer">
+        <img src="https://img.shields.io/github/actions/workflow/status/ferritelabs/ferrite/ci.yml?branch=main&style=flat-square&logo=github&label=build" alt="Build Status" />
       </a>
       <a href="https://crates.io/crates/ferrite" target="_blank" rel="noopener noreferrer">
         <img src="https://img.shields.io/crates/v/ferrite?style=flat-square&logo=rust&color=orange" alt="Crates.io" />
@@ -56,7 +56,7 @@ function Badges() {
       <a href="https://docs.rs/ferrite" target="_blank" rel="noopener noreferrer">
         <img src="https://img.shields.io/docsrs/ferrite?style=flat-square&logo=docs.rs" alt="Documentation" />
       </a>
-      <a href="https://github.com/ferrite-rs/ferrite/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">
+      <a href="https://github.com/ferritelabs/ferrite/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">
         <img src="https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square" alt="License" />
       </a>
       <a href="https://discord.gg/ferrite" target="_blank" rel="noopener noreferrer">
@@ -86,7 +86,7 @@ function HomepageHeader() {
           <Link
             className="button button--outline button--lg"
             style={{marginLeft: '1rem', color: 'white', borderColor: 'white'}}
-            href="https://github.com/ferrite-rs/ferrite">
+            href="https://github.com/ferritelabs/ferrite">
             GitHub
           </Link>
         </div>
@@ -296,7 +296,7 @@ function TrustedBySection() {
           ))}
         </div>
         <p className={styles.trustedByNote}>
-          <Link to="https://github.com/ferrite-rs/ferrite/issues/new?template=showcase.md">
+          <Link to="https://github.com/ferritelabs/ferrite/issues/new?template=showcase.md">
             Add your company
           </Link>
         </p>
@@ -333,7 +333,7 @@ function OpenSourceSection() {
             <div className={styles.buttons} style={{justifyContent: 'flex-start', marginTop: '1.5rem'}}>
               <Link
                 className="button button--primary"
-                href="https://github.com/ferrite-rs/ferrite">
+                href="https://github.com/ferritelabs/ferrite">
                 View on GitHub
               </Link>
               <Link
@@ -352,7 +352,7 @@ function OpenSourceSection() {
                 <span className={styles.terminalDot} style={{background: '#27c93f'}}></span>
               </div>
               <pre className={styles.terminalBody}>
-{`$ git clone https://github.com/ferrite-rs/ferrite
+{`$ git clone https://github.com/ferritelabs/ferrite
 $ cd ferrite
 $ cargo build --release
 $ ./target/release/ferrite

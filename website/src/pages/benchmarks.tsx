@@ -348,7 +348,7 @@ function Methodology(): ReactNode {
         <pre>
           <code>
 {`# Clone the repository
-git clone https://github.com/ferrite-rs/ferrite.git
+git clone https://github.com/ferritelabs/ferrite.git
 cd ferrite
 
 # Run benchmarks

@@ -12,6 +12,7 @@ const sidebars: SidebarsConfig = {
         'getting-started/quick-start',
         'getting-started/configuration',
         'getting-started/client-libraries',
+        'getting-started/migration-from-redis',
       ],
     },
     {
@@ -39,6 +40,8 @@ const sidebars: SidebarsConfig = {
         'guides/ttl-expiration',
         'guides/connection-pooling',
         'guides/monitoring',
+        'guides/migration-playbook',
+        'guides/redis-cluster-migration',
       ],
     },
     {
@@ -62,6 +65,15 @@ const sidebars: SidebarsConfig = {
         'ai-ml/semantic-search',
         'ai-ml/rag-pipeline',
         'ai-ml/llm-caching',
+        'ai-ml/benchmarks',
+        {
+          type: 'category',
+          label: 'AI Integrations',
+          items: [
+            'ai-ml/integrations/langchain',
+            'ai-ml/integrations/llamaindex',
+          ],
+        },
       ],
     },
     {
@@ -104,6 +116,7 @@ const sidebars: SidebarsConfig = {
         'operations/performance-tuning',
         'operations/troubleshooting',
         'operations/audit-logging',
+        'operations/doctor',
       ],
     },
     {
@@ -122,6 +135,9 @@ const sidebars: SidebarsConfig = {
         'deployment/cloud-providers',
         'deployment/high-availability',
         'deployment/capacity-planning',
+        'deployment/embedded',
+        'deployment/edge-wasm',
+        'deployment/kubernetes-sidecar',
       ],
     },
     {
@@ -170,10 +186,12 @@ const sidebars: SidebarsConfig = {
             'reference/errors',
           ],
         },
+        'reference/commands',
         {
           type: 'category',
           label: 'Commands Reference',
           items: [
+            'reference/commands/keys',
             'reference/commands/strings',
             'reference/commands/lists',
             'reference/commands/hashes',
@@ -295,6 +313,10 @@ const sidebars: SidebarsConfig = {
         'tutorials/semantic-caching-quickstart',
         'tutorials/ferriteql-quickstart',
         'tutorials/embedded-iot',
+        'tutorials/kubernetes-deployment',
+        'tutorials/monitoring-grafana',
+        'tutorials/production-checklist',
+        'tutorials/cloud-native-overview',
       ],
     },
     {
@@ -304,6 +326,7 @@ const sidebars: SidebarsConfig = {
         'features/embedded-mode',
         'features/semantic-caching',
         'features/ferriteql',
+        'features/wasm-marketplace',
       ],
     },
     {
@@ -328,7 +351,10 @@ const sidebars: SidebarsConfig = {
         'comparisons/vs-dragonfly',
         'comparisons/vs-keydb',
         'comparisons/vs-memcached',
+        'comparisons/vs-garnet',
+        'comparisons/vs-valkey',
         'comparisons/vs-dedicated-dbs',
+        'comparisons/why-ferrite',
       ],
     },
     {

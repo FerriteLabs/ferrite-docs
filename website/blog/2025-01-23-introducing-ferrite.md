@@ -38,7 +38,7 @@ Getting started is simple:
 
 ```bash
 # Clone and build
-git clone https://github.com/ferrite-rs/ferrite.git
+git clone https://github.com/ferritelabs/ferrite.git
 cd ferrite
 cargo build --release
 
@@ -74,7 +74,7 @@ Check out our [roadmap](/docs/community/roadmap) for the full plan.
 
 Ferrite is open source under the Apache 2.0 license. We welcome contributions of all kinds:
 
-- [GitHub Repository](https://github.com/ferrite-rs/ferrite)
+- [GitHub Repository](https://github.com/ferritelabs/ferrite)
 - [Documentation](/docs)
 - [Discord Community](https://discord.gg/ferrite)
 

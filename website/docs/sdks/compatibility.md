@@ -12,13 +12,13 @@ This page tracks compatibility between Ferrite server versions, official Ferrite
 
 | SDK | SDK Version | Ferrite 0.1.x | Ferrite 0.2.x | Ferrite 0.3.x (dev) | Min Language Version |
 |-----|-------------|:---:|:---:|:---:|---|
-| **ferrite-rs** (Rust) | 0.2.x | ✅ | ✅ | ✅ | Rust 1.80+ |
-| **ferrite-py** (Python) | 0.2.x | ✅ | ✅ | ✅ | Python 3.9+ |
-| **ferrite-node** (Node.js) | 0.2.x | ✅ | ✅ | ✅ | Node.js 18+ |
-| **ferrite-go** (Go) | 0.2.x | ✅ | ✅ | ✅ | Go 1.21+ |
-| **ferrite-java** (Java) | 0.2.x | ✅ | ✅ | ✅ | Java 17+ |
-| **ferrite-dotnet** (.NET) | 0.2.x | ✅ | ✅ | ✅ | .NET 8+ |
-| **ferrite-ts** (TypeScript) | 0.2.x | ✅ | ✅ | ✅ | TypeScript 5.0+ |
+| **ferrite-rs** (Rust) | 0.1.x | ✅ | ✅ | ✅ | Rust 1.80+ |
+| **ferrite-py** (Python) | 0.1.x | ✅ | ✅ | ✅ | Python 3.9+ |
+| **ferrite-node** (Node.js) | 0.1.x | ✅ | ✅ | ✅ | Node.js 18+ |
+| **ferrite-go** (Go) | 0.1.x | ✅ | ✅ | ✅ | Go 1.21+ |
+| **ferrite-java** (Java) | 0.1.x | ✅ | ✅ | ✅ | Java 11+ |
+| **ferrite-dotnet** (.NET) | 0.1.x | ✅ | ✅ | ✅ | .NET 8+ |
+| **ferrite-ts** (TypeScript) | 0.1.x | ✅ | ✅ | ✅ | TypeScript 5.0+ |
 
 :::info
 All official SDKs follow the server's major version. Within a major version, SDKs are forward-compatible — an older SDK works with a newer server (new features return raw responses). Backward compatibility is guaranteed within a major version.

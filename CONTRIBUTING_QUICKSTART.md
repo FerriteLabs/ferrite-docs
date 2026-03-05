@@ -1,100 +1,70 @@
-# Contributing Quick Start: Adding a Redis Command
+# Contributing Quick Start: Improving Ferrite Documentation
 
-This guide walks through adding a new command to Ferrite in 5 steps using `GETDEL` as a concrete example. For full contribution guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md).
+This guide walks through contributing documentation to Ferrite in 5 steps. For full contribution guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Prerequisites
 
 ```bash
-make setup    # One-time environment check
-make test-fast  # Verify everything works (~6s)
+cd website
+npm install    # One-time dependency install
+npm start      # Dev server at http://localhost:3000
 ```
 
-## Step 1: Add the Command variant (`src/commands/parser.rs`)
+## Step 1: Find or Create the Doc File
 
-Find the appropriate category comment (e.g., `// String commands`) and add a variant to the `Command` enum:
+Documentation lives in `website/docs/` organized by category:
 
-```rust
-// In the Command enum, under "// String commands":
-/// GETDEL key
-GetDel { key: Bytes },
+| Directory | Topics |
+|-----------|--------|
+| `getting-started/` | Installation, quickstart, first commands |
+| `core-concepts/` | Data types, persistence, replication |
+| `operations/` | Monitoring, backup, troubleshooting |
+| `sdks/` | Language-specific SDK guides |
+| `advanced/` | Tiered storage, security, clustering |
+| `comparisons/` | Ferrite vs other databases |
+| `use-cases/` | Real-world usage patterns |
+
+Create a new `.md` file in the appropriate directory.
+
+## Step 2: Add Frontmatter
+
+Every doc page needs frontmatter at the top:
+
+```markdown
+---
+sidebar_position: 5
+title: Your Page Title
+description: Brief description for search engines
+---
+
+# Your Page Title
+
+Content goes here...
 ```
 
-## Step 2: Add the parser (`src/commands/parser.rs`)
+## Step 3: Write the Content
 
-Add a match arm in `Command::from_frame` and a parse function:
+Follow these conventions:
+- Use practical, runnable code examples
+- Include both FerriteQL and SDK examples where relevant
+- Link to related pages with relative paths: `[Replication](../advanced/replication.md)`
+- Use admonitions for tips, warnings, and notes: `:::tip`, `:::warning`, `:::info`
 
-```rust
-// In the from_frame match:
-"GETDEL" => parse_getdel(args),
+## Step 4: Add to Sidebar (if needed)
 
-// Parse function (placed near other string parsers):
-fn parse_getdel(args: &[Frame]) -> Result<Command> {
-    if args.len() != 1 {
-        return Err(FerriteError::WrongArity("GETDEL".to_string()));
-    }
-    Ok(Command::GetDel {
-        key: get_bytes(&args[0])?,
-    })
-}
-```
+If you created a new category, update `website/sidebars.ts` to include it. Pages within existing categories are auto-discovered.
 
-## Step 3: Add ACL metadata (`src/commands/executor.rs`)
-
-Find the `meta()` method and add a match arm under the right category:
-
-```rust
-Command::GetDel { key } => CommandMeta {
-    name: "GETDEL",
-    category: "string",
-    keys: vec![key.clone()],
-    permission: Permission::Write,
-},
-```
-
-## Step 4: Add execution (`src/commands/executor.rs`)
-
-Find `execute_internal()` and add a match arm that delegates to your handler:
-
-```rust
-// Under "// String commands":
-Command::GetDel { key } => strings::getdel(&self.store, db, &key),
-```
-
-## Step 5: Implement the handler (`src/commands/strings.rs`)
-
-Add the actual logic in the appropriate handler module:
-
-```rust
-pub fn getdel(store: &Arc<Store>, db: u8, key: &Bytes) -> Frame {
-    match store.get(db, key) {
-        Some(Value::String(data)) => {
-            store.del(db, &[key.clone()]);
-            Frame::bulk(data)
-        }
-        _ => Frame::null(),
-    }
-}
-```
-
-## Verify
+## Step 5: Verify
 
 ```bash
-make test-fast     # Unit tests (~6s)
-make test          # Full test suite
-make lint          # Clippy + formatting
+npm start          # Preview at http://localhost:3000
+npm run build      # Full production build (catches broken links)
+npm run typecheck  # Type checking
 ```
-
-## File Summary
-
-| File | What to add |
-|------|------------|
-| `src/commands/parser.rs` | `Command` variant + parse function |
-| `src/commands/executor.rs` | ACL metadata match arm + execution match arm |
-| `src/commands/{category}.rs` | Handler implementation |
 
 ## Tips
 
-- Search for an existing similar command (e.g., `GETSET`) to see the full pattern
-- The `parser.rs` and `executor.rs` files are large — use section comments like `// String commands` to navigate
-- `Frame::bulk(data)` for bulk string responses, `Frame::null()` for nil, `Frame::error(msg)` for errors
-- Run `make dev-test` for continuous test feedback while developing
+- Run `npm start` for live-reload while writing
+- Use `npm run build` before submitting — it catches broken links and missing images
+- Check the [Docusaurus docs](https://docusaurus.io/docs) for advanced features (tabs, code blocks, MDX)
+- Reference documentation in `docs/` (outside `website/`) contains source material you can incorporate

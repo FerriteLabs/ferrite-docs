@@ -5,6 +5,9 @@ maturity: stable
 
 # Configuration
 
+:::tip
+New to Ferrite? Start with the [Quick Start](quick-start.md) guide to get a local server running in under 2 minutes.
+:::
 Ferrite can be configured via a TOML configuration file, environment variables, or command-line arguments.
 
 > Note: The canonical schema is documented in `/docs/CONFIGURATION.md` and
@@ -14,6 +17,9 @@ Ferrite can be configured via a TOML configuration file, environment variables, 
 
 ## Configuration File
 
+:::tip
+New to Ferrite? Start with the [Quick Start](quick-start.md) guide to get a local server running in under 2 minutes.
+:::
 Create a `ferrite.toml` file:
 
 ```toml
@@ -46,8 +52,14 @@ Run with the configuration file:
 
 ## Configuration Sections
 
+:::tip
+New to Ferrite? Start with the [Quick Start](quick-start.md) guide to get a local server running in under 2 minutes.
+:::
 ### Server
 
+:::tip
+New to Ferrite? Start with the [Quick Start](quick-start.md) guide to get a local server running in under 2 minutes.
+:::
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
 | `bind` | string | `"127.0.0.1"` | IP address to bind to |
@@ -58,6 +70,9 @@ Run with the configuration file:
 
 ### Storage
 
+:::tip
+New to Ferrite? Start with the [Quick Start](quick-start.md) guide to get a local server running in under 2 minutes.
+:::
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
 | `databases` | integer | `16` | Number of databases (0-15) |
@@ -66,6 +81,9 @@ Run with the configuration file:
 
 ### Persistence
 
+:::tip
+New to Ferrite? Start with the [Quick Start](quick-start.md) guide to get a local server running in under 2 minutes.
+:::
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
 | `aof_enabled` | boolean | `false` | Enable append-only file |
@@ -81,6 +99,9 @@ AOF sync policies:
 
 ### TLS
 
+:::tip
+New to Ferrite? Start with the [Quick Start](quick-start.md) guide to get a local server running in under 2 minutes.
+:::
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
 | `enabled` | boolean | `false` | Enable TLS |
@@ -90,10 +111,16 @@ AOF sync policies:
 | `require_client_cert` | boolean | `false` | Require client certificates |
 ### ACL File
 
+:::tip
+New to Ferrite? Start with the [Quick Start](quick-start.md) guide to get a local server running in under 2 minutes.
+:::
 ACLs are stored in a separate file referenced by `server.acl_file`.
 
 ### Replication
 
+:::tip
+New to Ferrite? Start with the [Quick Start](quick-start.md) guide to get a local server running in under 2 minutes.
+:::
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
 | `role` | string | `"primary"` | Node role: "primary" or "replica" |
@@ -103,6 +130,9 @@ ACLs are stored in a separate file referenced by `server.acl_file`.
 
 ### Cluster
 
+:::tip
+New to Ferrite? Start with the [Quick Start](quick-start.md) guide to get a local server running in under 2 minutes.
+:::
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
 | `enabled` | boolean | `false` | Enable cluster mode |
@@ -112,6 +142,9 @@ ACLs are stored in a separate file referenced by `server.acl_file`.
 
 ### Metrics
 
+:::tip
+New to Ferrite? Start with the [Quick Start](quick-start.md) guide to get a local server running in under 2 minutes.
+:::
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
 | `enabled` | boolean | `true` | Enable Prometheus metrics |
@@ -120,6 +153,9 @@ ACLs are stored in a separate file referenced by `server.acl_file`.
 
 ## Environment Variables
 
+:::tip
+New to Ferrite? Start with the [Quick Start](quick-start.md) guide to get a local server running in under 2 minutes.
+:::
 All configuration options can be set via environment variables using the prefix `FERRITE_`:
 
 ```bash
@@ -131,6 +167,9 @@ FERRITE_LOG_LEVEL=debug
 
 ## Command-Line Arguments
 
+:::tip
+New to Ferrite? Start with the [Quick Start](quick-start.md) guide to get a local server running in under 2 minutes.
+:::
 ```bash
 ./ferrite --help
 
@@ -147,8 +186,14 @@ Options:
 
 ## Example Configurations
 
+:::tip
+New to Ferrite? Start with the [Quick Start](quick-start.md) guide to get a local server running in under 2 minutes.
+:::
 ### Development
 
+:::tip
+New to Ferrite? Start with the [Quick Start](quick-start.md) guide to get a local server running in under 2 minutes.
+:::
 ```toml
 [server]
 bind = "127.0.0.1"
@@ -163,6 +208,9 @@ aof_enabled = false
 
 ### Production
 
+:::tip
+New to Ferrite? Start with the [Quick Start](quick-start.md) guide to get a local server running in under 2 minutes.
+:::
 ```toml
 [server]
 bind = "0.0.0.0"
@@ -195,6 +243,9 @@ port = 9090
 
 ## Next Steps
 
+:::tip
+New to Ferrite? Start with the [Quick Start](quick-start.md) guide to get a local server running in under 2 minutes.
+:::
 - [Embedded Mode](../guides/embedded-mode) - Use Ferrite as a library
 - [Persistence](../guides/persistence) - Learn about durability options
 - [Security](../advanced/security) - Configure TLS and ACLs

@@ -227,8 +227,9 @@ WASM.LOAD my_func <bytes> MAX_FUEL 10000000
 
 ## Configuration
 
-> Note: WASM runtime configuration is not yet loaded from `ferrite.toml`; this
-> schema documents the intended settings.
+> **Note:** WASM runtime configuration is currently set via in-code defaults.
+> The `ferrite.toml` schema below documents the intended configuration
+> surface for a future release.
 
 ```toml
 [wasm]

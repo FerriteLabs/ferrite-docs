@@ -10,10 +10,12 @@ New to Ferrite? Start with the [Quick Start](quick-start.md) guide to get a loca
 :::
 Ferrite can be configured via a TOML configuration file, environment variables, or command-line arguments.
 
-> Note: The canonical schema is documented in `/docs/CONFIGURATION.md` and
+> **Note:** The canonical schema is documented in the
+> [Configuration Reference](../reference/configuration.md) and
 > `ferrite.example.toml`. Size values are raw bytes and durations are integer
-> seconds. Advanced feature modules (vector, semantic, temporal, etc.) are not
-> loaded from `ferrite.toml` yet.
+> seconds. Advanced feature modules (vector, semantic, temporal, etc.)
+> currently use sensible in-code defaults; `ferrite.toml` support for these
+> modules is planned for a future release.
 
 ## Configuration File
 

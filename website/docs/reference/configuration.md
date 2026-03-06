@@ -7,10 +7,11 @@ maturity: stable
 
 Complete reference for the supported `ferrite.toml` schema and CLI overrides.
 
-> Note: The authoritative schema is in `src/config.rs` and the canonical
+> **Note:** The authoritative schema is in `src/config.rs` and the canonical
 > example is `ferrite.example.toml`. Size values are raw bytes and durations
 > are integer seconds. Advanced feature modules (vector, semantic, temporal,
-> etc.) use in-code defaults and are not loaded from `ferrite.toml` yet.
+> etc.) currently use sensible in-code defaults; `ferrite.toml` configuration
+> for these modules is planned for a future release.
 
 ## Hot-Reload & Restart Matrix
 

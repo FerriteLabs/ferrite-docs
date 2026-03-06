@@ -7,9 +7,10 @@ maturity: beta
 
 Ferrite provides built-in observability features for monitoring, tracing, and profiling.
 
-> Status: Metrics and OpenTelemetry export are wired in `ferrite.toml`. The
-> tracing, profiling, and analysis commands below describe planned capabilities
-> and are not yet implemented in the current server.
+> **Status:** Metrics export and Prometheus scraping are fully operational via
+> `ferrite.toml`. OpenTelemetry tracing is available with the `otel` feature
+> flag. The profiling and query-analysis commands described below are on the
+> roadmap — use the recommended external tools in the meantime.
 
 ## Overview
 
@@ -271,8 +272,11 @@ PROFILE.HOTSPOTS
 
 Generate flame graphs from profiling data:
 
-Profiling exports are not yet available from the server. Use external profilers
-(e.g., `perf`, `tokio-console`, or `cargo flamegraph`) until native exports land.
+Native profiling exports are planned. In the meantime, use external profilers:
+
+- **CPU profiling:** `cargo flamegraph` or `perf record` (Linux)
+- **Async debugging:** `tokio-console` for task-level visibility
+- **Memory profiling:** `heaptrack` or `DHAT`
 
 ## Rust API
 

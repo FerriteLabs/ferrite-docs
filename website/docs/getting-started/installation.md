@@ -150,3 +150,4 @@ OK
 
 - [Quick Start](/docs/getting-started/quick-start) - Run your first commands
 - [Configuration](/docs/getting-started/configuration) - Configure Ferrite
+

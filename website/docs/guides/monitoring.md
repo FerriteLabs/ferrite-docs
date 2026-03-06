@@ -82,9 +82,25 @@ Two pre-built dashboards are included in `ferrite-ops/monitoring/grafana/`:
 
 Import them via Grafana UI (`Dashboards → Import → Upload JSON`) or let Docker Compose provision them automatically.
 
-<!-- TODO: Add dashboard screenshot images -->
-<!-- ![Ferrite Overview Dashboard](./img/grafana-overview.png) -->
-<!-- ![Ferrite Operations Dashboard](./img/grafana-operations.png) -->
+### Dashboard Panels
+
+**Ferrite Overview Dashboard** includes:
+- **Memory Usage** — Real-time `ferrite_memory_used_bytes` vs `ferrite_memory_max_bytes` with threshold lines
+- **Operations/sec** — Stacked graph of `ferrite_commands_processed_total` by command type
+- **Connected Clients** — Gauge showing `ferrite_connected_clients` with max-client threshold
+- **Cache Hit Rate** — Percentage calculated from `ferrite_keyspace_hits_total / (hits + misses)`
+- **P99 Latency** — Histogram quantile from `ferrite_command_duration_seconds`
+
+**Ferrite Operations Dashboard** includes:
+- **Command Latency Heatmap** — Per-command P50/P95/P99/P99.9 breakdown
+- **Replication Lag** — `ferrite_replication_lag_seconds` per replica
+- **HybridLog Tier Distribution** — Mutable/ReadOnly/Disk bytes stacked area
+- **Eviction Rate** — `ferrite_evicted_keys_total` rate over time
+- **AOF/RDB Status** — Last save timestamps and rewrite progress
+
+> 💡 **Tip:** To capture your own dashboard screenshots, start the monitoring stack with
+> `docker compose -f docker-compose.monitoring.yml up -d`, navigate to `http://localhost:3001`,
+> and use Grafana's built-in screenshot feature (`Share → Direct link rendered image`).
 
 ## Alerting Rules
 

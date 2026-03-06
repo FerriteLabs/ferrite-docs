@@ -102,7 +102,7 @@ const config: Config = {
           lastVersion: 'current',
           versions: {
             current: {
-              label: 'v0.4 (Next)',
+              label: 'v0.3 (Next)',
               path: '',
             },
           },

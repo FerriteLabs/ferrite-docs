@@ -325,3 +325,56 @@ log_max_len = 128
 
 - [Clustering](/docs/advanced/clustering) - Secure cluster setup
 - [Configuration Reference](/docs/reference/configuration) - All security options
+
+## Rate Limiting & Backpressure
+
+### Per-Connection Rate Limiting
+
+Prevent any single client from monopolising server resources:
+
+```toml
+[server]
+# Maximum commands per second per connection (0 = unlimited)
+rate_limit_per_sec = 10000
+# Burst capacity above sustained rate
+rate_limit_burst = 200
+```
+
+When a client exceeds the rate limit, Ferrite returns:
+
+```
+-ERR rate limit exceeded, too many commands per second
+```
+
+Connection-setup commands (`AUTH`, `HELLO`, `PING`) are exempt from rate limiting so clients can always authenticate.
+
+### Connection Limits
+
+Prevent resource exhaustion from too many simultaneous connections:
+
+```toml
+[server]
+max_connections = 10000  # default
+```
+
+Connections beyond this limit are immediately closed. Monitor `ferrite_connections_rejected_total` in Prometheus.
+
+### Memory Backpressure
+
+Reject write commands when memory approaches the configured limit to prevent OOM:
+
+```toml
+[server]
+# Maximum memory in bytes (0 = unlimited)
+max_memory = 8589934592  # 8 GB
+# Start rejecting writes at this fraction of max_memory
+max_memory_reject_threshold = 0.9
+```
+
+When memory pressure is detected, write commands receive:
+
+```
+-OOM command not allowed when used memory > max_memory
+```
+
+Read commands continue to work normally under memory pressure.

@@ -1,6 +1,6 @@
 # Feature Maturity Matrix
 
-> **Last updated**: v0.1.0
+> **Last updated**: v0.3.0-dev
 >
 > This document classifies every Ferrite module into a maturity tier so users
 > know exactly what is production-ready and what is experimental.
@@ -139,6 +139,173 @@ Requires `--features experimental`. Early-stage modules exploring future directi
 | Module | Files | LOC | Description |
 |--------|-------|-----|-------------|
 | `bin` | 13 | 6,134 | `ferrite`, `ferrite-cli`, `ferrite-migrate`, `ferrite-tui`, `ferrite-bench` |
+
+---
+
+## Redis Command Compatibility
+
+### String Commands — 🟢 Full Compatibility
+
+| Command | Status | Notes |
+|---------|--------|-------|
+| GET, SET, SETNX, SETEX, PSETEX | ✅ Complete | Including NX/XX/EX/PX/EXAT/PXAT/KEEPTTL options |
+| MGET, MSET, MSETNX | ✅ Complete | |
+| APPEND, GETRANGE, SETRANGE, STRLEN | ✅ Complete | |
+| INCR, INCRBY, INCRBYFLOAT | ✅ Complete | |
+| DECR, DECRBY | ✅ Complete | |
+| GETSET, GETDEL, GETEX | ✅ Complete | |
+| LCS | ✅ Complete | Longest common substring (Redis 7.0+) |
+
+### Key Commands — 🟢 Full Compatibility
+
+| Command | Status | Notes |
+|---------|--------|-------|
+| DEL, UNLINK | ✅ Complete | Async unlink supported |
+| EXISTS, TYPE, RENAME, RENAMENX | ✅ Complete | |
+| EXPIRE, PEXPIRE, EXPIREAT, PEXPIREAT | ✅ Complete | |
+| TTL, PTTL, PERSIST, EXPIRETIME | ✅ Complete | |
+| KEYS, SCAN | ✅ Complete | With MATCH and COUNT |
+| DUMP, RESTORE | ✅ Complete | |
+| OBJECT (ENCODING, FREQ, IDLETIME, HELP) | ✅ Complete | |
+| SORT, SORT_RO | ✅ Complete | |
+| WAIT, WAITAOF | ✅ Complete | |
+| COPY | ✅ Complete | |
+
+### Hash Commands — 🟢 Full Compatibility
+
+| Command | Status | Notes |
+|---------|--------|-------|
+| HSET, HGET, HMSET, HMGET, HGETALL | ✅ Complete | |
+| HDEL, HEXISTS, HLEN, HKEYS, HVALS | ✅ Complete | |
+| HINCRBY, HINCRBYFLOAT | ✅ Complete | |
+| HSCAN, HRANDFIELD, HSETNX | ✅ Complete | |
+
+### List Commands — 🟢 Full Compatibility
+
+| Command | Status | Notes |
+|---------|--------|-------|
+| LPUSH, RPUSH, LPOP, RPOP | ✅ Complete | Including count argument |
+| LRANGE, LINDEX, LLEN, LSET | ✅ Complete | |
+| LINSERT, LREM, LTRIM, LPOS | ✅ Complete | |
+| LMOVE, LMPOP | ✅ Complete | |
+| BLPOP, BRPOP, BLMOVE, BLMPOP | ✅ Complete | With configurable timeout |
+
+### Set Commands — 🟢 Full Compatibility
+
+| Command | Status | Notes |
+|---------|--------|-------|
+| SADD, SREM, SMEMBERS, SISMEMBER | ✅ Complete | |
+| SCARD, SPOP, SRANDMEMBER | ✅ Complete | |
+| SINTER, SUNION, SDIFF | ✅ Complete | |
+| SINTERSTORE, SUNIONSTORE, SDIFFSTORE | ✅ Complete | |
+| SSCAN, SMISMEMBER, SINTERCARD | ✅ Complete | |
+
+### Sorted Set Commands — 🟢 Full Compatibility
+
+| Command | Status | Notes |
+|---------|--------|-------|
+| ZADD, ZREM, ZSCORE, ZRANK | ✅ Complete | Including NX/XX/GT/LT/CH |
+| ZRANGE, ZRANGEBYSCORE, ZRANGEBYLEX | ✅ Complete | With REV and LIMIT |
+| ZCOUNT, ZLEXCOUNT, ZCARD | ✅ Complete | |
+| ZINCRBY, ZREVRANK | ✅ Complete | |
+| ZPOPMIN, ZPOPMAX, ZRANDMEMBER | ✅ Complete | |
+| BZPOPMIN, BZPOPMAX | ✅ Complete | Blocking variants |
+| ZDIFF, ZUNION, ZINTER, ZDIFFSTORE | ✅ Complete | |
+| ZUNIONSTORE, ZINTERSTORE, ZINTERCARD | ✅ Complete | |
+| ZMSCORE, ZSCAN | ✅ Complete | |
+
+### Pub/Sub Commands — 🟢 Full Compatibility
+
+| Command | Status | Notes |
+|---------|--------|-------|
+| PUBLISH, SUBSCRIBE, UNSUBSCRIBE | ✅ Complete | |
+| PSUBSCRIBE, PUNSUBSCRIBE | ✅ Complete | Pattern-based |
+| PUBSUB CHANNELS/NUMSUB/NUMPAT | ✅ Complete | |
+| SSUBSCRIBE, SUNSUBSCRIBE, SPUBLISH | ✅ Complete | Sharded pub/sub (Redis 7.0+) |
+
+### Stream Commands — 🟢 Full Compatibility
+
+| Command | Status | Notes |
+|---------|--------|-------|
+| XADD, XREAD, XRANGE, XREVRANGE | ✅ Complete | |
+| XLEN, XTRIM, XDEL, XINFO | ✅ Complete | |
+| XGROUP CREATE/DESTROY/SETID | ✅ Complete | |
+| XREADGROUP, XACK, XCLAIM, XPENDING | ✅ Complete | |
+| XAUTOCLAIM | ✅ Complete | Redis 6.2+ |
+
+### HyperLogLog Commands — 🟢 Full Compatibility
+
+| Command | Status | Notes |
+|---------|--------|-------|
+| PFADD, PFCOUNT, PFMERGE | ✅ Complete | |
+
+### Bitmap Commands — 🟢 Full Compatibility
+
+| Command | Status | Notes |
+|---------|--------|-------|
+| SETBIT, GETBIT, BITCOUNT | ✅ Complete | |
+| BITOP (AND/OR/XOR/NOT), BITPOS | ✅ Complete | |
+| BITFIELD, BITFIELD_RO | ✅ Complete | |
+
+### Geo Commands — 🟢 Full Compatibility
+
+| Command | Status | Notes |
+|---------|--------|-------|
+| GEOADD, GEODIST, GEOHASH, GEOPOS | ✅ Complete | |
+| GEORADIUS, GEORADIUSBYMEMBER | ✅ Complete | Legacy + GEOSEARCH |
+| GEOSEARCH, GEOSEARCHSTORE | ✅ Complete | Redis 6.2+ |
+
+### Server Commands — 🟢 Full Compatibility
+
+| Command | Status | Notes |
+|---------|--------|-------|
+| PING, ECHO, QUIT | ✅ Complete | |
+| INFO, DBSIZE, DEBUG | ✅ Complete | |
+| CONFIG GET/SET/RESETSTAT/REWRITE | ✅ Complete | |
+| CLIENT LIST/INFO/GETNAME/SETNAME/KILL | ✅ Complete | |
+| ACL (full suite) | ✅ Complete | USERS, SETUSER, GETUSER, DELUSER, LOG, CAT, GENPASS, DRYRUN |
+| MULTI, EXEC, DISCARD, WATCH, UNWATCH | ✅ Complete | Full transaction support |
+| HELLO, RESET | ✅ Complete | RESP3 support |
+| LATENCY LATEST/HISTORY/DOCTOR | ✅ Complete | |
+| SLOWLOG GET/LEN/RESET | ✅ Complete | |
+| FLUSHDB, FLUSHALL, SAVE, BGSAVE | ✅ Complete | |
+| COMMAND COUNT/INFO/LIST/DOCS | ✅ Complete | |
+
+### Scripting — 🟢 Full Compatibility (feature-gated)
+
+| Command | Status | Notes |
+|---------|--------|-------|
+| EVAL, EVALSHA | ✅ Complete | Lua 5.4 via mlua; requires `--features scripting` |
+| SCRIPT LOAD/EXISTS/FLUSH/KILL | ✅ Complete | |
+
+### Cluster Commands — 🔵 Beta
+
+| Command | Status | Notes |
+|---------|--------|-------|
+| CLUSTER INFO/NODES/SLOTS/SHARDS | ✅ Complete | |
+| CLUSTER MEET/FORGET/REPLICATE | ✅ Complete | |
+| CLUSTER ADDSLOTS/DELSLOTS/SETSLOT | ✅ Complete | |
+| CLUSTER FAILOVER/RESET | ✅ Complete | |
+| CLUSTER KEYSLOT/COUNTKEYSINSLOT | ✅ Complete | |
+
+---
+
+## Known Limitations
+
+### Production Considerations
+- **io_uring**: Only available on Linux 5.11+. macOS/Windows fall back to tokio::fs.
+- **WASM plugins**: Requires `--features wasm`. Plugin API is stable but the marketplace is experimental.
+- **ONNX inference**: Requires `--features onnx`. Model loading requires appropriate ONNX Runtime shared library.
+- **TLS**: Uses rustls (not OpenSSL). Most clients work; some older libraries may need configuration.
+
+### Data Model Gaps
+- **Document SORT**: Now supported in v0.3.0-dev (previously silently ignored).
+- **Graph Cypher**: Supports MATCH, WHERE, RETURN, CREATE, ORDER BY, LIMIT. Missing: OPTIONAL MATCH, DELETE, SET/UPDATE, UNION, EXPLAIN.
+- **Time-series**: Gorilla compression only. No Snappy/ZSTD for raw samples.
+
+### Ecosystem
+- **SDK generation**: Supports TypeScript, Python, Go, Rust, Java, C#, PHP, Ruby. All have tests and examples as of v0.3.0-dev.
+- **IDE plugins**: VS Code and JetBrains plugins support syntax highlighting, key browsing, command execution, and key editing. Advanced features (pub/sub UI, performance profiling) are planned.
 
 ---
 

@@ -129,7 +129,7 @@ description = "My custom UDF for Ferrite"
 license = "MIT"
 categories = ["validation"]
 tags = ["custom", "example"]
-min_ferrite_version = "0.1.0"
+min_ferrite_version = "0.3.0"
 
 [dependencies]
 ```
@@ -155,7 +155,7 @@ description = "Email validation" # Short description
 license = "Apache-2.0"          # SPDX license identifier
 categories = ["validation"]     # Module categories (see below)
 tags = ["email", "format"]      # Searchable tags
-min_ferrite_version = "0.1.0"   # Minimum compatible Ferrite version
+min_ferrite_version = "0.3.0"   # Minimum compatible Ferrite version
 
 [dependencies]
 # other-module = ">=1.0.0"      # Dependencies on other WASM modules

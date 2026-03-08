@@ -64,7 +64,7 @@ Get server information:
 ```bash
 127.0.0.1:6379> INFO
 # Server
-ferrite_version:0.1.0
+ferrite_version:0.3.0
 rust_version:1.88.0
 os:linux
 arch:x86_64

@@ -37,7 +37,7 @@ All vectors are L2-normalized. Distance metric: cosine similarity.
 
 | System | Version | Configuration |
 |--------|---------|---------------|
-| **Ferrite** | 0.1.0 | HNSW m=16, ef_construction=200, ef_search=50 |
+| **Ferrite** | 0.3.0 | HNSW m=16, ef_construction=200, ef_search=50 |
 | **Redis + RedisSearch** | 7.2 + 2.8 | HNSW m=16, ef_construction=200, ef_search=50 |
 | **Qdrant** | 1.9 | HNSW m=16, ef_construct=200, default settings |
 | **Milvus** | 2.4 | HNSW m=16, ef_construction=200, nprobe=50 |
@@ -252,4 +252,4 @@ cd ferrite-bench/benchmarks
 
 | Date | Version | Changes |
 |------|---------|---------|
-| 2026-02-19 | 0.1.0 | Initial benchmarks with HNSW, IVF, and Flat indexes |
+| 2026-02-19 | 0.3.0 | Initial benchmarks with HNSW, IVF, and Flat indexes |

@@ -104,7 +104,7 @@ function executeCommand(cmd: string, state: MockState): { response: string; isEr
       case 'INFO': {
         const section = args[0]?.toLowerCase() || 'server';
         const info = `# ${section}
-ferrite_version:0.1.0
+ferrite_version:0.3.0
 redis_version:7.0.0
 arch_bits:64
 os:Playground (Browser)

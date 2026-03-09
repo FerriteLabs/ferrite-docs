@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-03-09
+
+### Changed
+- LangChain and LlamaIndex integration guides added
+- "Ferrite for AI" landing page added
+- Redis-to-Ferrite migration playbook and cluster migration guide added
+- Configuration reference enhanced with hot-reload matrix
+- Error reference enhanced with complete FerriteError-RESP mapping
+- Experimental/beta feature banners added to 11 pages
+- HybridLog internals docs updated with Mermaid architecture diagram
+- Redis compatibility documentation updated from ~72% to ~92%
+
 ## [0.2.0] - 2026-02-28
 
 ### Added
@@ -33,6 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Formal Specifications**: TLA+ specs for 2PC, CRDT GCounter, cluster failover
 - **CI/CD**: Automated builds, link checking (weekly + PRs), gitleaks secret scanning, GitHub Pages deployment
 
-[Unreleased]: https://github.com/ferritelabs/ferrite-docs/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/ferritelabs/ferrite-docs/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/ferritelabs/ferrite-docs/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/ferritelabs/ferrite-docs/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/ferritelabs/ferrite-docs/releases/tag/v0.1.0

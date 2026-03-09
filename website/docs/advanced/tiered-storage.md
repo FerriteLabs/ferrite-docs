@@ -6,6 +6,11 @@ maturity: beta
 
 # Tiered Storage
 
+:::info Beta Feature
+This feature is in **beta**. It is feature-complete but may have edge cases. The API may change between minor releases. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Ferrite's tiered storage architecture automatically manages data across memory, SSD, and cloud storage tiers based on access patterns.
 
 > Note: The configuration examples below describe the target tiered-storage

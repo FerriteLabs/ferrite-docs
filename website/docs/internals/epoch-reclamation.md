@@ -8,6 +8,11 @@ maturity: beta
 
 # Epoch-Based Reclamation
 
+:::info Beta Feature
+This feature is in **beta**. It is feature-complete but may have edge cases. The API may change between minor releases. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Ferrite uses epoch-based reclamation (EBR) for safe, lock-free memory management. This allows high-performance concurrent access without garbage collection pauses or reference counting overhead.
 
 ## Overview

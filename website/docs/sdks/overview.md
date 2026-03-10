@@ -7,6 +7,11 @@ maturity: beta
 
 # Client SDKs Overview
 
+:::info Beta Feature
+This feature is in **beta**. It is feature-complete but may have edge cases. The API may change between minor releases. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Ferrite implements the Redis Serialization Protocol (RESP), which means **any standard Redis client library works with Ferrite** for core operations. For Ferrite-specific features like vector search, semantic caching, time series, and graph queries, you'll need to use raw commands or Ferrite-aware client extensions.
 
 ## Compatibility Approach

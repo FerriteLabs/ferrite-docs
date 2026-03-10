@@ -4,6 +4,11 @@ maturity: experimental
 
 # SDK Generator
 
+:::caution Experimental Feature
+This feature is **experimental** and may change significantly or be removed in future releases. It is not recommended for production use. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 The Ferrite SDK Generator creates type-safe, idiomatic client libraries for any programming language from your Ferrite schema and configuration.
 
 ## Overview

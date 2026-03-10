@@ -4,6 +4,11 @@ maturity: experimental
 
 # Swift SDK
 
+:::caution Experimental Feature
+This feature is **experimental** and may change significantly or be removed in future releases. It is not recommended for production use. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 The official Ferrite Swift SDK provides native Swift access to all Ferrite features with async/await support, iOS/macOS integration, and Vapor compatibility for server-side Swift.
 
 ## Installation

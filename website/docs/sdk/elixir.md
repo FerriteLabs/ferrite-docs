@@ -4,6 +4,11 @@ maturity: experimental
 
 # Elixir SDK
 
+:::caution Experimental Feature
+This feature is **experimental** and may change significantly or be removed in future releases. It is not recommended for production use. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 The official Ferrite Elixir SDK provides idiomatic Elixir access to all Ferrite features with support for Phoenix, Ecto, and OTP applications. Built on GenServer for robust connection management.
 
 ## Installation

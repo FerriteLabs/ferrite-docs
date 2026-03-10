@@ -4,6 +4,11 @@ maturity: experimental
 
 # PHP SDK
 
+:::caution Experimental Feature
+This feature is **experimental** and may change significantly or be removed in future releases. It is not recommended for production use. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 The official Ferrite PHP SDK provides easy access to all Ferrite features with support for Laravel, Symfony, and standalone PHP applications.
 
 ## Installation

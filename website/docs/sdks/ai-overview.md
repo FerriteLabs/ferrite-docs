@@ -7,6 +7,11 @@ maturity: experimental
 
 # AI SDK Overview
 
+:::caution Experimental Feature
+This feature is **experimental** and may change significantly or be removed in future releases. It is not recommended for production use. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Ferrite provides dedicated **AI SDKs** for Python and TypeScript that wrap the semantic caching engine, giving LLM frameworks like LangChain, LlamaIndex, and OpenAI a high-performance cache layer with zero boilerplate.
 
 ## Why Semantic Caching?

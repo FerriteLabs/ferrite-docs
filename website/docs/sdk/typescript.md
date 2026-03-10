@@ -8,6 +8,11 @@ maturity: beta
 
 # TypeScript SDK
 
+:::info Beta Feature
+This feature is in **beta**. It is feature-complete but may have edge cases. The API may change between minor releases. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 The official Ferrite TypeScript SDK provides type-safe access to all Ferrite features with full async/await support for Node.js and Deno.
 
 ## Installation

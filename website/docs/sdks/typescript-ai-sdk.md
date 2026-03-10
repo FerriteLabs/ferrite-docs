@@ -7,6 +7,11 @@ maturity: experimental
 
 # TypeScript AI SDK
 
+:::caution Experimental Feature
+This feature is **experimental** and may change significantly or be removed in future releases. It is not recommended for production use. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 The `@ferrite/ai` package provides semantic caching integrations for JavaScript/TypeScript LLM frameworks.
 
 ## Installation

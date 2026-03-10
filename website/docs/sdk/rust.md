@@ -8,6 +8,11 @@ maturity: beta
 
 # Rust SDK
 
+:::info Beta Feature
+This feature is in **beta**. It is feature-complete but may have edge cases. The API may change between minor releases. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 The official Ferrite Rust SDK provides native access to all Ferrite features with zero-cost abstractions and async/await support.
 
 ## Installation

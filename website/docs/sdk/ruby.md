@@ -4,6 +4,11 @@ maturity: experimental
 
 # Ruby SDK
 
+:::caution Experimental Feature
+This feature is **experimental** and may change significantly or be removed in future releases. It is not recommended for production use. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 The official Ferrite Ruby SDK provides idiomatic Ruby access to all Ferrite features with support for Rails, Sidekiq, and standalone Ruby applications.
 
 ## Installation

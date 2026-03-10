@@ -5,6 +5,11 @@ maturity: experimental
 
 # Triggers
 
+:::caution Experimental Feature
+This feature is **experimental** and may change significantly or be removed in future releases. It is not recommended for production use. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Ferrite triggers are event-driven functions that execute automatically when data changes, similar to Firebase Cloud Functions.
 
 ## Overview

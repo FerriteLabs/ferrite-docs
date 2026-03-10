@@ -4,6 +4,11 @@ maturity: beta
 
 # TUI Reference
 
+:::info Beta Feature
+This feature is in **beta**. It is feature-complete but may have edge cases. The API may change between minor releases. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Reference for the Ferrite Terminal User Interface (TUI), an interactive visual tool for monitoring and managing Ferrite.
 
 ## Overview

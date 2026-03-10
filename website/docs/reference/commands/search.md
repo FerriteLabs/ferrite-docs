@@ -5,6 +5,11 @@ maturity: beta
 
 # Search Commands
 
+:::info Beta Feature
+This feature is in **beta**. It is feature-complete but may have edge cases. The API may change between minor releases. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Commands for full-text search and indexing.
 
 ## Overview

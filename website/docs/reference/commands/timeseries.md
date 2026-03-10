@@ -5,6 +5,11 @@ maturity: experimental
 
 # Time-Series Commands
 
+:::caution Experimental Feature
+This feature is **experimental** and may change significantly or be removed in future releases. It is not recommended for production use. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Commands for time-series data storage and analysis.
 
 ## Overview

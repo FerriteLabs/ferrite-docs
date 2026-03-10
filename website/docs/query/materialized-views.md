@@ -5,6 +5,11 @@ maturity: experimental
 
 # Materialized Views
 
+:::caution Experimental Feature
+This feature is **experimental** and may change significantly or be removed in future releases. It is not recommended for production use. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Pre-compute and cache query results for fast reads.
 
 ## Overview

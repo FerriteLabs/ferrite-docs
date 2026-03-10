@@ -5,6 +5,11 @@ maturity: experimental
 
 # Prepared Statements
 
+:::caution Experimental Feature
+This feature is **experimental** and may change significantly or be removed in future releases. It is not recommended for production use. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Optimize and reuse queries with prepared statements.
 
 ## Overview

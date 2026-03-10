@@ -5,6 +5,11 @@ maturity: experimental
 
 # Build a Recommendation Engine
 
+:::caution Experimental Feature
+This feature is **experimental** and may change significantly or be removed in future releases. It is not recommended for production use. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Learn how to build a real-time recommendation system using Ferrite's vector search and collaborative filtering capabilities.
 
 ## What You'll Build

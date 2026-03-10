@@ -184,6 +184,7 @@ const sidebars: SidebarsConfig = {
             'reference/api',
             'reference/configuration',
             'reference/errors',
+            'reference/feature-matrix',
           ],
         },
         'reference/commands',

@@ -5,6 +5,11 @@ maturity: experimental
 
 # Custom Data Types
 
+:::caution Experimental Feature
+This feature is **experimental** and may change significantly or be removed in future releases. It is not recommended for production use. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Create custom data structures for Ferrite using the plugin system.
 
 ## Overview

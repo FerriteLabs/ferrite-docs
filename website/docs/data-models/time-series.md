@@ -8,6 +8,11 @@ maturity: beta
 
 # Time Series
 
+:::info Beta Feature
+This feature is in **beta**. It is feature-complete but may have edge cases. The API may change between minor releases. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Ferrite includes a high-performance time-series engine for storing and querying time-stamped data with automatic downsampling and retention management.
 
 ## Overview

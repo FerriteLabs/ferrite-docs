@@ -5,6 +5,11 @@ maturity: experimental
 
 # Build a Multi-Tenant SaaS Platform
 
+:::caution Experimental Feature
+This feature is **experimental** and may change significantly or be removed in future releases. It is not recommended for production use. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Learn how to build a multi-tenant SaaS application using Ferrite's tenant isolation features.
 
 ## What You'll Build

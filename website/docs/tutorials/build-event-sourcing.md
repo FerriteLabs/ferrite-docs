@@ -5,6 +5,11 @@ maturity: experimental
 
 # Build an Event Sourcing System
 
+:::caution Experimental Feature
+This feature is **experimental** and may change significantly or be removed in future releases. It is not recommended for production use. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Learn how to implement event sourcing and CQRS patterns using Ferrite's streams and CDC capabilities.
 
 ## What You'll Build

@@ -11,6 +11,11 @@ import TabItem from '@theme/TabItem';
 
 # Edge & IoT Deployment
 
+:::caution Experimental Feature
+This feature is **experimental** and may change significantly or be removed in future releases. It is not recommended for production use. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 This tutorial covers deploying Ferrite on resource-constrained devices — Raspberry Pi, ARM gateways, industrial edge nodes, and IoT sensors. You'll learn how to build minimal binaries, configure tight memory budgets, and sync data to the cloud.
 
 ## Target Environments

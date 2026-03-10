@@ -5,6 +5,11 @@ maturity: beta
 
 # Kubernetes Deployment
 
+:::info Beta Feature
+This feature is in **beta**. It is feature-complete but may have edge cases. The API may change between minor releases. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 This tutorial walks through deploying Ferrite to Kubernetes using the official Helm chart from the `ferrite-ops` repository.
 
 ## Prerequisites

@@ -5,6 +5,11 @@ maturity: beta
 
 # Build a Rate Limiter
 
+:::info Beta Feature
+This feature is in **beta**. It is feature-complete but may have edge cases. The API may change between minor releases. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Learn how to implement various rate limiting algorithms using Ferrite's atomic operations.
 
 ## What You'll Build

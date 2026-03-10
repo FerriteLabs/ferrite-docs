@@ -9,6 +9,11 @@ maturity: experimental
 
 # FerriteQL Quickstart
 
+:::caution Experimental Feature
+This feature is **experimental** and may change significantly or be removed in future releases. It is not recommended for production use. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Get productive with FerriteQL in **5 minutes**. By the end, you'll be able to query, filter, join, aggregate, and create materialized views over your Ferrite data.
 
 ## Prerequisites

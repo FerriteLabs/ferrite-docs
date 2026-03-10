@@ -5,6 +5,11 @@ maturity: beta
 
 # Build a Gaming Leaderboard
 
+:::info Beta Feature
+This feature is in **beta**. It is feature-complete but may have edge cases. The API may change between minor releases. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Learn how to build a real-time gaming leaderboard using Ferrite's sorted sets with sub-millisecond ranking queries.
 
 ## What You'll Build

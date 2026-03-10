@@ -8,6 +8,11 @@ maturity: beta
 
 # Build a Real-Time Chat Application
 
+:::info Beta Feature
+This feature is in **beta**. It is feature-complete but may have edge cases. The API may change between minor releases. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Learn how to build a scalable real-time chat application using Ferrite's Pub/Sub and data structures.
 
 ## What You'll Build

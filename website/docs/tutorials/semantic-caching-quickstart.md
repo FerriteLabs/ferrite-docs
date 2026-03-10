@@ -9,6 +9,11 @@ maturity: experimental
 
 # Semantic Caching Quickstart
 
+:::caution Experimental Feature
+This feature is **experimental** and may change significantly or be removed in future releases. It is not recommended for production use. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Get Ferrite's semantic caching running in **5 minutes**. By the end, you'll have a working cache that deduplicates LLM API calls based on meaning, not exact strings.
 
 ## Prerequisites

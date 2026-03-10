@@ -5,6 +5,11 @@ maturity: experimental
 
 # Build a Semantic Search Application
 
+:::caution Experimental Feature
+This feature is **experimental** and may change significantly or be removed in future releases. It is not recommended for production use. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Learn how to build a powerful semantic search system using Ferrite's vector database capabilities.
 
 ## What You'll Build

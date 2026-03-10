@@ -4,6 +4,11 @@ maturity: beta
 
 # Session Management
 
+:::info Beta Feature
+This feature is in **beta**. It is feature-complete but may have edge cases. The API may change between minor releases. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Ferrite provides an ideal foundation for session management with its low latency, automatic expiration, and atomic operations. This guide covers patterns for building secure, scalable session stores.
 
 ## Why Ferrite for Sessions?

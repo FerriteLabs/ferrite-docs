@@ -4,6 +4,11 @@ maturity: beta
 
 # Application Caching
 
+:::info Beta Feature
+This feature is in **beta**. It is feature-complete but may have edge cases. The API may change between minor releases. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Ferrite excels as a high-performance caching layer, offering sub-millisecond latency, flexible eviction policies, and advanced caching patterns that go beyond traditional key-value storage.
 
 ## Why Ferrite for Caching?

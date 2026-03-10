@@ -4,6 +4,11 @@ maturity: beta
 
 # Semantic Caching
 
+:::info Beta Feature
+This feature is in **beta**. It is feature-complete but may have edge cases. The API may change between minor releases. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Semantic caching stores LLM responses indexed by the semantic meaning of queries, enabling cache hits even when queries are phrased differently but have the same intent.
 
 ## Overview

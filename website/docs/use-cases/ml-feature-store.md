@@ -4,6 +4,11 @@ maturity: beta
 
 # ML Feature Store
 
+:::info Beta Feature
+This feature is in **beta**. It is feature-complete but may have edge cases. The API may change between minor releases. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Ferrite's low latency and flexible data structures make it ideal for serving machine learning features in production, enabling real-time inference with consistent, up-to-date feature values.
 
 ## Why Ferrite for Feature Stores?

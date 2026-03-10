@@ -4,6 +4,11 @@ maturity: beta
 
 # Geospatial Applications
 
+:::info Beta Feature
+This feature is in **beta**. It is feature-complete but may have edge cases. The API may change between minor releases. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Ferrite's geospatial capabilities enable building location-aware applications with efficient spatial queries, radius searches, and distance calculations.
 
 ## Why Ferrite for Geospatial?

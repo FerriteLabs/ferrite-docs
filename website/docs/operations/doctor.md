@@ -5,6 +5,11 @@ maturity: beta
 
 # Ferrite Doctor
 
+:::info Beta Feature
+This feature is in **beta**. It is feature-complete but may have edge cases. The API may change between minor releases. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 The `ferrite doctor` command runs preflight diagnostics to verify that your system environment and configuration are ready to run Ferrite. It checks configuration validity, port availability, storage permissions, system resources, and TLS setup.
 
 ## Running the Doctor

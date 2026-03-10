@@ -11,6 +11,11 @@ import TabItem from '@theme/TabItem';
 
 # Embedded Mode
 
+:::info Beta Feature
+This feature is in **beta**. It is feature-complete but may have edge cases. The API may change between minor releases. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Ferrite can be used as an embedded library, similar to SQLite. This mode is ideal for desktop applications, CLI tools, and edge deployments where running a separate server process isn't practical.
 
 ## Adding Ferrite to Your Project

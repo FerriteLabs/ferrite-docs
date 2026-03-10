@@ -8,6 +8,11 @@ maturity: beta
 
 # OpenTelemetry Integration
 
+:::info Beta Feature
+This feature is in **beta**. It is feature-complete but may have edge cases. The API may change between minor releases. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Ferrite provides native OpenTelemetry (OTel) support across all three observability pillars -- traces, metrics, and logs. This guide covers everything from basic configuration to production deployment patterns.
 
 ## Overview

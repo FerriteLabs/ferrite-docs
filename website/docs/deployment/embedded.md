@@ -8,6 +8,11 @@ maturity: beta
 
 # Embedded Mode
 
+:::info Beta Feature
+This feature is in **beta**. It is feature-complete but may have edge cases. The API may change between minor releases. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Ferrite can be used as an **in-process library** -- like SQLite for key-value data -- without running a separate server process. All operations go through direct function calls with zero network overhead.
 
 ## Getting Started

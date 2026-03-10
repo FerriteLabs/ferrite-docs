@@ -4,6 +4,11 @@ maturity: beta
 
 # Feature Flags
 
+:::info Beta Feature
+This feature is in **beta**. It is feature-complete but may have edge cases. The API may change between minor releases. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for details.
+:::
+
+
 Ferrite provides an excellent foundation for feature flag systems with its low latency, atomic operations, and support for complex targeting rules through hashes and sets.
 
 ## Why Ferrite for Feature Flags?

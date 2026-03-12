@@ -204,6 +204,107 @@ Ferrite supports all major Redis commands plus additional commands for vector se
 | `CDC.UNSUBSCRIBE` | Unsubscribe from CDC |
 | `CDC.STATUS` | Get CDC status |
 
+## AUTOINDEX Commands (Ferrite-specific)
+
+| Command | Description |
+|---------|-------------|
+| [`AUTOINDEX.RECORD key`](commands/autoindex.md) | Record key access pattern |
+| [`AUTOINDEX.ANALYZE`](commands/autoindex.md) | Analyze access patterns |
+| [`AUTOINDEX.RECOMMEND [COUNT n]`](commands/autoindex.md) | Get index recommendations |
+| [`AUTOINDEX.APPLY pattern type [FIELDS ...]`](commands/autoindex.md) | Apply recommended index |
+| [`AUTOINDEX.LIST`](commands/autoindex.md) | List active auto-indexes |
+| [`AUTOINDEX.REMOVE pattern type`](commands/autoindex.md) | Remove an auto-index |
+| [`AUTOINDEX.STATS`](commands/autoindex.md) | Get auto-indexing statistics |
+| [`AUTOINDEX.SAVE`](commands/autoindex.md) | Persist auto-index state |
+
+## Conversation Commands (Ferrite-specific)
+
+| Command | Description |
+|---------|-------------|
+| [`CONV.CREATE id [MODEL m] [MAX_TOKENS n]`](commands/conversation.md) | Create conversation |
+| [`CONV.DELETE id`](commands/conversation.md) | Delete conversation |
+| [`CONV.MESSAGE id role content`](commands/conversation.md) | Add message |
+| [`CONV.CONTEXT id [MAX_TOKENS n]`](commands/conversation.md) | Get context window |
+| [`CONV.LIST [PATTERN p]`](commands/conversation.md) | List conversations |
+| [`CONV.INFO id`](commands/conversation.md) | Get conversation metadata |
+| [`CONV.CLEAR id`](commands/conversation.md) | Clear messages |
+| [`CONV.SYSTEM id content`](commands/conversation.md) | Set system prompt |
+| [`CONV.STATS`](commands/conversation.md) | Get memory statistics |
+| [`CONV.SAVE`](commands/conversation.md) | Persist conversation state |
+
+## Cost Commands (Ferrite-specific)
+
+| Command | Description |
+|---------|-------------|
+| [`COST.ESTIMATE [KEYS p] [PERIOD d]`](commands/cost.md) | Estimate infrastructure cost |
+| [`COST.OPTIMIZE [TARGET_SAVINGS pct]`](commands/cost.md) | Get optimization recommendations |
+| [`COST.HINTS`](commands/cost.md) | Get cost-saving hints |
+| [`COST.STATS [PERIOD d]`](commands/cost.md) | Get historical cost statistics |
+| [`COST.BUDGET [SET\|GET]`](commands/cost.md) | Set or query cost budget |
+| [`COST.SAVE`](commands/cost.md) | Persist cost state |
+
+## Multicloud Commands (Ferrite-specific)
+
+| Command | Description |
+|---------|-------------|
+| [`MULTICLOUD.PROVIDER.ADD name TYPE t`](commands/multicloud.md) | Add cloud provider |
+| [`MULTICLOUD.PROVIDER.LIST`](commands/multicloud.md) | List providers |
+| [`MULTICLOUD.REGION.ADD provider region`](commands/multicloud.md) | Add region to provider |
+| [`MULTICLOUD.REGION.LIST provider`](commands/multicloud.md) | List regions |
+| [`MULTICLOUD.SYNC [PROVIDER p] [FULL\|INCREMENTAL]`](commands/multicloud.md) | Sync across clouds |
+| [`MULTICLOUD.STATUS [PROVIDER p]`](commands/multicloud.md) | Get sync status |
+| [`MULTICLOUD.HEALTH`](commands/multicloud.md) | Get provider health |
+| [`MULTICLOUD.SAVE`](commands/multicloud.md) | Persist multicloud config |
+
+## Policy Commands (Ferrite-specific)
+
+| Command | Description |
+|---------|-------------|
+| [`POLICY.CREATE name ON pattern ACTION a`](commands/policy-mgmt.md) | Create access policy |
+| [`POLICY.DELETE name`](commands/policy-mgmt.md) | Delete policy |
+| [`POLICY.GET name`](commands/policy-mgmt.md) | Get policy details |
+| [`POLICY.LIST [PATTERN p] [ROLE r]`](commands/policy-mgmt.md) | List policies |
+| [`POLICY.EVALUATE name command key`](commands/policy-mgmt.md) | Test policy evaluation |
+| [`POLICY.STATS [name]`](commands/policy-mgmt.md) | Get evaluation statistics |
+| [`POLICY.SAVE`](commands/policy-mgmt.md) | Persist policy state |
+
+## S3 Storage Commands (Ferrite-specific)
+
+| Command | Description |
+|---------|-------------|
+| [`S3.BUCKET.CREATE name [REGION r]`](commands/s3-storage.md) | Create S3 bucket |
+| [`S3.BUCKET.DELETE name [FORCE]`](commands/s3-storage.md) | Delete bucket |
+| [`S3.BUCKET.LIST`](commands/s3-storage.md) | List buckets |
+| [`S3.PUT bucket key value`](commands/s3-storage.md) | Store object |
+| [`S3.GET bucket key`](commands/s3-storage.md) | Retrieve object |
+| [`S3.DELETE bucket key`](commands/s3-storage.md) | Delete object |
+| [`S3.LIST bucket [PREFIX p]`](commands/s3-storage.md) | List objects |
+| [`S3.STATS [bucket]`](commands/s3-storage.md) | Get storage statistics |
+| [`S3.SAVE`](commands/s3-storage.md) | Persist S3 metadata |
+
+## Slot Commands (Ferrite-specific)
+
+| Command | Description |
+|---------|-------------|
+| [`SLOT.CREATE id [TO end] [NODE addr]`](commands/slot-mgmt.md) | Create slot or range |
+| [`SLOT.DROP id [TO end] [MIGRATE addr]`](commands/slot-mgmt.md) | Drop slot or range |
+| [`SLOT.LIST [NODE addr]`](commands/slot-mgmt.md) | List slot assignments |
+| [`SLOT.START id [TO end]`](commands/slot-mgmt.md) | Start serving slot |
+| [`SLOT.STOP id [TO end]`](commands/slot-mgmt.md) | Stop serving slot |
+| [`SLOT.STATS [id]`](commands/slot-mgmt.md) | Get slot statistics |
+| [`SLOT.SAVE`](commands/slot-mgmt.md) | Persist slot config |
+
+## Vector Ingest Commands (Ferrite-specific)
+
+| Command | Description |
+|---------|-------------|
+| [`VECTOR.INGEST.START id INDEX idx SOURCE ...`](commands/vector-ingest.md) | Start ingest pipeline |
+| [`VECTOR.INGEST.STOP id [DRAIN\|IMMEDIATE]`](commands/vector-ingest.md) | Stop pipeline |
+| [`VECTOR.INGEST.PAUSE id`](commands/vector-ingest.md) | Pause pipeline |
+| [`VECTOR.INGEST.RESUME id`](commands/vector-ingest.md) | Resume pipeline |
+| [`VECTOR.INGEST.STATUS id`](commands/vector-ingest.md) | Get pipeline status |
+| [`VECTOR.INGEST.LIST [STATE s]`](commands/vector-ingest.md) | List pipelines |
+
 ## Script Commands
 
 | Command | Description |

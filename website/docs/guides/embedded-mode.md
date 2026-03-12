@@ -181,6 +181,23 @@ db.zincrby("leaderboard", "alice", 5.0)?;
   </TabItem>
 </Tabs>
 
+### Stream Operations
+
+```rust
+// Add entries to a stream
+let id = db.xadd("events", &[("sensor", "temp"), ("value", "22.5")])?;
+println!("Entry ID: {}", id);  // e.g., "1710000000000-0"
+
+// Get stream length
+let len = db.xlen("events")?;
+
+// Query entries by range
+let entries = db.xrange("events", "-", "+", None)?;
+for (id, fields) in &entries {
+    println!("{}: {:?}", id, fields);
+}
+```
+
 ## Transactions
 
 Ferrite supports atomic transactions:

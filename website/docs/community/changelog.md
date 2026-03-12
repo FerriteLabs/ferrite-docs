@@ -14,15 +14,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- 8 new command families routed into dispatcher: AUTOINDEX, CONV, COST, MULTICLOUD, POLICY, S3, SLOT, VECTOR.INGEST
+- Structured error codes module (`error::codes`) with 25 stable numeric codes (1xxx–5xxx) and `error_code()`/`category()` methods
+- Slow client write timeout (30s default) on all socket writes for DoS prevention, configurable via `server.write_timeout`
+- Embedded Streams API: `xadd()`, `xlen()`, `xrange()` methods on embedded `Ferrite` instance
+- 24 new Redis compatibility tests: Streams (10), Geo (7), HyperLogLog (6), Cluster keyslot (1)
+- OpenAPI 3.0.3 spec expanded to 9 fully-documented endpoints with component schemas, tags, and error models
+- ADR-016: Handler state migration pattern from OnceLock to Store-integrated persistence
+- New command modules in Rust, Python, Go, and Node.js SDKs for all 8 new command families
+- PyPI publish step in Python SDK workflow; Go module release step in Go SDK workflow
+- IDE completions for all 8 new command families in VS Code (56 entries + 8 syntax patterns) and JetBrains (56 entries + 7 live templates)
 - SDK generator for custom client libraries
 - Interactive playground with tutorials
 - Kubernetes operator v2 with StatefulSet support
 
 ### Changed
+- All 47 handler files migrated from OnceLock singletons to Store-integrated persistence (per ADR-016)
+- Expanded `ferrite.example.toml` with auth, mTLS, replication, cluster, audit, encryption, and OpenTelemetry sections
+- Synced `ferrite-ops/ferrite.example.toml` with core repo version
+- FEATURE_MATURITY.md updated: Document Store and Graph Database promoted to Beta (🧪); 6 new experimental entries added
+- Homebrew formula checksums replaced with clear PLACEHOLDER markers for CI
 - Improved HNSW index build performance by 40%
 - Reduced memory overhead for small values
 
 ### Fixed
+- 13 clippy warnings (io_other_error, manual_clamp, manual_div_ceil, ref patterns, collapsible ifs, prefix stripping, test ordering)
+- `compat_server_info_resp_format` test failure (off-by-one in RESP bulk string byte count)
+- Trigger handler creating fresh `TriggerRegistry` per call (now uses shared singleton with Store persistence)
 - Race condition in cluster slot migration
 - Memory leak in Pub/Sub pattern subscriptions
 

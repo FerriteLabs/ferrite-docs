@@ -25,6 +25,7 @@ The following table shows which config keys can be changed at runtime via
 | `server.max_connections` | `server.max_connections` | ✅ | — |
 | `server.tcp_keepalive` | `server.tcp_keepalive` | ✅ | — |
 | `server.timeout` | `server.timeout` | ✅ | — |
+| `server.write_timeout` | `server.write_timeout` | ✅ | — |
 | `server.proto_max_bulk_len` | `server.proto_max_bulk_len` | ✅ | — |
 | `server.proto_max_multi_bulk_len` | `server.proto_max_multi_bulk_len` | ✅ | — |
 | `server.proto_max_nesting_depth` | `server.proto_max_nesting_depth` | ✅ | — |
@@ -91,8 +92,26 @@ port = 6379
 max_connections = 10000
 tcp_keepalive = 300
 timeout = 0
+write_timeout = 30
 acl_file = "./data/users.acl"
+requirepass = ""               # Set a password to require AUTH before commands
 ```
+
+| Setting | Description | Default |
+|---------|-------------|---------|
+| `server.bind` | Address to bind to. | `127.0.0.1` |
+| `server.port` | Port to listen on. | `6379` |
+| `server.max_connections` | Maximum concurrent client connections. | `10000` |
+| `server.tcp_keepalive` | TCP keepalive interval in seconds. `0` to disable. | `300` |
+| `server.timeout` | Client idle timeout in seconds. `0` to disable. | `0` |
+| `server.write_timeout` | Write timeout in seconds for slow client protection. Clients that cannot accept response data within this window are disconnected. | `30` |
+| `server.acl_file` | Path to the ACL file for user-based access control. | `./data/users.acl` |
+| `server.requirepass` | Password required for AUTH. Empty string to disable. | `""` |
+
+When `requirepass` is set to a non-empty string, all new connections must
+authenticate with `AUTH <password>` (or `AUTH <username> <password>`) before
+any commands are accepted. Compatible with Redis `requirepass` and `CONFIG SET requirepass`.
+Can be changed at runtime via `CONFIG SET requirepass <newpass>` (empty string to disable).
 
 ## Storage Section
 

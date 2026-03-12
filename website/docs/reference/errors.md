@@ -454,6 +454,56 @@ Ferrite errors follow the Redis RESP error format:
 
 ---
 
+## Structured Error Codes
+
+Ferrite provides stable numeric error codes via the `error::codes` module for programmatic error handling. These codes are returned alongside RESP error messages and enable SDKs to handle errors without parsing error strings.
+
+### Code Ranges
+
+| Range | Category | Description |
+|-------|----------|-------------|
+| 1000–1999 | Protocol | Parsing, unknown commands, wrong arity |
+| 2000–2999 | Execution | Type errors, out of range, out of memory |
+| 3000–3999 | Storage | AOF, RDB, checkpoint, I/O errors |
+| 4000–4999 | Auth | Authentication, permissions |
+| 5000–5999 | Server | Connection, internal errors |
+
+Each error exposes `error_code()` and `category()` methods:
+
+```rust
+use ferrite::error::FerriteError;
+
+match result {
+    Err(e) => {
+        println!("Code: {}, Category: {}", e.error_code(), e.category());
+        // Code: 1001, Category: protocol
+    }
+    Ok(_) => {}
+}
+```
+
+### Usage in SDKs
+
+```python
+try:
+    client.get("key")
+except FerriteError as e:
+    print(f"Error code: {e.code}, Category: {e.category}")
+    # Error code: 2001, Category: execution
+```
+
+```typescript
+try {
+  await client.get("key");
+} catch (e) {
+  if (e instanceof FerriteError) {
+    console.log(`Code: ${e.code}, Category: ${e.category}`);
+  }
+}
+```
+
+---
+
 ## Error Handling Best Practices
 
 ### FerriteError Complete Reference

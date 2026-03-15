@@ -68,3 +68,7 @@ npm run typecheck  # Type checking
 - Use `npm run build` before submitting — it catches broken links and missing images
 - Check the [Docusaurus docs](https://docusaurus.io/docs) for advanced features (tabs, code blocks, MDX)
 - Reference documentation in `docs/` (outside `website/`) contains source material you can incorporate
+
+---
+
+**Part of [FerriteLabs](https://github.com/ferritelabs)** — see the [core engine](https://github.com/ferritelabs/ferrite) for the full project, [ferrite-ops](https://github.com/ferritelabs/ferrite-ops) for deployment, and the [full repo list](https://github.com/ferritelabs) for IDE extensions, benchmarks, and more.

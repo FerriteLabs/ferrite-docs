@@ -13,11 +13,11 @@ These SDKs are developed and maintained by the Ferrite team with full feature co
 
 | Language | Package | Documentation |
 |----------|---------|---------------|
-| **Rust** | `ferrite-client` | [Rust SDK Guide](/docs/sdk/rust) |
-| **Python** | `ferrite-py` | [Python SDK Guide](/docs/sdk/python) |
-| **TypeScript/Node.js** | `@ferrite/client` | [TypeScript SDK Guide](/docs/sdk/typescript) |
-| **Go** | `github.com/ferritelabs/ferrite-go` | [Go SDK Guide](/docs/sdk/go) |
-| **Java** | `io.ferrite:ferrite-client` | [Java SDK Guide](/docs/sdk/java) |
+| **Rust** | `ferrite-client` | [Rust SDK Guide](/docs/sdks/rust) |
+| **Python** | `ferrite-py` | [Python SDK Guide](/docs/sdks/python) |
+| **TypeScript/Node.js** | `@ferrite/client` | [TypeScript SDK Guide](/docs/sdks/nodejs) |
+| **Go** | `github.com/ferritelabs/ferrite-go` | [Go SDK Guide](/docs/sdks/go) |
+| **Java** | `io.ferrite:ferrite-client` | [Java SDK Guide](/docs/sdks/overview) |
 
 ### Quick Installation
 
@@ -461,6 +461,6 @@ client = Ferrite(host='localhost', port=6380, username='user', password='secret'
 ## Next Steps
 
 - [Quick Start](/docs/getting-started/quick-start) - First steps with Ferrite
-- [Rust SDK](/docs/sdk/rust) - Full Rust SDK documentation
-- [Python SDK](/docs/sdk/python) - Full Python SDK documentation
-- [TypeScript SDK](/docs/sdk/typescript) - Full TypeScript SDK documentation
+- [Rust SDK](/docs/sdks/rust) - Full Rust SDK documentation
+- [Python SDK](/docs/sdks/python) - Full Python SDK documentation
+- [TypeScript SDK](/docs/sdks/nodejs) - Full TypeScript SDK documentation

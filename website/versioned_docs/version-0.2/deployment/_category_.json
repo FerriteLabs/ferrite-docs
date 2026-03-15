@@ -1,0 +1,8 @@
+{
+  "label": "Deployment",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "Guides for deploying Ferrite across different environments — Docker, Kubernetes, cloud providers, and edge runtimes."
+  }
+}

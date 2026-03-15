@@ -105,6 +105,11 @@ const config: Config = {
               label: 'v0.3 (Next)',
               path: '',
             },
+            '0.2': {
+              label: 'v0.2',
+              path: '0.2',
+              banner: 'unmaintained',
+            },
           },
         },
         blog: {

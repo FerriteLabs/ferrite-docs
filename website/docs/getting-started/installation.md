@@ -39,18 +39,18 @@ Pull and run the official Docker image:
 
 ```bash
 # Pull the latest image
-docker pull ferrite/ferrite:latest
+docker pull ghcr.io/ferritelabs/ferrite:latest
 
 # Run with default settings
-docker run -p 6379:6379 ferrite/ferrite:latest
+docker run -p 6379:6379 ghcr.io/ferritelabs/ferrite:latest
 
 # Run with persistent storage
-docker run -p 6379:6379 -v ferrite-data:/data ferrite/ferrite:latest
+docker run -p 6379:6379 -v ferrite-data:/data ghcr.io/ferritelabs/ferrite:latest
 
 # Run with custom configuration
 docker run -p 6379:6379 \
   -v ./ferrite.toml:/etc/ferrite/ferrite.toml \
-  ferrite/ferrite:latest --config /etc/ferrite/ferrite.toml
+  ghcr.io/ferritelabs/ferrite:latest --config /etc/ferrite/ferrite.toml
 ```
 
   </TabItem>

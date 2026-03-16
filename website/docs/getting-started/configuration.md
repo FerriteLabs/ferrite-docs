@@ -14,8 +14,10 @@ Ferrite can be configured via a TOML configuration file, environment variables, 
 > [Configuration Reference](../reference/configuration.md) and
 > `ferrite.example.toml`. Size values are raw bytes and durations are integer
 > seconds. Advanced feature modules (vector, semantic, temporal, etc.)
-> currently use sensible in-code defaults; `ferrite.toml` support for these
-> modules is planned for a future release.
+> use sensible in-code defaults but can be customized via the TOML config
+> file — see the [Configuration Reference](../reference/configuration.md) for
+> all available sections including `[auth]`, `[tls]`, `[replication]`,
+> `[cluster]`, `[encryption]`, `[audit]`, and `[otel]`.
 
 ## Configuration File
 
@@ -152,6 +154,19 @@ New to Ferrite? Start with the [Quick Start](quick-start.md) guide to get a loca
 | `enabled` | boolean | `true` | Enable Prometheus metrics |
 | `bind` | string | `"127.0.0.1"` | Metrics bind address |
 | `port` | integer | `9090` | Metrics endpoint port |
+
+### Logging
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `level` | string | `"info"` | Log level: `"trace"`, `"debug"`, `"info"`, `"warn"`, `"error"` |
+| `format` | string | `"text"` | Log output format: `"text"` (human-readable) or `"json"` (structured) |
+
+```toml
+[logging]
+level = "info"
+format = "json"  # Use "json" for production log aggregation
+```
 
 ## Environment Variables
 

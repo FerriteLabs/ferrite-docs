@@ -99,6 +99,10 @@ OK
 
 ## Ferrite-Specific Features
 
+:::info Feature Maturity
+The features below go beyond standard Redis. **Vector Search** and **Time Series** are 🧪 Beta (API may change). **Semantic Caching** and **Time-Travel Queries** are 🔬 Experimental. See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for full details.
+:::
+
 ### Vector Search
 
 ```bash
@@ -116,21 +120,21 @@ OK
 
 ```bash
 # Cache a response by meaning
-127.0.0.1:6379> SEMANTIC.SET "What is the capital of France?" "Paris is the capital of France."
+127.0.0.1:6379> SEMANTIC.CACHE.SET "What is the capital of France?" "Paris is the capital of France."
 
-# Query with similar phrasing
-127.0.0.1:6379> SEMANTIC.GET "France's capital city?" 0.85
+# Query with similar phrasing (finds semantically similar cached entry)
+127.0.0.1:6379> SEMANTIC.CACHE.GET "France's capital city?" THRESHOLD 0.85
 "Paris is the capital of France."
 ```
 
 ### Time-Travel Queries
 
 ```bash
-# Get a value from 1 hour ago
-127.0.0.1:6379> GET mykey AS OF -1h
+# Get a value as it was at a specific point in time
+127.0.0.1:6379> TEMPORAL.GET mykey AS_OF 1710000000000
 
-# View change history
-127.0.0.1:6379> HISTORY mykey SINCE -24h
+# View full change history for a key
+127.0.0.1:6379> TEMPORAL.HISTORY mykey LIMIT 10
 ```
 
 ## Using with Client Libraries

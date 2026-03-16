@@ -25,6 +25,8 @@ Create a new S3 bucket.
 S3.BUCKET.CREATE bucket_name [REGION region] [ACL private|public-read]
 ```
 
+**Time Complexity:** O(1)
+
 **Parameters:**
 - `bucket_name` - Unique bucket name
 - `REGION` - Storage region (optional)
@@ -51,6 +53,8 @@ Delete an empty bucket.
 S3.BUCKET.DELETE bucket_name [FORCE]
 ```
 
+**Time Complexity:** O(1) for empty buckets, O(N) with FORCE where N is the number of objects
+
 **Parameters:**
 - `FORCE` - Delete bucket and all contents (optional)
 
@@ -74,6 +78,8 @@ List all buckets.
 ```bash
 S3.BUCKET.LIST
 ```
+
+**Time Complexity:** O(N) where N is the number of buckets
 
 **Examples:**
 ```bash
@@ -108,6 +114,8 @@ Store an object in a bucket.
 S3.PUT bucket_name key value [CONTENT_TYPE type] [METADATA json]
 ```
 
+**Time Complexity:** O(1)
+
 **Parameters:**
 - `bucket_name` - Target bucket
 - `key` - Object key (path)
@@ -136,6 +144,8 @@ Retrieve an object from a bucket.
 S3.GET bucket_name key
 ```
 
+**Time Complexity:** O(1)
+
 **Examples:**
 ```bash
 S3.GET my-data "reports/2026/q1.json"
@@ -154,6 +164,8 @@ Delete an object from a bucket.
 S3.DELETE bucket_name key
 ```
 
+**Time Complexity:** O(1)
+
 **Examples:**
 ```bash
 S3.DELETE my-data "reports/2026/q1.json"
@@ -171,6 +183,8 @@ List objects in a bucket.
 ```bash
 S3.LIST bucket_name [PREFIX prefix] [DELIMITER delimiter] [MAX_KEYS n]
 ```
+
+**Time Complexity:** O(N) where N is the number of objects returned
 
 **Parameters:**
 - `PREFIX` - Filter objects by key prefix (optional)
@@ -205,6 +219,8 @@ Get bucket or overall S3 storage statistics.
 S3.STATS [bucket_name]
 ```
 
+**Time Complexity:** O(1)
+
 **Examples:**
 ```bash
 S3.STATS
@@ -235,6 +251,8 @@ Persist S3 metadata to store (survives restart).
 ```bash
 S3.SAVE
 ```
+
+**Time Complexity:** O(N) where N is the total number of buckets and objects
 
 **Examples:**
 ```bash

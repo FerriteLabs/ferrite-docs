@@ -32,6 +32,8 @@ POLICY.CREATE policy_name
   [ENABLED true|false]
 ```
 
+**Time Complexity:** O(N) where N is the number of roles and commands in the policy
+
 **Parameters:**
 - `policy_name` - Unique policy identifier
 - `ON` - Key pattern to match
@@ -79,6 +81,8 @@ Delete a policy.
 POLICY.DELETE policy_name
 ```
 
+**Time Complexity:** O(1)
+
 **Examples:**
 ```bash
 POLICY.DELETE deny_dev_writes
@@ -96,6 +100,8 @@ Get policy details.
 ```bash
 POLICY.GET policy_name
 ```
+
+**Time Complexity:** O(1)
 
 **Examples:**
 ```bash
@@ -125,6 +131,8 @@ List all policies.
 POLICY.LIST [PATTERN pattern] [ROLE role]
 ```
 
+**Time Complexity:** O(N) where N is the number of policies
+
 **Examples:**
 ```bash
 POLICY.LIST
@@ -147,6 +155,8 @@ Test a policy against a simulated command without executing it.
 ```bash
 POLICY.EVALUATE policy_name command key [args...]
 ```
+
+**Time Complexity:** O(N) where N is the number of rules and conditions in the policy
 
 **Examples:**
 ```bash
@@ -176,6 +186,8 @@ Get policy evaluation statistics.
 ```bash
 POLICY.STATS [policy_name]
 ```
+
+**Time Complexity:** O(1) for a single policy, O(N) for all policies
 
 **Examples:**
 ```bash
@@ -208,6 +220,8 @@ Persist policy state to store (survives restart).
 ```bash
 POLICY.SAVE
 ```
+
+**Time Complexity:** O(N) where N is the number of policies
 
 **Examples:**
 ```bash

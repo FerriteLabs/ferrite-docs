@@ -30,6 +30,8 @@ VECTOR.INGEST.START pipeline_id
   [ERROR_POLICY skip|abort]
 ```
 
+**Time Complexity:** O(1) to start the pipeline
+
 **Parameters:**
 - `pipeline_id` - Unique pipeline identifier
 - `INDEX` - Target vector index
@@ -66,6 +68,8 @@ Stop and remove an ingest pipeline.
 VECTOR.INGEST.STOP pipeline_id [DRAIN|IMMEDIATE]
 ```
 
+**Time Complexity:** O(1) for IMMEDIATE, O(N) for DRAIN where N is the current batch size
+
 **Parameters:**
 - `DRAIN` - Finish processing the current batch before stopping (default)
 - `IMMEDIATE` - Stop immediately, discard in-flight batch
@@ -91,6 +95,8 @@ Pause an active ingest pipeline.
 VECTOR.INGEST.PAUSE pipeline_id
 ```
 
+**Time Complexity:** O(1)
+
 **Examples:**
 ```bash
 VECTOR.INGEST.PAUSE ingest:docs
@@ -109,6 +115,8 @@ Resume a paused ingest pipeline.
 VECTOR.INGEST.RESUME pipeline_id
 ```
 
+**Time Complexity:** O(1)
+
 **Examples:**
 ```bash
 VECTOR.INGEST.RESUME ingest:docs
@@ -126,6 +134,8 @@ Get status and progress of an ingest pipeline.
 ```bash
 VECTOR.INGEST.STATUS pipeline_id
 ```
+
+**Time Complexity:** O(1)
 
 **Examples:**
 ```bash
@@ -157,6 +167,8 @@ List all ingest pipelines.
 ```bash
 VECTOR.INGEST.LIST [STATE running|paused|completed|failed]
 ```
+
+**Time Complexity:** O(N) where N is the number of pipelines
 
 **Examples:**
 ```bash

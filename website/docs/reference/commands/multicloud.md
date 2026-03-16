@@ -28,6 +28,8 @@ MULTICLOUD.PROVIDER.ADD provider_name
   [CREDENTIALS json]
 ```
 
+**Time Complexity:** O(1)
+
 **Parameters:**
 - `provider_name` - Unique provider identifier
 - `TYPE` - Cloud provider type
@@ -54,6 +56,8 @@ List configured cloud providers.
 ```bash
 MULTICLOUD.PROVIDER.LIST
 ```
+
+**Time Complexity:** O(N) where N is the number of providers
 
 **Examples:**
 ```bash
@@ -84,6 +88,8 @@ Add a region to a provider.
 MULTICLOUD.REGION.ADD provider_name region_name [PRIMARY]
 ```
 
+**Time Complexity:** O(1)
+
 **Parameters:**
 - `provider_name` - Provider to add the region to
 - `region_name` - Cloud region identifier
@@ -109,6 +115,8 @@ List regions for a provider.
 ```bash
 MULTICLOUD.REGION.LIST provider_name
 ```
+
+**Time Complexity:** O(N) where N is the number of regions for the provider
 
 **Examples:**
 ```bash
@@ -139,6 +147,8 @@ Initiate a sync operation across providers or regions.
 MULTICLOUD.SYNC [PROVIDER provider_name] [REGION region_name] [FULL|INCREMENTAL]
 ```
 
+**Time Complexity:** O(N) where N is the number of keys to synchronize
+
 **Parameters:**
 - `PROVIDER` - Specific provider to sync (optional, default: all)
 - `REGION` - Specific region to sync (optional)
@@ -164,6 +174,8 @@ Get synchronization status.
 ```bash
 MULTICLOUD.STATUS [PROVIDER provider_name]
 ```
+
+**Time Complexity:** O(1)
 
 **Examples:**
 ```bash
@@ -198,6 +210,8 @@ Get health status of all providers and regions.
 MULTICLOUD.HEALTH
 ```
 
+**Time Complexity:** O(N) where N is the number of providers
+
 **Examples:**
 ```bash
 MULTICLOUD.HEALTH
@@ -226,6 +240,8 @@ Persist multicloud configuration to store (survives restart).
 ```bash
 MULTICLOUD.SAVE
 ```
+
+**Time Complexity:** O(N) where N is the total number of providers and regions
 
 **Examples:**
 ```bash

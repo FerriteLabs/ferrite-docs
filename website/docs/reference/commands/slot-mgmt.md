@@ -25,6 +25,8 @@ Create a new slot or slot range.
 SLOT.CREATE slot_id [TO end_slot_id] [NODE node_addr]
 ```
 
+**Time Complexity:** O(N) where N is the number of slots in the range
+
 **Parameters:**
 - `slot_id` - Starting slot number (0–16383)
 - `TO` - End of slot range (optional)
@@ -51,6 +53,8 @@ Drop a slot or slot range.
 SLOT.DROP slot_id [TO end_slot_id] [MIGRATE node_addr]
 ```
 
+**Time Complexity:** O(N) where N is the number of slots in the range, O(N*M) with MIGRATE where M is the number of keys per slot
+
 **Parameters:**
 - `slot_id` - Starting slot number
 - `TO` - End of slot range (optional)
@@ -76,6 +80,8 @@ List all slots and their assignments.
 ```bash
 SLOT.LIST [NODE node_addr]
 ```
+
+**Time Complexity:** O(N) where N is the number of slot ranges
 
 **Examples:**
 ```bash
@@ -118,6 +124,8 @@ Start serving a slot (resume after stop).
 SLOT.START slot_id [TO end_slot_id]
 ```
 
+**Time Complexity:** O(N) where N is the number of slots in the range
+
 **Examples:**
 ```bash
 SLOT.START 5461 TO 10922
@@ -135,6 +143,8 @@ Stop serving a slot (maintenance or migration).
 ```bash
 SLOT.STOP slot_id [TO end_slot_id] [TIMEOUT seconds]
 ```
+
+**Time Complexity:** O(N) where N is the number of slots in the range
 
 **Parameters:**
 - `TIMEOUT` - Grace period for in-flight requests (default: 5)
@@ -156,6 +166,8 @@ Get slot statistics.
 ```bash
 SLOT.STATS [slot_id]
 ```
+
+**Time Complexity:** O(1) for a single slot, O(N) for all slots
 
 **Examples:**
 ```bash
@@ -191,6 +203,8 @@ Persist slot configuration to store (survives restart).
 ```bash
 SLOT.SAVE
 ```
+
+**Time Complexity:** O(N) where N is the number of slot assignments
 
 **Examples:**
 ```bash

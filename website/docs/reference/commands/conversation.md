@@ -25,6 +25,8 @@ Create a new conversation.
 CONV.CREATE conversation_id [MODEL model_name] [MAX_TOKENS n] [TTL seconds]
 ```
 
+**Time Complexity:** O(1)
+
 **Parameters:**
 - `conversation_id` - Unique conversation identifier
 - `MODEL` - Associated LLM model name (optional)
@@ -52,6 +54,8 @@ Delete a conversation and all its messages.
 CONV.DELETE conversation_id
 ```
 
+**Time Complexity:** O(N) where N is the number of messages in the conversation
+
 **Examples:**
 ```bash
 CONV.DELETE chat:user:1001
@@ -69,6 +73,8 @@ Add a message to a conversation.
 ```bash
 CONV.MESSAGE conversation_id role content [METADATA json]
 ```
+
+**Time Complexity:** O(1)
 
 **Parameters:**
 - `role` - Message role: `system`, `user`, `assistant`, or `tool`
@@ -99,6 +105,8 @@ Get the conversation context window (messages that fit within token limits).
 CONV.CONTEXT conversation_id [MAX_TOKENS n] [FORMAT json|text]
 ```
 
+**Time Complexity:** O(N) where N is the number of messages in the context window
+
 **Examples:**
 ```bash
 CONV.CONTEXT chat:user:1001
@@ -128,6 +136,8 @@ List conversations matching a pattern.
 CONV.LIST [PATTERN pattern] [COUNT n]
 ```
 
+**Time Complexity:** O(N) where N is the number of conversations
+
 **Examples:**
 ```bash
 CONV.LIST
@@ -151,6 +161,8 @@ Get conversation metadata.
 ```bash
 CONV.INFO conversation_id
 ```
+
+**Time Complexity:** O(1)
 
 **Examples:**
 ```bash
@@ -178,6 +190,8 @@ Clear all messages from a conversation while keeping the conversation itself.
 CONV.CLEAR conversation_id
 ```
 
+**Time Complexity:** O(N) where N is the number of messages in the conversation
+
 **Examples:**
 ```bash
 CONV.CLEAR chat:user:1001
@@ -196,6 +210,8 @@ Set or update the system prompt for a conversation.
 CONV.SYSTEM conversation_id content
 ```
 
+**Time Complexity:** O(1)
+
 **Examples:**
 ```bash
 CONV.SYSTEM chat:user:1001 "You are a helpful assistant specializing in geography."
@@ -213,6 +229,8 @@ Get conversation memory statistics.
 ```bash
 CONV.STATS
 ```
+
+**Time Complexity:** O(1)
 
 **Examples:**
 ```bash
@@ -237,6 +255,8 @@ Persist conversation state to store (survives restart).
 ```bash
 CONV.SAVE
 ```
+
+**Time Complexity:** O(N) where N is the total number of conversations and messages
 
 **Examples:**
 ```bash

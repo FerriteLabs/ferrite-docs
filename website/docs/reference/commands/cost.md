@@ -25,6 +25,8 @@ Estimate infrastructure cost for a given configuration or workload.
 COST.ESTIMATE [KEYS pattern] [PERIOD days]
 ```
 
+**Time Complexity:** O(N) where N is the number of keys matching the pattern
+
 **Parameters:**
 - `KEYS` - Key pattern to scope the estimate (default: all keys)
 - `PERIOD` - Estimation period in days (default: 30)
@@ -62,6 +64,8 @@ Get cost optimization recommendations.
 COST.OPTIMIZE [TARGET_SAVINGS pct]
 ```
 
+**Time Complexity:** O(N) where N is the number of keys analyzed for optimization
+
 **Parameters:**
 - `TARGET_SAVINGS` - Target savings percentage (optional)
 
@@ -88,6 +92,8 @@ Get actionable cost-saving hints for current workload.
 COST.HINTS
 ```
 
+**Time Complexity:** O(N) where N is the number of keys analyzed
+
 **Examples:**
 ```bash
 COST.HINTS
@@ -107,6 +113,8 @@ Get historical cost statistics.
 ```bash
 COST.STATS [PERIOD days]
 ```
+
+**Time Complexity:** O(1)
 
 **Examples:**
 ```bash
@@ -137,6 +145,8 @@ COST.BUDGET [SET amount_usd PERIOD monthly|daily]
 COST.BUDGET [GET]
 ```
 
+**Time Complexity:** O(1)
+
 **Examples:**
 ```bash
 COST.BUDGET SET 100.00 PERIOD monthly
@@ -164,6 +174,8 @@ Persist cost tracking state to store (survives restart).
 ```bash
 COST.SAVE
 ```
+
+**Time Complexity:** O(1)
 
 **Examples:**
 ```bash

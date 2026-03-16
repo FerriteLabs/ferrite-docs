@@ -480,3 +480,97 @@ When reporting issues, include:
 - [Monitoring](/docs/operations/monitoring) - Proactive monitoring
 - [Performance Tuning](/docs/operations/performance-tuning) - Optimization
 - [Observability](/docs/operations/observability) - Deep diagnostics
+
+## Error Code Reference
+
+Ferrite returns structured numeric error codes for programmatic handling. Use these to
+map errors to solutions.
+
+### 1xxx — Protocol & Parsing Errors
+
+| Code | Name | Cause | Solution |
+|------|------|-------|----------|
+| 1001 | `UNKNOWN_COMMAND` | Command not recognized | Check spelling; run `COMMAND LIST` to see available commands |
+| 1002 | `WRONG_ARITY` | Wrong number of arguments | Check command documentation for correct argument count |
+| 1003 | `SYNTAX_ERROR` | Malformed command syntax | Verify argument types and order match the command spec |
+| 1004 | `PARSE_ERROR` | Cannot parse RESP frame | Ensure client sends valid RESP2/RESP3 protocol |
+
+### 2xxx — Command Execution Errors
+
+| Code | Name | Cause | Solution |
+|------|------|-------|----------|
+| 2000 | `WRONG_TYPE` | Operation against key of wrong type | Check key type with `TYPE key` before operating |
+| 2001 | `NOT_INTEGER` | Value is not a valid integer | Ensure value can be parsed as integer for INCR/DECR |
+| 2002 | `NOT_FLOAT` | Value is not a valid float | Ensure value is numeric for float operations |
+| 2003 | `INDEX_OUT_OF_RANGE` | Index exceeds collection bounds | Check collection length with `LLEN`/`SCARD`/`ZCARD` first |
+| 2004 | `OUT_OF_MEMORY` | maxmemory limit reached | Increase `maxmemory`, enable eviction policy, or add TTLs |
+
+### 3xxx — Storage & Persistence Errors
+
+| Code | Name | Cause | Solution |
+|------|------|-------|----------|
+| 3000 | `AOF` | Append-only file write failed | Check disk space and permissions on AOF directory |
+| 3001 | `RDB` | RDB snapshot failed | Verify disk space; check `INFO persistence` for details |
+| 3002 | `CHECKPOINT` | Checkpoint creation failed | Check memory availability; reduce checkpoint frequency |
+
+### 4xxx — Authentication & Authorization Errors
+
+| Code | Name | Cause | Solution |
+|------|------|-------|----------|
+| 4000 | `NO_AUTH` | Command requires authentication | Send `AUTH password` or `AUTH username password` first |
+| 4001 | `NO_PERMISSION` | ACL denies this operation | Check user permissions with `ACL WHOAMI` and `ACL LIST` |
+| 4002 | `INVALID_PASSWORD` | Authentication password is wrong | Verify password matches `requirepass` in config |
+
+### 5xxx — Server & Connection Errors
+
+| Code | Name | Cause | Solution |
+|------|------|-------|----------|
+| 5000 | `CONNECTION_CLOSED` | Client connection dropped | Check network stability; increase `tcp-keepalive` |
+| 5001 | `TIMEOUT` | Command execution timed out | Reduce command complexity or increase timeout |
+| 5002 | `INTERNAL` | Unexpected server error | Check server logs; report as a bug with diagnostic output |
+
+## Ferrite Doctor
+
+Run the built-in diagnostic tool to quickly identify issues:
+
+```bash
+# Quick health check (from client)
+ferrite-cli MEMORY DOCTOR
+
+# Full diagnostic report
+ferrite-cli DEBUG REPORT
+```
+
+### Interpreting Doctor Output
+
+| Finding | Severity | Action |
+|---------|----------|--------|
+| `sam: high memory fragmentation` | ⚠️ Warning | Restart server during maintenance window to defragment |
+| `sam: out of memory` | 🔴 Critical | Increase `maxmemory` or enable eviction immediately |
+| `sam: high CPU usage` | ⚠️ Warning | Check `SLOWLOG`; look for expensive commands (KEYS, SORT) |
+| `sam: persistence falling behind` | ⚠️ Warning | Reduce write throughput or use faster storage for AOF |
+| `sam: replication lag > 10s` | 🔴 Critical | Check network between primary/replica; increase backlog size |
+
+### Quick Health Dashboard
+
+Run this sequence to get a complete picture in seconds:
+
+```bash
+# 1. Is the server alive?
+PING
+
+# 2. Key metrics at a glance
+INFO server    # uptime, version, mode
+INFO memory    # used vs max, fragmentation ratio
+INFO stats     # total commands processed, keyspace hits/misses
+INFO persistence  # AOF/RDB status, last save time
+
+# 3. Active problems?
+SLOWLOG GET 5            # Recent slow commands
+CLIENT LIST              # Connected clients, blocked clients
+MEMORY DOCTOR            # Automated diagnosis
+
+# 4. For clustered deployments
+CLUSTER INFO             # Cluster state, slots coverage
+CLUSTER NODES            # Node status and roles
+```

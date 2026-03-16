@@ -25,6 +25,8 @@ Record a key access pattern for index analysis.
 AUTOINDEX.RECORD key
 ```
 
+**Time Complexity:** O(1)
+
 **Examples:**
 ```bash
 AUTOINDEX.RECORD user:1001
@@ -46,6 +48,8 @@ Analyze recorded access patterns and generate index recommendations.
 AUTOINDEX.ANALYZE
 ```
 
+**Time Complexity:** O(N) where N is the number of recorded access patterns
+
 **Examples:**
 ```bash
 AUTOINDEX.ANALYZE
@@ -64,6 +68,8 @@ Get top N index recommendations.
 ```bash
 AUTOINDEX.RECOMMEND [COUNT n]
 ```
+
+**Time Complexity:** O(N) where N is the number of recommendations
 
 **Examples:**
 ```bash
@@ -99,6 +105,8 @@ Apply a recommended index.
 AUTOINDEX.APPLY pattern type [FIELDS field1 field2 ...]
 ```
 
+**Time Complexity:** O(N) where N is the number of fields
+
 **Examples:**
 ```bash
 AUTOINDEX.APPLY "user:*" hash FIELDS name email
@@ -119,6 +127,8 @@ List active auto-indexes.
 ```bash
 AUTOINDEX.LIST
 ```
+
+**Time Complexity:** O(N) where N is the number of active indexes
 
 **Examples:**
 ```bash
@@ -154,6 +164,8 @@ Remove an auto-index.
 AUTOINDEX.REMOVE pattern type
 ```
 
+**Time Complexity:** O(1)
+
 **Examples:**
 ```bash
 AUTOINDEX.REMOVE "user:*" hash
@@ -171,6 +183,8 @@ Get auto-indexing statistics.
 ```bash
 AUTOINDEX.STATS
 ```
+
+**Time Complexity:** O(1)
 
 **Examples:**
 ```bash
@@ -195,6 +209,8 @@ Persist auto-index state to store (survives restart).
 ```bash
 AUTOINDEX.SAVE
 ```
+
+**Time Complexity:** O(N) where N is the number of indexes and recorded patterns
 
 **Examples:**
 ```bash

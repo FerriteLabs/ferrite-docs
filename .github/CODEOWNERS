@@ -1,11 +1,13 @@
 # Default owners for everything
-* @josedab
+* @ferritelabs/docs
 
 # Documentation content
 /docs/ @josedab
 /website/ @josedab
+/website/docs/moonshots/ @ferritelabs/moonshots
+/website/docs/reference/ @ferritelabs/core
 /blog/ @josedab
 /specs/ @josedab
 
 # CI/CD and infrastructure
-/.github/ @josedab
+/.github/ @ferritelabs/devops

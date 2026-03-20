@@ -26,7 +26,7 @@ Visit the documentation at **[ferrite.dev](https://ferrite.dev)**.
 - **Getting Started** — Installation, quickstart, first commands
 - **Core Concepts** — Data types, persistence, replication, clustering
 - **Operations** — Monitoring, backup/restore, troubleshooting, performance tuning
-- **SDKs** — Rust, Python, Node.js, Go, TypeScript, AI SDKs
+- **SDKs** — Rust, Python, Node.js, Go, TypeScript, Java, .NET, AI SDKs
 - **Advanced** — Tiered storage, security, encryption, RDMA
 - **Comparisons** — vs Redis, Dragonfly, KeyDB, Valkey, Garnet, Memcached
 - **Use Cases** — Caching, session management, real-time analytics, ML feature stores

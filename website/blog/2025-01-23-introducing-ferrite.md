@@ -32,7 +32,7 @@ We've obsessed over performance. Built in Rust with epoch-based concurrency and 
 | SET | 2.6M ops/sec | 250ns |
 | Vector Search (k=10) | 45K ops/sec | 85us |
 
-*Benchmarks run on AWS c5.2xlarge (8 vCPU, 16GB RAM) using memtier_benchmark with 50 threads, 200 connections, pipeline 16. Numbers represent in-memory hot-path throughput. See our [benchmark deep-dive](/blog/2026/03/06/benchmark-deep-dive) for full methodology, multi-server comparisons, and reproducible scripts.*
+*Benchmarks run on AWS c5.2xlarge (8 vCPU, 16GB RAM) using memtier_benchmark with 50 threads, 200 connections, pipeline 16. Numbers represent in-memory hot-path throughput. See our [benchmark deep-dive](/blog/ferrite-benchmark-results-march-2026) for full methodology, multi-server comparisons, and reproducible scripts.*
 
 ## Getting Started
 

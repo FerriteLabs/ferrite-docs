@@ -1,0 +1,10 @@
+{
+  "label": "Moonshots",
+  "position": 8,
+  "collapsible": true,
+  "collapsed": false,
+  "link": {
+    "type": "generated-index",
+    "description": "Experimental features pushing Ferrite beyond traditional key-value stores."
+  }
+}

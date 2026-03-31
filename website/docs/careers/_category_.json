@@ -1,0 +1,8 @@
+{
+  "label": "Careers",
+  "position": 10,
+  "link": {
+    "type": "generated-index",
+    "description": "Open positions at Ferrite Labs."
+  }
+}

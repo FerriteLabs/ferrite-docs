@@ -30,3 +30,6 @@ Thumbs.db
 *~
 .idea/
 .vscode/
+
+# Temporary files from versioning
+*.tmp

@@ -45,7 +45,7 @@ npm run typecheck  # Type checking
 
 | Repository | Description |
 |-----------|-------------|
-| [ferrite](https://github.com/ferritelabs/ferrite) | Core database engine (Rust, 12 crates) |
+| [ferrite](https://github.com/ferritelabs/ferrite) | Core database engine (Rust, 19 crates) |
 | **ferrite-docs** | 📍 You are here |
 | [ferrite-ops](https://github.com/ferritelabs/ferrite-ops) | Docker, Helm, Grafana, packaging |
 | [ferrite-bench](https://github.com/ferritelabs/ferrite-bench) | Performance benchmarks vs Redis, Dragonfly, KeyDB |

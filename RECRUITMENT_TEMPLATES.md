@@ -105,7 +105,7 @@ I noticed your work on [project/contribution] and thought you might be
 interested in contributing to Ferrite — an open-source Redis-compatible
 database built in Rust.
 
-It's a 451K LOC Cargo workspace with 12 crates, 6,200+ tests, and strict
+It's a 451K LOC Cargo workspace with 19 crates, 6,200+ tests, and strict
 engineering standards (#[deny(unwrap_used)], comprehensive deny.toml, 14 CI
 workflows). The architecture uses thread-per-core with epoch-based reclamation
 and io_uring — similar to what you've worked on in [related area].

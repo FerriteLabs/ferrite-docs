@@ -189,7 +189,7 @@ fn set(key: Key, value: Value) { /* ... */ }
 ## Implementation Notes
 
 Rust version requirements:
-- Minimum Supported Rust Version (MSRV): 1.88.0
+- Minimum Supported Rust Version (MSRV): 1.80.0
 - Edition: 2021
 - Key features: async traits, let-else, generic associated types
 

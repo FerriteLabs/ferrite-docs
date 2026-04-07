@@ -23,7 +23,7 @@ cargo install ferrite
 ```
 
 **Prerequisites:**
-- Rust 1.88 or later
+- Rust 1.80 or later
 - Cargo (included with Rust)
 
 After installation, start the server:
@@ -70,7 +70,7 @@ cargo build --release
 ./target/release/ferrite
 ```
 
-**Prerequisites:** Rust 1.88+, Cargo, Git
+**Prerequisites:** Rust 1.80+, Cargo, Git
 
   </TabItem>
   <TabItem value="homebrew" label="Homebrew (macOS)">

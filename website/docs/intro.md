@@ -13,7 +13,7 @@ maturity: stable
 [![Crates.io](https://img.shields.io/crates/v/ferrite?style=flat-square)](https://crates.io/crates/ferrite)
 [![Documentation](https://img.shields.io/docsrs/ferrite?style=flat-square)](https://docs.rs/ferrite)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square)](https://github.com/ferritelabs/ferrite/blob/main/LICENSE)
-[![Rust Version](https://img.shields.io/badge/rust-1.88%2B-orange?style=flat-square)](https://www.rust-lang.org/)
+[![Rust Version](https://img.shields.io/badge/rust-1.80%2B-orange?style=flat-square)](https://www.rust-lang.org/)
 
 Ferrite is a high-performance, tiered-storage key-value store designed as a drop-in Redis replacement. Built in Rust with epoch-based concurrency and io_uring-first persistence.
 

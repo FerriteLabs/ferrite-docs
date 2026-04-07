@@ -22,7 +22,7 @@ We welcome contributions to Ferrite! This guide will help you get started.
 
 ### Prerequisites
 
-- Rust 1.88 or later
+- Rust 1.80 or later
 - Git
 - Docker (optional, for integration tests)
 

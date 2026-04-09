@@ -391,7 +391,7 @@ scp target/aarch64-unknown-linux-gnu/release/my-app pi@raspberrypi:~/
 
 ```dockerfile
 # Multi-stage build for Raspberry Pi
-FROM rust:1.88 AS builder
+FROM rust:1.80 AS builder
 
 RUN rustup target add aarch64-unknown-linux-gnu && \
     apt-get update && \

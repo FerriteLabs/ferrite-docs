@@ -58,3 +58,31 @@ Both projects share a philosophical lineage from FASTER's hybrid log-structured 
 - You need in-process C# custom procedures
 - You want Microsoft-backed support and development
 - You're deploying on Windows Server
+
+## Performance Characteristics
+
+Both engines benefit from FASTER's hybrid log design, but differ in execution:
+
+| Metric | Ferrite | Garnet |
+|--------|---------|--------|
+| **Cold start** | Fast (native binary) | Moderate (.NET JIT warmup) |
+| **Tail latency** | Predictable (no GC pauses) | GC pauses possible under heavy allocation |
+| **Throughput** | Competitive with Redis 7.x+ | Competitive with Redis 7.x+ |
+| **Disk I/O** | io_uring (zero-copy on Linux) | Standard .NET async I/O |
+| **Memory overhead** | Low (no runtime overhead) | Higher (.NET runtime + GC metadata) |
+
+## Ecosystem Maturity
+
+| Aspect | Ferrite | Garnet |
+|--------|---------|--------|
+| **Production deployments** | Early adopters | Growing, Microsoft-internal use |
+| **Client SDKs** | 10 languages | Any Redis client |
+| **Community size** | Growing | Growing (Microsoft backing) |
+| **Plugin ecosystem** | WASM Marketplace (early) | C# procedures |
+| **Monitoring** | Prometheus + OpenTelemetry | .NET metrics + ETW |
+
+## Further Reading
+
+- [Benchmark methodology](/docs/performance/benchmarks) — How we measure performance
+- [Migration guide](/docs/getting-started/migration-from-redis) — Switching from Redis or Garnet
+- [Architecture deep dive](/docs/core-concepts/architecture) — Ferrite's HybridLog internals

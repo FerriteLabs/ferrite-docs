@@ -36,8 +36,8 @@ const config: Config = {
     ],
   ],
 
-  // Production URL - update this when deploying
-  url: 'https://ferrite.rs',
+  // Production URL
+  url: 'https://ferrite.dev',
   baseUrl: '/',
 
   // GitHub pages deployment config

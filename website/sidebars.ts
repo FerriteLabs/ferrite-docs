@@ -114,6 +114,7 @@ const sidebars: SidebarsConfig = {
         'operations/observability',
         'operations/backup-restore',
         'operations/performance-tuning',
+        'operations/production-hardening',
         'operations/troubleshooting',
         'operations/audit-logging',
         'operations/doctor',
@@ -375,6 +376,19 @@ const sidebars: SidebarsConfig = {
         'internals/io-uring',
         'internals/resp-protocol',
         'internals/testing',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Research (Moonshots)',
+      collapsed: true,
+      items: [
+        'moonshots/chronicle',
+        'moonshots/concord',
+        'moonshots/forge',
+        'moonshots/lucidity',
+        'moonshots/mnemo',
+        'moonshots/pangea',
       ],
     },
     {

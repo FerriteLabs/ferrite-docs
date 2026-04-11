@@ -103,7 +103,7 @@ export default function RespDemo(): ReactNode {
           <span>RESP Encoding:</span>
           <button
             className={styles.copyButton}
-            onClick={() => navigator.clipboard.writeText(encoded.replace(/\\r\\n/g, '\r\n'))}
+            onClick={() => navigator.clipboard.writeText(encoded.replace(/\\r\\n/g, '\r\n')).catch(() => {})}
           >
             Copy
           </button>

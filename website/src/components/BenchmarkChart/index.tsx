@@ -14,6 +14,9 @@ interface Props {
 }
 
 export default function BenchmarkChart({ title, unit, results }: Props): JSX.Element {
+  if (results.length === 0) {
+    return <div className={styles.container}><h4 className={styles.title}>{title}</h4><p>No data available</p></div>;
+  }
   const maxValue = Math.max(...results.map(r => r.value));
 
   return (

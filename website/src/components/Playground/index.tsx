@@ -103,8 +103,9 @@ function executeCommand(cmd: string, state: MockState): { response: string; isEr
 
       case 'INFO': {
         const section = args[0]?.toLowerCase() || 'server';
+        const ferriteVersion = '0.4.0';
         const info = `# ${section}
-ferrite_version:0.3.0
+ferrite_version:${ferriteVersion}
 redis_version:7.0.0
 arch_bits:64
 os:Playground (Browser)
@@ -1239,8 +1240,10 @@ export default function Playground(): ReactNode {
     const commands = history.map(h => h.command);
     const encoded = encodeURIComponent(JSON.stringify(commands));
     const url = `${window.location.origin}${window.location.pathname}?commands=${encoded}`;
-    navigator.clipboard.writeText(url);
-    alert('Shareable link copied to clipboard!');
+    navigator.clipboard.writeText(url).then(
+      () => alert('Shareable link copied to clipboard!'),
+      () => alert('Could not copy to clipboard. URL: ' + url)
+    );
   };
 
   const exportSession = () => {

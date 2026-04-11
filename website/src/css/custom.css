@@ -149,7 +149,7 @@
 
 /* Terminal-style code preview */
 .terminal-preview {
-  background: #1e1e1e;
+  background: var(--ifm-pre-background, #1e1e1e);
   border-radius: 8px;
   overflow: hidden;
   font-family: var(--ifm-font-family-monospace);

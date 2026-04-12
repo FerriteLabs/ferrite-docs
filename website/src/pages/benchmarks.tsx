@@ -330,7 +330,7 @@ function Methodology(): ReactNode {
           <Heading as="h3">Software</Heading>
           <ul>
             <li>macOS Sonoma 14.x</li>
-            <li>Rust 1.88+ (release build with LTO)</li>
+            <li>Rust 1.80+ (release build with LTO)</li>
             <li>Criterion.rs for microbenchmarks</li>
           </ul>
         </div>

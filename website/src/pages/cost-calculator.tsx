@@ -61,7 +61,7 @@ function CostCalculator() {
 
           <label>
             Cloud Provider
-            <select value={cloud} onChange={(e) => setCloud(e.target.value as any)}
+            <select value={cloud} onChange={(e) => setCloud(e.target.value as 'aws' | 'gcp' | 'azure')}
               style={{ width: '100%', padding: '0.5rem' }}>
               <option value="aws">AWS</option>
               <option value="gcp">Google Cloud</option>

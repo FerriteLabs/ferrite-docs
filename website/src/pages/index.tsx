@@ -60,7 +60,7 @@ function Badges() {
         <img src="https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square" alt="License" />
       </a>
       <a href="https://discord.gg/ferrite" target="_blank" rel="noopener noreferrer">
-        <img src="https://img.shields.io/discord/1234567890?style=flat-square&logo=discord&label=discord&color=5865F2" alt="Discord" />
+        <img src="https://img.shields.io/badge/discord-join%20chat-5865F2?style=flat-square&logo=discord&logoColor=white" alt="Discord" />
       </a>
     </div>
   );
@@ -277,28 +277,16 @@ function ComparisonTable() {
 }
 
 function TrustedBySection() {
-  const companies = [
-    { name: 'Your Company', placeholder: true },
-    { name: 'Could Be', placeholder: true },
-    { name: 'Featured', placeholder: true },
-    { name: 'Here', placeholder: true },
-  ];
-
   return (
     <section className={styles.trustedBy}>
       <div className="container">
-        <p className={styles.trustedByLabel}>Trusted by developers at</p>
-        <div className={styles.trustedByLogos}>
-          {companies.map((company, idx) => (
-            <div key={idx} className={styles.companyLogo}>
-              <span className={styles.companyPlaceholder}>{company.name}</span>
-            </div>
-          ))}
-        </div>
+        <p className={styles.trustedByLabel}>Join the growing Ferrite community</p>
         <p className={styles.trustedByNote}>
+          Using Ferrite in production?{' '}
           <Link to="https://github.com/ferritelabs/ferrite/issues/new?template=showcase.md">
-            Add your company
-          </Link>
+            Share your story
+          </Link>{' '}
+          and get featured here.
         </p>
       </div>
     </section>

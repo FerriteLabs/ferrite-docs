@@ -85,7 +85,7 @@ Running Ferrite as WASM in an edge runtime has inherent constraints compared to 
 
 ### Prerequisites
 
-- Rust 1.88+ with the `wasm32-wasi` target
+- Rust 1.80+ with the `wasm32-wasi` target
 - `wasm-opt` (from [binaryen](https://github.com/WebAssembly/binaryen)) for optimization
 
 ### Compile to WASM

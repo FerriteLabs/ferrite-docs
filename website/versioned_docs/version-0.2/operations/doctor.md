@@ -58,7 +58,7 @@ TLS cert OK: /etc/ferrite/tls/server.crt
 TLS key OK: /etc/ferrite/tls/server.key
 TLS OK
 Ferrite version: 0.3.0
-Rust compiler: rustc 1.88.0 (e7e1dc158 2025-06-04)
+Rust compiler: rustc 1.80.0 (051478957 2024-07-21)
 Doctor checks passed
 ```
 
@@ -73,7 +73,7 @@ ERROR: Port 127.0.0.1:6379 is already in use.
 Memory OK: 7916MB available
 Disk space WARNING: 512MB available on ./data (recommend 1GB+)
 Ferrite version: 0.3.0
-Rust compiler: rustc 1.88.0 (e7e1dc158 2025-06-04)
+Rust compiler: rustc 1.80.0 (051478957 2024-07-21)
 ```
 
 ## Understanding Each Check

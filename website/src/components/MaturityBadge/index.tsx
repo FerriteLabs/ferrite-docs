@@ -13,7 +13,7 @@ interface Props {
   level: MaturityLevel;
 }
 
-export default function MaturityBadge({ level }: Props): JSX.Element | null {
+export default function MaturityBadge({ level }: Props): React.ReactNode {
   const config = MATURITY_CONFIG[level];
   if (!config) return null;
 

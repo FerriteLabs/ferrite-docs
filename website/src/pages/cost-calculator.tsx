@@ -1,40 +1,20 @@
 import React, { useState, useMemo } from 'react';
 import Layout from '@theme/Layout';
-
-// Cloud pricing per GB/month (approximate 2026 rates)
-const PRICING = {
-  aws: { name: 'AWS', memory: 12.50, ssd: 0.08, object: 0.023 },
-  gcp: { name: 'GCP', memory: 13.00, ssd: 0.17, object: 0.020 },
-  azure: { name: 'Azure', memory: 12.80, ssd: 0.12, object: 0.018 },
-};
+import {
+  calculateCostEstimate,
+  type CloudProvider,
+} from '@site/src/domain/costCalculator';
 
 function CostCalculator() {
   const [datasetGB, setDatasetGB] = useState(100);
   const [hotRatio, setHotRatio] = useState(0.2);
-  const [cloud, setCloud] = useState<'aws' | 'gcp' | 'azure'>('aws');
+  const [cloud, setCloud] = useState<CloudProvider>('aws');
   const [replication, setReplication] = useState(1);
 
-  const result = useMemo(() => {
-    const p = PRICING[cloud];
-    const hotGB = datasetGB * hotRatio;
-    const warmGB = datasetGB * (1 - hotRatio) * 0.3;
-    const coldGB = datasetGB * (1 - hotRatio) * 0.7;
-
-    const redisCost = datasetGB * p.memory * replication;
-    const ferriteMem = hotGB * p.memory * replication;
-    const ferriteSSD = warmGB * p.ssd * replication;
-    const ferriteObj = coldGB * p.object * replication;
-    const ferriteCost = ferriteMem + ferriteSSD + ferriteObj;
-    const savings = redisCost - ferriteCost;
-    const savingsPct = redisCost > 0 ? (savings / redisCost) * 100 : 0;
-
-    return {
-      redisCost, ferriteCost, savings, savingsPct,
-      hotGB, warmGB, coldGB,
-      ferriteMem, ferriteSSD, ferriteObj,
-      cloudName: p.name,
-    };
-  }, [datasetGB, hotRatio, cloud, replication]);
+  const result = useMemo(
+    () => calculateCostEstimate({datasetGB, hotRatio, cloud, replication}),
+    [datasetGB, hotRatio, cloud, replication],
+  );
 
   return (
     <Layout title="Cost Calculator" description="Compare Redis vs Ferrite infrastructure costs">
@@ -61,7 +41,7 @@ function CostCalculator() {
 
           <label>
             Cloud Provider
-            <select value={cloud} onChange={(e) => setCloud(e.target.value as 'aws' | 'gcp' | 'azure')}
+            <select value={cloud} onChange={(e) => setCloud(e.target.value as CloudProvider)}
               style={{ width: '100%', padding: '0.5rem' }}>
               <option value="aws">AWS</option>
               <option value="gcp">Google Cloud</option>

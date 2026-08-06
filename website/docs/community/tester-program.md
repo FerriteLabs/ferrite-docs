@@ -21,6 +21,9 @@ alternative installation cohorts are deferred until maintained tooling
 exists. Do not begin until you receive a campaign invitation. Use only
 disposable infrastructure and synthetic data.
 
+The hands-on path requires Docker Compose v2 and Python 3. Linux hosts must use
+Docker Engine 28 or newer so loopback-published ports remain local to the host.
+
 The canonical Tester Program is the file `TESTER_PROGRAM.md` at the root of
 the [ferrite repository](https://github.com/ferritelabs/ferrite). It contains
 the authoritative journey, safety rules, expected outcomes, severity

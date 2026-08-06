@@ -152,10 +152,9 @@ invitation goes out:
        https://github.com/ferritelabs/ferrite/security/advisories/new
 7. [ ] Optionally create labels/views for tester interest, passing reports, and
        findings; title prefixes remain the required baseline.
-8. [ ] **Docs and outreach:** merge/publish the public tester page and the
-       core intake from step 1, resolving `<PUBLISHED_TESTER_PROGRAM_URL>` and
-       `<PUBLISHED_TESTER_INTEREST_URL>` to their real URLs, then post the
-       interest announcement.
+8. [ ] **Docs source:** merge/publish the public tester page, resolving
+       `<PUBLISHED_TESTER_PROGRAM_URL>` and
+       `<PUBLISHED_TESTER_INTEREST_URL>` to their real URLs.
 9. [ ] **Publication gate:** set the repository Actions variable
        `TESTER_INTEREST_OPEN=true` for the documentation site build **only
        after** step 1 (core intake) and step 2 (ops tooling) are merged and
@@ -163,8 +162,10 @@ invitation goes out:
        clean-machine preflight passes. Until then the site must build with the
        gate off, excluding the tester page from Docusaurus source processing,
        the sidebar, sitemap, and local search as well as all promotional
-       surfaces. When enabled, the site states that intake is open without
-       implying that uninvited visitors should begin hands-on testing.
+       surfaces. Manually run the docs `CI` workflow on `main`, then verify the
+       deployed tester page, issue chooser, and interest-only announcement.
+10. [ ] **Outreach:** only after the gated deployment is verified, post the
+        interest announcement using the published URLs.
 
 ### During recruitment
 

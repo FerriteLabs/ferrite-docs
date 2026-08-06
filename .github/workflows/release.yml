@@ -58,6 +58,8 @@ jobs:
 
       - run: cd website && pnpm install --frozen-lockfile
       - run: cd website && pnpm run build
+        env:
+          TESTER_INTEREST_OPEN: ${{ vars.TESTER_INTEREST_OPEN || 'false' }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4

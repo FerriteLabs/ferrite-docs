@@ -114,7 +114,9 @@ describe('tester campaign documentation', () => {
       '**Ops tooling:**',
       '**Candidate image:**',
       '**Clean-machine preflight:**',
-      '**Docs and outreach:**',
+      '**Docs source:**',
+      '**Publication gate:**',
+      '**Outreach:**',
     ];
     let previous = -1;
     for (const step of orderedSteps) {

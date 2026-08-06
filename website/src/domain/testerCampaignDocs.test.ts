@@ -16,6 +16,7 @@ const testerAssets = `${publicPage}\n${recruitment}`;
 
 describe('tester campaign documentation', () => {
   it('keeps hands-on testing behind both immutable campaign references', () => {
+    expect(testerAssets).toMatch(/Registration is open for interest only/i);
     expect(testerAssets).toContain('CAMPAIGN_OPS_REF');
     expect(testerAssets).toContain('FERRITE_TEST_IMAGE');
     expect(testerAssets).toContain('<CAMPAIGN_IMAGE_DIGEST>');
@@ -31,22 +32,30 @@ describe('tester campaign documentation', () => {
     expect(testerAssets).toMatch(/not part of the required\s+core path/);
   });
 
-  it('uses the temporary issue intake and canonical security channel', () => {
+  it('uses the issue intake and canonical GitHub private vulnerability reporting channel', () => {
     expect(testerAssets).toContain('template=tester_interest.yml');
     expect(testerAssets).toContain('SECURITY.md#reporting-a-vulnerability');
-    expect(testerAssets).toContain('security@ferritelabs.dev');
+    expect(testerAssets).toContain('https://github.com/ferritelabs/ferrite/security/advisories/new');
   });
 
-  it('does not advertise unavailable or disabled campaign channels', () => {
+  it('does not advertise unavailable, disabled, or retired campaign channels', () => {
     expect(testerAssets).not.toMatch(/\bv0\.4\.0\b/i);
     expect(testerAssets).not.toMatch(/\bpre-release\b/i);
     expect(testerAssets).not.toContain('/discussions');
-    expect(testerAssets).not.toContain('/security/advisories/new');
+    expect(testerAssets).not.toMatch(/security@ferritelabs\.dev/i);
+    expect(testerAssets).not.toMatch(/\bPGP\b/i);
+    expect(testerAssets).not.toMatch(/not currently enabled/i);
     expect(testerAssets).not.toMatch(/github\.com\/FerriteLabs/);
     expect(testerAssets).not.toMatch(/ghcr\.io\/ferritelabs\/ferrite:latest/);
   });
 
-  it('preserves the ordered launch checklist and cohort size', () => {
+  it('keeps the initial cohort Docker-only and marks private intake ready', () => {
+    expect(testerAssets).toMatch(/Docker\/Docker Compose.only/i);
+    expect(publicPage).toMatch(/including IDE\s+tooling, connects to the same running Docker Compose instance/);
+    expect(recruitment).toMatch(/\[x\] \*\*Private security intake:\*\*/);
+  });
+
+  it('preserves the ordered launch checklist and cohort phases', () => {
     const orderedSteps = [
       '**Core intake:**',
       '**Ops tooling:**',
@@ -60,6 +69,14 @@ describe('tester campaign documentation', () => {
       expect(current).toBeGreaterThan(previous);
       previous = current;
     }
+    const beforeOutreach = recruitment.indexOf('### Before outreach');
+    const duringCampaign = recruitment.indexOf('### During campaign');
+    const cohortCloseout = recruitment.indexOf('### Cohort closeout');
+    expect(beforeOutreach).toBeGreaterThan(-1);
+    expect(duringCampaign).toBeGreaterThan(beforeOutreach);
+    expect(cohortCloseout).toBeGreaterThan(duringCampaign);
+    const preOutreachTasks = recruitment.slice(beforeOutreach, duringCampaign);
+    expect(preOutreachTasks).not.toMatch(/Monitor completion|Close the cohort/);
     expect(recruitment).toContain('8–12 testers');
   });
 });

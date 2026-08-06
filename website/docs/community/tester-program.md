@@ -12,9 +12,11 @@ Ferrite is gathering interest for a small cohort of developers who can spend
 environment. The campaign will focus on setup, Redis-client compatibility,
 operations, safe diagnostics, performance comparisons, and IDE tooling.
 
-This is an **interest-first, non-production program**. Registering interest does
-not mean testing can begin. Use only disposable infrastructure and synthetic
-data once a campaign launches.
+Registration is open for interest only. This is a **Docker/Docker Compose-only,
+non-production initial cohort**; alternative installation cohorts are deferred
+until maintained tooling exists. Registering interest does not mean testing can
+begin. Use only disposable infrastructure and synthetic data once a campaign
+launches.
 
 The [canonical Tester Program](https://github.com/ferritelabs/ferrite/blob/main/TESTER_PROGRAM.md)
 contains the authoritative journey, safety rules, expected outcomes, severity
@@ -65,19 +67,21 @@ campaign owner explicitly enables it; durability is not part of the required
 core path or a core expected pass.
 
 Other optional tracks include Redis/client compatibility, operations/metrics,
-performance comparison, and IDE tooling.
+performance comparison, and IDE tooling. Every optional track, including IDE
+tooling, connects to the same running Docker Compose instance.
 
 ## Interest, questions, and reports
 
 - [Register interest or ask a program question](https://github.com/ferritelabs/ferrite/issues/new?template=tester_interest.yml)
 - [Submit a completed session](https://github.com/ferritelabs/ferrite/issues/new?template=tester_report.yml)
 - [Review open issues and known limitations](https://github.com/ferritelabs/ferrite/issues?q=is%3Aissue+is%3Aopen)
-- [Follow the canonical security reporting policy](https://github.com/ferritelabs/ferrite/blob/main/SECURITY.md#reporting-a-vulnerability)
-  or email **security@ferritelabs.dev**
+- Report vulnerabilities privately using
+  [GitHub private vulnerability reporting](https://github.com/ferritelabs/ferrite/security/advisories/new),
+  as described in the canonical
+  [Security Policy](https://github.com/ferritelabs/ferrite/blob/main/SECURITY.md#reporting-a-vulnerability)
 
-The interest issue is the temporary intake and question channel until an active
-community channel is selected. Do not disclose a vulnerability or sensitive
-data in a public issue.
+The interest issue is the intake and question channel for the tester program.
+Do not disclose a vulnerability or sensitive data in a public issue.
 
 Review diagnostic archives before sharing them. Do not post credentials,
 personal data, customer data, private addresses, full configuration, or other

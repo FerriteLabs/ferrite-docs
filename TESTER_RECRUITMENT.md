@@ -4,23 +4,24 @@ Maintainer playbook for recruiting the next candidate/hardening validation
 cohort. The target is **8–12 testers**: enough diversity to reveal recurring
 friction while remaining small enough for responsive triage.
 
-Recruit interest first. Hands-on testing must not begin until the campaign
-owner publishes and clean-machine verifies both an immutable
+Registration is open for interest only. Hands-on testing must not begin until
+the campaign owner publishes and clean-machine verifies both an immutable
 `CAMPAIGN_OPS_REF` and an exact `FERRITE_TEST_IMAGE`. Campaign builds are for
 disposable, non-production testing with synthetic data.
 
 Do not copy tester names, email addresses, private messages, availability, or
 other personal data into this repository. Use the public
 [Tester Interest form](https://github.com/ferritelabs/ferrite/issues/new?template=tester_interest.yml)
-as the temporary intake and question channel until an active community channel
-is selected. Handle any necessary private coordination outside Git.
+as the intake and question channel for the tester program. Handle any
+necessary private coordination outside Git.
 
 ## Screening questions
 
 Use these to balance the cohort, not to collect unnecessary personal details:
 
-1. Which disposable environment can you use: Docker/Compose, Homebrew, source,
-   or Kubernetes?
+1. Which disposable environment can you use? The initial cohort is
+   Docker/Compose only; alternative environments (Homebrew, source, Kubernetes)
+   are deferred until maintained tooling exists for them.
 2. Which Redis client or application can you safely exercise?
 3. Which track best matches your experience: compatibility,
    operations/metrics, performance comparison, IDE tooling, or an
@@ -39,7 +40,8 @@ not to tell people that testing is immediately available:
 
 > **Interested in helping harden the next Ferrite candidate?**
 >
-> We are building an interest list for a focused cohort of 8–12 developers.
+> Registration is open for interest only for a focused cohort of 8–12
+> developers.
 > Once the campaign passes its launch gate, the core session will take 60–90
 > minutes in a disposable environment and cover deployment, compatibility
 > smoke checks, safe diagnostics, and structured feedback.
@@ -55,8 +57,9 @@ not to tell people that testing is immediately available:
 
 Short form for community channels:
 
-> Ferrite is gathering interest for the next 8–12-person candidate hardening
-> cohort. The later session will take 60–90 minutes in a disposable environment.
+> Registration is open for interest only for Ferrite's next 8–12-person
+> candidate hardening cohort. The later session will take 60–90 minutes in a
+> disposable environment.
 > Testing is not open until immutable tooling and image references pass a
 > clean-machine preflight. Details:
 > https://github.com/ferritelabs/ferrite/blob/main/TESTER_PROGRAM.md
@@ -96,16 +99,19 @@ contain both immutable references:
 - Give every High report an owner and disposition before cohort completion.
 - Ask for the smallest reproduction first; request a redacted archive only
   when it changes the investigation.
-- For security findings, stop public discussion and follow the canonical
-  [Security Policy](https://github.com/ferritelabs/ferrite/blob/main/SECURITY.md#reporting-a-vulnerability)
-  or email **security@ferritelabs.dev**. GitHub private vulnerability reporting
-  is not currently enabled.
+- For security findings, stop public discussion and report them privately
+  using [GitHub private vulnerability reporting](https://github.com/ferritelabs/ferrite/security/advisories/new),
+  as described in the canonical
+  [Security Policy](https://github.com/ferritelabs/ferrite/blob/main/SECURITY.md#reporting-a-vulnerability).
 - Publish recurring setup issues or limitations in canonical documentation so
   each tester does not rediscover them.
 
 ## Launch checklist
 
-Complete the artifact-dependent steps in this order:
+### Before outreach
+
+Complete these steps, in order, before any interest announcement or hands-on
+invitation goes out:
 
 1. [ ] **Core intake:** merge and publish the canonical Tester Program,
        `tester_interest.yml`, `tester_report.yml`, issue-template configuration,
@@ -119,18 +125,23 @@ Complete the artifact-dependent steps in this order:
        `scripts/tester.sh`, pull `FERRITE_TEST_IMAGE`, and pass
        start/smoke/diagnostics/stop. Enable durability only when explicitly
        governed for this campaign.
-5. [ ] **Docs and outreach:** merge/publish the public tester page, then post the
+5. [ ] Assign the triage owner, backup, and three-business-day response target.
+6. [x] **Private security intake:** GitHub private vulnerability reporting is
+       enabled and verified for the `ferrite` repository:
+       https://github.com/ferritelabs/ferrite/security/advisories/new
+7. [ ] Optionally create labels/views for tester interest, passing reports, and
+       findings; title prefixes remain the required baseline.
+8. [ ] Select **8–12 testers** with useful environment/client/track coverage.
+9. [ ] **Docs and outreach:** merge/publish the public tester page, then post the
        interest announcement and send hands-on invitations containing both
        verified immutable references.
 
-Before outreach also:
+### During campaign
 
-- [ ] Assign the triage owner, backup, and three-business-day response target.
-- [ ] Verify **security@ferritelabs.dev** is monitored and test its response path.
-- [ ] Optionally create labels/views for tester interest, passing reports, and
-      findings; title prefixes remain the required baseline.
-- [ ] Select **8–12 testers** with useful environment/client/track coverage.
 - [ ] Monitor completion and pause immediately for a credible Critical finding.
+
+### Cohort closeout
+
 - [ ] Close the cohort against the success criteria in `TESTER_PROGRAM.md`.
 - [ ] Publish known limitations and thank participants without exposing personal
       data or private correspondence.

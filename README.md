@@ -30,6 +30,12 @@ Visit the documentation at **[ferrite.dev](https://ferrite.dev)**.
 - **Advanced** — Tiered storage, security, encryption, RDMA
 - **Comparisons** — vs Redis, Dragonfly, KeyDB, Valkey, Garnet, Memcached
 - **Use Cases** — Caching, session management, real-time analytics, ML feature stores
+- **Community** — Contributing, roadmap, FAQ, governance, and the
+  [external tester program](website/docs/community/tester-program.md)
+
+Maintainers planning a cohort should also use
+[TESTER_RECRUITMENT.md](TESTER_RECRUITMENT.md) for honest recruitment copy,
+screening, triage suggestions, and the launch checklist.
 
 ## Development
 

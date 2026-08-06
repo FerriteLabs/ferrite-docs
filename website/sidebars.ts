@@ -395,6 +395,7 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Community',
       items: [
+        'community/tester-program',
         'community/contributing',
         'community/roadmap',
         'community/faq',

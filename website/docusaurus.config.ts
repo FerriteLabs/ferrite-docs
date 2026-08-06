@@ -102,7 +102,7 @@ const config: Config = {
           lastVersion: 'current',
           versions: {
             current: {
-              label: 'v0.3 (Next)',
+              label: 'v0.4',
               path: '',
             },
             '0.2': {
@@ -145,9 +145,9 @@ const config: Config = {
     //   indexName: 'ferrite',
     // },
     announcementBar: {
-      id: 'announcement',
+      id: 'v04-tester-recruitment',
       content:
-        '⭐️ If you like Ferrite, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/ferritelabs/ferrite">GitHub</a>!',
+        '🧪 Help test Ferrite v0.4 in a disposable environment — <a href="/docs/community/tester-program">join the external tester cohort</a>.',
       backgroundColor: '#b7410e',
       textColor: '#ffffff',
       isCloseable: true,
@@ -178,6 +178,7 @@ const config: Config = {
         {to: '/cost-calculator', label: 'Cost Calculator', position: 'left'},
         {to: '/playground', label: 'Playground', position: 'left'},
         {to: '/blog', label: 'Blog', position: 'left'},
+        {to: '/docs/community/tester-program', label: 'Test Ferrite', position: 'left'},
         {
           href: 'https://docs.rs/ferrite',
           label: 'API',

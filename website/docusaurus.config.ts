@@ -219,8 +219,8 @@ const config: Config = {
           title: 'Community',
           items: [
             {
-              label: 'GitHub Discussions',
-              href: 'https://github.com/ferritelabs/ferrite/discussions',
+              label: 'Tester Interest & Questions',
+              href: 'https://github.com/ferritelabs/ferrite/issues/new?template=tester_interest.yml',
             },
             {
               label: 'Discord',

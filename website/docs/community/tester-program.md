@@ -1,54 +1,84 @@
 ---
 sidebar_position: 1
 title: Test Ferrite
-description: Join the Ferrite v0.4 external tester cohort in a safe, disposable environment.
-keywords: [ferrite, external testing, redis compatibility, v0.4]
+description: Register interest in the next Ferrite candidate hardening campaign.
+keywords: [ferrite, external testing, redis compatibility, hardening]
 ---
 
-# Test Ferrite v0.4
+# Ferrite External Tester Program
 
-Ferrite is recruiting a small cohort of developers to spend 60–90 minutes
-testing v0.4 before broader release. The goal is practical feedback on setup,
-Redis-client compatibility, durability, operations, performance comparisons,
-and IDE tooling.
+Ferrite is gathering interest for a small cohort of developers who can spend
+60–90 minutes validating a specific candidate build in a disposable
+environment. The campaign will focus on setup, Redis-client compatibility,
+operations, safe diagnostics, performance comparisons, and IDE tooling.
 
-This campaign is **non-production only**. Use disposable infrastructure and
-synthetic data, expect rough edges, and use only the exact immutable image tag
-or digest provided for the campaign—never `latest`. Ferrite is not being
-presented as production-ready through this program.
+This is an **interest-first, non-production program**. Registering interest does
+not mean testing can begin. Use only disposable infrastructure and synthetic
+data once a campaign launches.
 
 The [canonical Tester Program](https://github.com/ferritelabs/ferrite/blob/main/TESTER_PROGRAM.md)
 contains the authoritative journey, safety rules, expected outcomes, severity
 definitions, privacy guidance, and completion criteria.
 
-## Quick start
+## Launch gate
 
-Docker with Docker Compose is the primary path. From a checkout of
-[ferrite-ops](https://github.com/ferritelabs/ferrite-ops):
+Hands-on testing must not start until the campaign owner supplies both:
+
+1. `CAMPAIGN_OPS_REF` — an immutable ferrite-ops tag or full commit SHA that
+   contains `scripts/tester.sh`; never `main` or another floating branch.
+2. `FERRITE_TEST_IMAGE` — the exact immutable candidate image digest, or a
+   governed non-floating tag; never `latest`.
+
+The owner must verify both references with a clean-machine preflight before
+inviting the cohort to begin. Testers must also confirm that the ops reference
+checks out, the script exists, and the image pulls. If either reference is
+missing or fails verification, stop and wait for corrected campaign details.
+
+## Campaign quick start
+
+Do not run this until the owner has supplied values for both placeholders and
+confirmed the launch gate passed:
 
 ```bash
 git clone https://github.com/ferritelabs/ferrite-ops.git
 cd ferrite-ops
-export FERRITE_TEST_IMAGE='ghcr.io/ferritelabs/ferrite:0.4.0' # or exact campaign digest
+git checkout <CAMPAIGN_OPS_REF>
+test -x scripts/tester.sh && ./scripts/tester.sh --help >/dev/null || {
+  echo "scripts/tester.sh is missing or not runnable at <CAMPAIGN_OPS_REF>" >&2
+  exit 1
+}
+export FERRITE_TEST_IMAGE='<CAMPAIGN_IMAGE_DIGEST>'
 ./scripts/tester.sh start
 ./scripts/tester.sh smoke
-./scripts/tester.sh durability
 ./scripts/tester.sh diagnostics
 ./scripts/tester.sh stop
 ```
 
-Optional tracks are Redis/client compatibility, durability/restart,
-operations/metrics, performance comparison, and IDE tooling. The canonical
-program explains how to choose and report a track without duplicating the
-procedure here.
+There are no campaign defaults. Replace `<CAMPAIGN_OPS_REF>` and
+`<CAMPAIGN_IMAGE_DIGEST>` only with the exact values published by the campaign
+owner.
 
-## Join or report
+Durability/restart is an optional, campaign-specific diagnostic because current
+candidate images may not persist data across restart. Run
+`FERRITE_TEST_ENABLE_DURABILITY=1 ./scripts/tester.sh durability` only when the
+campaign owner explicitly enables it; durability is not part of the required
+core path or a core expected pass.
 
-- [Register interest](https://github.com/ferritelabs/ferrite/issues/new?template=tester_interest.yml)
+Other optional tracks include Redis/client compatibility, operations/metrics,
+performance comparison, and IDE tooling.
+
+## Interest, questions, and reports
+
+- [Register interest or ask a program question](https://github.com/ferritelabs/ferrite/issues/new?template=tester_interest.yml)
 - [Submit a completed session](https://github.com/ferritelabs/ferrite/issues/new?template=tester_report.yml)
 - [Review open issues and known limitations](https://github.com/ferritelabs/ferrite/issues?q=is%3Aissue+is%3Aopen)
-- [Report a security vulnerability privately](https://github.com/ferritelabs/ferrite/security/advisories/new)
+- [Follow the canonical security reporting policy](https://github.com/ferritelabs/ferrite/blob/main/SECURITY.md#reporting-a-vulnerability)
+  or email **security@ferritelabs.dev**
+
+The interest issue is the temporary intake and question channel until an active
+community channel is selected. Do not disclose a vulnerability or sensitive
+data in a public issue.
 
 Review diagnostic archives before sharing them. Do not post credentials,
 personal data, customer data, private addresses, full configuration, or other
-sensitive information in a public issue.
+sensitive information.

@@ -6,14 +6,16 @@ friction while remaining small enough for responsive triage.
 
 Registration is open for interest only. Hands-on testing must not begin until
 the campaign owner publishes and clean-machine verifies both an immutable
-`CAMPAIGN_OPS_REF` and an exact `FERRITE_TEST_IMAGE`. Campaign builds are for
+`CAMPAIGN_OPS_REF` and an exact, complete digest `FERRITE_TEST_IMAGE`
+(`repository@sha256:<digest>`; never a tag). Campaign builds are for
 disposable, non-production testing with synthetic data.
 
 Do not copy tester names, email addresses, private messages, availability, or
-other personal data into this repository. Use the public
-[Tester Interest form](https://github.com/ferritelabs/ferrite/issues/new?template=tester_interest.yml)
-as the intake and question channel for the tester program. Handle any
-necessary private coordination outside Git.
+other personal data into this repository. Use the public Tester Interest form
+(`<PUBLISHED_TESTER_INTEREST_URL>`, published alongside the core tester
+intake — see the [Launch checklist](#launch-checklist)) as the intake and
+question channel for the tester program. Handle any necessary private
+coordination outside Git.
 
 ## Screening questions
 
@@ -36,7 +38,11 @@ levels. Do not require employer, demographic, or production-system details.
 ## Interest announcement
 
 Use this announcement to recruit interest for the **next validation cohort**,
-not to tell people that testing is immediately available:
+not to tell people that testing is immediately available. Replace
+`<PUBLISHED_TESTER_PROGRAM_URL>` and `<PUBLISHED_TESTER_INTEREST_URL>` with
+the real published URLs once the core intake in `ferrite` is merged (see the
+[Launch checklist](#launch-checklist)) — do not send either placeholder as a
+literal link.
 
 > **Interested in helping harden the next Ferrite candidate?**
 >
@@ -47,13 +53,13 @@ not to tell people that testing is immediately available:
 > smoke checks, safe diagnostics, and structured feedback.
 >
 > No hands-on testing is open yet. Before a session begins, we will publish an
-> immutable ferrite-ops reference and exact candidate image, verify both on a
-> clean machine, and send launch instructions. We welcome honest results,
-> including successful sessions; participation is not a production-readiness
-> endorsement.
+> immutable ferrite-ops reference and an exact, complete candidate image
+> digest, verify both on a clean machine, and send launch instructions. We
+> welcome honest results, including successful sessions; participation is not
+> a production-readiness endorsement.
 >
-> Read the [Tester Program](https://github.com/ferritelabs/ferrite/blob/main/TESTER_PROGRAM.md)
-> and [register interest or ask a question](https://github.com/ferritelabs/ferrite/issues/new?template=tester_interest.yml).
+> Read the [Tester Program](<PUBLISHED_TESTER_PROGRAM_URL>)
+> and [register interest or ask a question](<PUBLISHED_TESTER_INTEREST_URL>).
 
 Short form for community channels:
 
@@ -62,33 +68,35 @@ Short form for community channels:
 > disposable environment.
 > Testing is not open until immutable tooling and image references pass a
 > clean-machine preflight. Details:
-> https://github.com/ferritelabs/ferrite/blob/main/TESTER_PROGRAM.md
+> <PUBLISHED_TESTER_PROGRAM_URL>
 >
 > Interest/questions:
-> https://github.com/ferritelabs/ferrite/issues/new?template=tester_interest.yml
+> <PUBLISHED_TESTER_INTEREST_URL>
 
 ## Campaign launch invitation
 
 Do not send this invitation with placeholders. Every hands-on invitation must
-contain both immutable references:
+contain both immutable references, and `FERRITE_TEST_IMAGE` must be the
+complete digest reference actually being used for the campaign — never a
+tag and never a literal placeholder token:
 
 > **Ferrite candidate validation campaign is ready**
 >
 > The campaign launch gate has passed on a clean machine. Use only these exact
 > references:
 >
-> - `CAMPAIGN_OPS_REF=<CAMPAIGN_OPS_REF>`
-> - `FERRITE_TEST_IMAGE=<CAMPAIGN_IMAGE_DIGEST>`
+> - `CAMPAIGN_OPS_REF=<the exact tag or commit SHA verified for this campaign>`
+> - `FERRITE_TEST_IMAGE=<the exact repository@sha256:digest verified for this campaign>`
 >
 > Clone ferrite-ops, check out `CAMPAIGN_OPS_REF`, verify
 > `scripts/tester.sh` exists, export `FERRITE_TEST_IMAGE`, then run the required
 > `start`, `smoke`, `diagnostics`, and `stop` commands from the
-> [Tester Program](https://github.com/ferritelabs/ferrite/blob/main/TESTER_PROGRAM.md).
+> [Tester Program](<PUBLISHED_TESTER_PROGRAM_URL>).
 > Never substitute `main`, `latest`, or a local build.
 >
 > Do not run durability unless the campaign owner separately states
 > `FERRITE_TEST_ENABLE_DURABILITY=1`. Questions belong in the
-> [Tester Interest form](https://github.com/ferritelabs/ferrite/issues/new?template=tester_interest.yml).
+> [Tester Interest form](<PUBLISHED_TESTER_INTEREST_URL>).
 
 ## Triage and response
 
@@ -119,8 +127,9 @@ invitation goes out:
 2. [ ] **Ops tooling:** merge and publish `docker-compose.tester.yml`,
        `scripts/tester.sh`, its tests, and campaign documentation in
        `ferrite-ops`; select the immutable `CAMPAIGN_OPS_REF`.
-3. [ ] **Candidate image:** publish the exact candidate image digest or governed
-       non-floating tag and record it as `FERRITE_TEST_IMAGE`.
+3. [ ] **Candidate image:** publish the exact, complete candidate image digest
+       (`repository@sha256:<digest>`; never a tag) and record it as
+       `FERRITE_TEST_IMAGE`.
 4. [ ] **Clean-machine preflight:** check out `CAMPAIGN_OPS_REF`, verify
        `scripts/tester.sh`, pull `FERRITE_TEST_IMAGE`, and pass
        start/smoke/diagnostics/stop. Enable durability only when explicitly
@@ -131,10 +140,17 @@ invitation goes out:
        https://github.com/ferritelabs/ferrite/security/advisories/new
 7. [ ] Optionally create labels/views for tester interest, passing reports, and
        findings; title prefixes remain the required baseline.
-8. [ ] Select **8–12 testers** with useful environment/client/track coverage.
-9. [ ] **Docs and outreach:** merge/publish the public tester page, then post the
-       interest announcement and send hands-on invitations containing both
-       verified immutable references.
+8. [ ] **Docs and outreach:** merge/publish the public tester page and the
+       core intake from step 1, resolving `<PUBLISHED_TESTER_PROGRAM_URL>` and
+       `<PUBLISHED_TESTER_INTEREST_URL>` to their real URLs, then post the
+       interest announcement.
+
+### During recruitment
+
+- [ ] Select **8–12 testers** with useful environment/client/track coverage.
+- [ ] Send hands-on invitations to selected testers only; every invitation
+      must contain the exact, complete digest-bearing `FERRITE_TEST_IMAGE`
+      (never a tag or a placeholder) and the verified `CAMPAIGN_OPS_REF`.
 
 ### During campaign
 

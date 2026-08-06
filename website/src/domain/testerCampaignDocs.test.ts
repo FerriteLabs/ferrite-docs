@@ -19,9 +19,17 @@ describe('tester campaign documentation', () => {
     expect(testerAssets).toMatch(/Registration is open for interest only/i);
     expect(testerAssets).toContain('CAMPAIGN_OPS_REF');
     expect(testerAssets).toContain('FERRITE_TEST_IMAGE');
-    expect(testerAssets).toContain('<CAMPAIGN_IMAGE_DIGEST>');
+    expect(testerAssets).toContain('<CAMPAIGN_DIGEST>');
     expect(publicPage).toContain('git checkout <CAMPAIGN_OPS_REF>');
     expect(publicPage).toContain('test -x scripts/tester.sh');
+  });
+
+  it('accepts only the complete repository-qualified digest reference, never a tag', () => {
+    expect(publicPage).toContain(
+      "export FERRITE_TEST_IMAGE='ghcr.io/ferritelabs/ferrite@sha256:<CAMPAIGN_DIGEST>'",
+    );
+    expect(testerAssets).not.toMatch(/governed non-floating tag/i);
+    expect(testerAssets).not.toMatch(/or a tag; never `latest`/i);
   });
 
   it('keeps the required path separate from owner-enabled durability', () => {
@@ -32,8 +40,33 @@ describe('tester campaign documentation', () => {
     expect(testerAssets).toMatch(/not part of the required\s+core path/);
   });
 
-  it('uses the issue intake and canonical GitHub private vulnerability reporting channel', () => {
-    expect(testerAssets).toContain('template=tester_interest.yml');
+  it('does not link the unpublished core tester intake before it exists', () => {
+    // The canonical Tester Program and the Tester Interest/Report issue
+    // forms have not merged yet; linking directly to them (or to a
+    // template= issue URL that depends on them) would 404. The public page
+    // must reference TESTER_PROGRAM.md by name/path only, and route
+    // interest/report submission through the generic issue chooser instead
+    // of a specific, not-yet-existing template query string.
+    expect(publicPage).not.toContain('/blob/main/TESTER_PROGRAM.md');
+    expect(publicPage).not.toContain('template=tester_interest.yml');
+    expect(publicPage).not.toContain('template=tester_report.yml');
+    expect(publicPage).toContain('https://github.com/ferritelabs/ferrite');
+    expect(publicPage).toContain('/issues/new/choose');
+    expect(publicPage).toMatch(/External tester interest/);
+    expect(publicPage).toMatch(/External tester report/);
+
+    // The recruitment playbook uses named placeholders instead of direct
+    // links for the same not-yet-published assets.
+    expect(recruitment).toContain('<PUBLISHED_TESTER_PROGRAM_URL>');
+    expect(recruitment).toContain('<PUBLISHED_TESTER_INTEREST_URL>');
+    expect(recruitment).not.toContain('/blob/main/TESTER_PROGRAM.md');
+    expect(recruitment).not.toContain('template=tester_interest.yml');
+  });
+
+  it('uses the canonical GitHub private vulnerability reporting channel directly', () => {
+    // Unlike the core tester intake, private vulnerability reporting is
+    // already enabled and verified, so it is always linked directly rather
+    // than through a placeholder.
     expect(testerAssets).toContain('SECURITY.md#reporting-a-vulnerability');
     expect(testerAssets).toContain('https://github.com/ferritelabs/ferrite/security/advisories/new');
   });
@@ -49,10 +82,12 @@ describe('tester campaign documentation', () => {
     expect(testerAssets).not.toMatch(/ghcr\.io\/ferritelabs\/ferrite:latest/);
   });
 
-  it('keeps the initial cohort Docker-only and marks private intake ready', () => {
+  it('keeps the initial cohort Docker-only and is explicitly interest-only and version-neutral', () => {
     expect(testerAssets).toMatch(/Docker\/Docker Compose.only/i);
     expect(publicPage).toMatch(/including IDE\s+tooling, connects to the same running Docker Compose instance/);
     expect(recruitment).toMatch(/\[x\] \*\*Private security intake:\*\*/);
+    expect(publicPage).toMatch(/Register interest for the next validation cohort/i);
+    expect(publicPage).toMatch(/hands-on testing\s+opens only after/i);
   });
 
   it('preserves the ordered launch checklist and cohort phases', () => {
@@ -70,13 +105,21 @@ describe('tester campaign documentation', () => {
       previous = current;
     }
     const beforeOutreach = recruitment.indexOf('### Before outreach');
+    const duringRecruitment = recruitment.indexOf('### During recruitment');
     const duringCampaign = recruitment.indexOf('### During campaign');
     const cohortCloseout = recruitment.indexOf('### Cohort closeout');
     expect(beforeOutreach).toBeGreaterThan(-1);
-    expect(duringCampaign).toBeGreaterThan(beforeOutreach);
+    expect(duringRecruitment).toBeGreaterThan(beforeOutreach);
+    expect(duringCampaign).toBeGreaterThan(duringRecruitment);
     expect(cohortCloseout).toBeGreaterThan(duringCampaign);
-    const preOutreachTasks = recruitment.slice(beforeOutreach, duringCampaign);
-    expect(preOutreachTasks).not.toMatch(/Monitor completion|Close the cohort/);
+
+    const preOutreachTasks = recruitment.slice(beforeOutreach, duringRecruitment);
+    expect(preOutreachTasks).not.toMatch(/Monitor completion|Close the cohort|Select \*\*8–12/);
+
+    const recruitmentTasks = recruitment.slice(duringRecruitment, duringCampaign);
+    expect(recruitmentTasks).toMatch(/Select \*\*8–12 testers\*\*/);
+    expect(recruitmentTasks).toMatch(/digest-bearing/i);
+
     expect(recruitment).toContain('8–12 testers');
   });
 });

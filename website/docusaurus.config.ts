@@ -220,7 +220,7 @@ const config: Config = {
           items: [
             {
               label: 'Tester Interest & Questions',
-              href: 'https://github.com/ferritelabs/ferrite/issues/new?template=tester_interest.yml',
+              href: 'https://github.com/ferritelabs/ferrite/issues/new/choose',
             },
             {
               label: 'Discord',

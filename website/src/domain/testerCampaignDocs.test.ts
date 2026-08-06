@@ -17,11 +17,25 @@ const testerAssets = `${publicPage}\n${recruitment}`;
 describe('tester campaign documentation', () => {
   it('keeps hands-on testing behind both immutable campaign references', () => {
     expect(testerAssets).toMatch(/Registration is open for interest only/i);
-    expect(testerAssets).toContain('CAMPAIGN_OPS_REF');
+    expect(testerAssets).toContain('CAMPAIGN_OPS_COMMIT');
     expect(testerAssets).toContain('FERRITE_TEST_IMAGE');
     expect(testerAssets).toContain('<CAMPAIGN_DIGEST>');
-    expect(publicPage).toContain('git checkout <CAMPAIGN_OPS_REF>');
     expect(publicPage).toContain('test -x scripts/tester.sh');
+  });
+
+  it('pins ops provenance to an exact commit, never a tag or a branch', () => {
+    // A tag can be moved after the campaign owner verifies it, so the
+    // retired CAMPAIGN_OPS_REF spelling (which accepted "a tag or a commit")
+    // must not come back anywhere in the tester assets.
+    expect(testerAssets).not.toContain('CAMPAIGN_OPS_REF');
+    expect(testerAssets).not.toMatch(/tags?\s+or\s+(?:an?\s+)?(?:full\s+)?commit/i);
+    expect(publicPage).toContain('git checkout --detach <CAMPAIGN_OPS_COMMIT>');
+    expect(publicPage).toContain(
+      'test "$(git rev-parse HEAD)" = "<CAMPAIGN_OPS_COMMIT>"',
+    );
+    expect(testerAssets).toMatch(/40-character lowercase/);
+    // No real 40-hex SHA may be published before a campaign exists.
+    expect(testerAssets).not.toMatch(/(?<![0-9a-f])[0-9a-f]{40}(?![0-9a-f])/);
   });
 
   it('accepts only the complete repository-qualified digest reference, never a tag', () => {
@@ -54,6 +68,13 @@ describe('tester campaign documentation', () => {
     expect(publicPage).toContain('/issues/new/choose');
     expect(publicPage).toMatch(/External tester interest/);
     expect(publicPage).toMatch(/External tester report/);
+
+    // The canonical program is named as a repository path, and the campaign
+    // invitation — not this page — supplies its published URL.
+    expect(publicPage).toMatch(
+      /`TESTER_PROGRAM\.md` at the root of\s+the \[ferrite repository\]/,
+    );
+    expect(publicPage).toMatch(/campaign invitation you receive supplies/i);
 
     // The recruitment playbook uses named placeholders instead of direct
     // links for the same not-yet-published assets.
@@ -121,5 +142,24 @@ describe('tester campaign documentation', () => {
     expect(recruitmentTasks).toMatch(/digest-bearing/i);
 
     expect(recruitment).toContain('8–12 testers');
+  });
+
+  it('gates public tester recruitment behind TESTER_INTEREST_OPEN', () => {
+    expect(recruitment).toContain('TESTER_INTEREST_OPEN=true');
+
+    // The gate may only be opened after the core intake and ops tooling are
+    // merged (checklist steps 1 and 2) and the clean-machine preflight
+    // (step 4) passes, so the ordering must be stated explicitly.
+    const gateStep = recruitment.slice(recruitment.indexOf('**Publication gate:**'));
+    expect(gateStep).toMatch(/only after/i);
+    expect(gateStep).toMatch(/core intake/i);
+    expect(gateStep).toMatch(/ops tooling/i);
+    expect(gateStep).toMatch(/clean-machine\s+preflight/i);
+    expect(gateStep).toMatch(/interest-only and version-neutral/i);
+
+    // The publication gate step must come after the steps it depends on.
+    expect(recruitment.indexOf('**Publication gate:**')).toBeGreaterThan(
+      recruitment.indexOf('**Clean-machine preflight:**'),
+    );
   });
 });

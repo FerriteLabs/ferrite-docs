@@ -5,10 +5,16 @@ cohort. The target is **8–12 testers**: enough diversity to reveal recurring
 friction while remaining small enough for responsive triage.
 
 Registration is open for interest only. Hands-on testing must not begin until
-the campaign owner publishes and clean-machine verifies both an immutable
-`CAMPAIGN_OPS_REF` and an exact, complete digest `FERRITE_TEST_IMAGE`
+the campaign owner publishes and clean-machine verifies both an exact
+`CAMPAIGN_OPS_COMMIT` (the full 40-character lowercase ferrite-ops commit SHA;
+never a tag or a branch) and an exact, complete digest `FERRITE_TEST_IMAGE`
 (`repository@sha256:<digest>`; never a tag). Campaign builds are for
 disposable, non-production testing with synthetic data.
+
+The public documentation site does not advertise the tester program at all
+until `TESTER_INTEREST_OPEN=true` is set for its build (see the
+[Launch checklist](#launch-checklist)); the default build has no announcement
+bar, no navbar entry, and no footer registration call to action.
 
 Do not copy tester names, email addresses, private messages, availability, or
 other personal data into this repository. Use the public Tester Interest form
@@ -53,7 +59,7 @@ literal link.
 > smoke checks, safe diagnostics, and structured feedback.
 >
 > No hands-on testing is open yet. Before a session begins, we will publish an
-> immutable ferrite-ops reference and an exact, complete candidate image
+> exact ferrite-ops commit SHA and an exact, complete candidate image
 > digest, verify both on a clean machine, and send launch instructions. We
 > welcome honest results, including successful sessions; participation is not
 > a production-readiness endorsement.
@@ -66,7 +72,7 @@ Short form for community channels:
 > Registration is open for interest only for Ferrite's next 8–12-person
 > candidate hardening cohort. The later session will take 60–90 minutes in a
 > disposable environment.
-> Testing is not open until immutable tooling and image references pass a
+> Testing is not open until the exact tooling commit and image digest pass a
 > clean-machine preflight. Details:
 > <PUBLISHED_TESTER_PROGRAM_URL>
 >
@@ -85,14 +91,16 @@ tag and never a literal placeholder token:
 > The campaign launch gate has passed on a clean machine. Use only these exact
 > references:
 >
-> - `CAMPAIGN_OPS_REF=<the exact tag or commit SHA verified for this campaign>`
+> - `CAMPAIGN_OPS_COMMIT=<the exact full 40-character lowercase commit SHA verified for this campaign>`
 > - `FERRITE_TEST_IMAGE=<the exact repository@sha256:digest verified for this campaign>`
 >
-> Clone ferrite-ops, check out `CAMPAIGN_OPS_REF`, verify
-> `scripts/tester.sh` exists, export `FERRITE_TEST_IMAGE`, then run the required
-> `start`, `smoke`, `diagnostics`, and `stop` commands from the
+> Clone ferrite-ops, run `git checkout --detach <CAMPAIGN_OPS_COMMIT>`, confirm
+> `git rev-parse HEAD` matches it exactly, verify `scripts/tester.sh` exists,
+> export `FERRITE_TEST_IMAGE`, then run the required `start`, `smoke`,
+> `diagnostics`, and `stop` commands from the
 > [Tester Program](<PUBLISHED_TESTER_PROGRAM_URL>).
-> Never substitute `main`, `latest`, or a local build.
+> Never substitute `main`, a tag, `latest`, or a local build. Record both exact
+> values in the report.
 >
 > Do not run durability unless the campaign owner separately states
 > `FERRITE_TEST_ENABLE_DURABILITY=1`. Questions belong in the
@@ -125,15 +133,18 @@ invitation goes out:
        `tester_interest.yml`, `tester_report.yml`, issue-template configuration,
        and security guidance in `ferrite`.
 2. [ ] **Ops tooling:** merge and publish `docker-compose.tester.yml`,
-       `scripts/tester.sh`, its tests, and campaign documentation in
-       `ferrite-ops`; select the immutable `CAMPAIGN_OPS_REF`.
+       `scripts/tester.sh`, `scripts/tester-host-probe.py`, their tests, and
+       campaign documentation in `ferrite-ops`; record the exact
+       `CAMPAIGN_OPS_COMMIT` (full 40-character lowercase commit SHA).
 3. [ ] **Candidate image:** publish the exact, complete candidate image digest
        (`repository@sha256:<digest>`; never a tag) and record it as
        `FERRITE_TEST_IMAGE`.
-4. [ ] **Clean-machine preflight:** check out `CAMPAIGN_OPS_REF`, verify
-       `scripts/tester.sh`, pull `FERRITE_TEST_IMAGE`, and pass
-       start/smoke/diagnostics/stop. Enable durability only when explicitly
-       governed for this campaign.
+4. [ ] **Clean-machine preflight:** run `git checkout --detach
+       <CAMPAIGN_OPS_COMMIT>`, confirm `git rev-parse HEAD` matches it
+       exactly, verify `scripts/tester.sh`, pull `FERRITE_TEST_IMAGE`, and
+       pass start/smoke/diagnostics/stop (including the host reachability
+       probe `start` runs). Enable durability only when explicitly governed
+       for this campaign.
 5. [ ] Assign the triage owner, backup, and three-business-day response target.
 6. [x] **Private security intake:** GitHub private vulnerability reporting is
        enabled and verified for the `ferrite` repository:
@@ -144,13 +155,22 @@ invitation goes out:
        core intake from step 1, resolving `<PUBLISHED_TESTER_PROGRAM_URL>` and
        `<PUBLISHED_TESTER_INTEREST_URL>` to their real URLs, then post the
        interest announcement.
+9. [ ] **Publication gate:** set `TESTER_INTEREST_OPEN=true` for the
+       documentation site build **only after** steps 1 (core intake) and 2
+       (ops tooling) are merged and published and step 4 (clean-machine
+       preflight) passes. Until then the site must build with the gate off, so
+       no announcement bar, navbar entry, or footer registration call to
+       action recruits testers who cannot yet act on it. The enabled call to
+       action stays interest-only and version-neutral: it never names a
+       release and never claims hands-on testing is available.
 
 ### During recruitment
 
 - [ ] Select **8–12 testers** with useful environment/client/track coverage.
 - [ ] Send hands-on invitations to selected testers only; every invitation
       must contain the exact, complete digest-bearing `FERRITE_TEST_IMAGE`
-      (never a tag or a placeholder) and the verified `CAMPAIGN_OPS_REF`.
+      (never a tag or a placeholder) and the verified `CAMPAIGN_OPS_COMMIT`
+      (full 40-character lowercase commit SHA).
 
 ### During campaign
 

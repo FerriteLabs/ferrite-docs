@@ -20,28 +20,33 @@ alternative installation cohorts are deferred until maintained tooling
 exists. Registering interest does not mean testing can begin. Use only
 disposable infrastructure and synthetic data once a campaign launches.
 
-The canonical Tester Program (`TESTER_PROGRAM.md` in the
-[ferrite repository](https://github.com/ferritelabs/ferrite)) contains the
-authoritative journey, safety rules, expected outcomes, severity definitions,
-privacy guidance, and completion criteria. It is not yet linked directly here
-because it publishes together with the rest of the core tester intake; once
-published, this page will link to it directly.
+The canonical Tester Program is the file `TESTER_PROGRAM.md` at the root of
+the [ferrite repository](https://github.com/ferritelabs/ferrite). It contains
+the authoritative journey, safety rules, expected outcomes, severity
+definitions, privacy guidance, and completion criteria. It is referred to here
+by path and name rather than by link because it publishes together with the
+rest of the core tester intake; **the campaign invitation you receive supplies
+its published URL**, along with the campaign's exact references.
 
 ## Launch gate
 
 Hands-on testing must not start until the campaign owner supplies both:
 
-1. `CAMPAIGN_OPS_REF` — an immutable ferrite-ops tag or full commit SHA that
-   contains `scripts/tester.sh`; never `main` or another floating branch.
+1. `CAMPAIGN_OPS_COMMIT` — the full 40-character lowercase ferrite-ops commit
+   SHA that contains `scripts/tester.sh`. Only an exact commit SHA is
+   accepted: a tag, `main`, another branch, and an abbreviated SHA are all
+   rejected, because only a commit SHA is immutable and unambiguous.
 2. `FERRITE_TEST_IMAGE` — the complete repository-qualified sha256 digest
    reference for the candidate image (e.g.
    `ghcr.io/ferritelabs/ferrite@sha256:<CAMPAIGN_DIGEST>`); never a tag or
    `latest`.
 
 The owner must verify both references with a clean-machine preflight before
-inviting the cohort to begin. Testers must also confirm that the ops reference
-checks out, the script exists, and the image pulls. If either reference is
-missing or fails verification, stop and wait for corrected campaign details.
+inviting the cohort to begin. Testers must also confirm that the commit checks
+out in detached HEAD state, that `git rev-parse HEAD` matches
+`CAMPAIGN_OPS_COMMIT` exactly, that the script exists, and that the image
+pulls. If either reference is missing or fails verification, stop and wait for
+corrected campaign details.
 
 ## Campaign quick start
 
@@ -51,9 +56,13 @@ confirmed the launch gate passed:
 ```bash
 git clone https://github.com/ferritelabs/ferrite-ops.git
 cd ferrite-ops
-git checkout <CAMPAIGN_OPS_REF>
+git checkout --detach <CAMPAIGN_OPS_COMMIT>
+test "$(git rev-parse HEAD)" = "<CAMPAIGN_OPS_COMMIT>" || {
+  echo "HEAD is not <CAMPAIGN_OPS_COMMIT>; stop and re-request the campaign commit" >&2
+  exit 1
+}
 test -x scripts/tester.sh && ./scripts/tester.sh --help >/dev/null || {
-  echo "scripts/tester.sh is missing or not runnable at <CAMPAIGN_OPS_REF>" >&2
+  echo "scripts/tester.sh is missing or not runnable at <CAMPAIGN_OPS_COMMIT>" >&2
   exit 1
 }
 export FERRITE_TEST_IMAGE='ghcr.io/ferritelabs/ferrite@sha256:<CAMPAIGN_DIGEST>'
@@ -63,11 +72,14 @@ export FERRITE_TEST_IMAGE='ghcr.io/ferritelabs/ferrite@sha256:<CAMPAIGN_DIGEST>'
 ./scripts/tester.sh stop
 ```
 
-There are no campaign defaults. Replace `<CAMPAIGN_OPS_REF>` and
+There are no campaign defaults. Replace `<CAMPAIGN_OPS_COMMIT>` and
 `<CAMPAIGN_DIGEST>` only with the exact values published by the campaign
-owner. `FERRITE_TEST_IMAGE` must always be the complete repository-qualified
-digest reference shown above — never a bare digest, a bare placeholder, or a
-tag.
+owner. `<CAMPAIGN_OPS_COMMIT>` must be the full 40-character lowercase commit
+SHA; substituting a tag or a branch name makes the `git rev-parse HEAD`
+comparison fail, which is intended. `FERRITE_TEST_IMAGE` must always be the
+complete repository-qualified digest reference shown above — never a bare
+digest, a bare placeholder, or a tag. Record both exact values in your
+report.
 
 Durability/restart is an optional, campaign-specific diagnostic because current
 candidate images may not persist data across restart. Run
@@ -90,7 +102,10 @@ doing so before they exist would be a broken link. Once they publish:
   session report, by opening a
   [new issue](https://github.com/ferritelabs/ferrite/issues/new/choose) on
   the [ferrite repository](https://github.com/ferritelabs/ferrite) and
-  selecting **External tester interest** or **External tester report**.
+  selecting the named form once those forms are published:
+  **External tester interest** or **External tester report**. Both links
+  above already exist today; the named forms appear in the chooser only
+  after the core intake merges.
 - [Review open issues and known limitations](https://github.com/ferritelabs/ferrite/issues?q=is%3Aissue+is%3Aopen)
 - Report vulnerabilities privately using
   [GitHub private vulnerability reporting](https://github.com/ferritelabs/ferrite/security/advisories/new),

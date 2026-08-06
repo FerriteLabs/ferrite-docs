@@ -2,6 +2,45 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+// Publication gate for external tester recruitment.
+//
+// The tester campaign has no published intake, ops tooling commit, or
+// candidate image yet, so the default build must not advertise it anywhere:
+// no announcement bar, no navbar entry, and no footer registration CTA. The
+// documentation page itself stays in the sidebar (it explains the launch gate
+// and is intentionally reachable), but nothing on the site actively recruits
+// until this is explicitly opted into with TESTER_INTEREST_OPEN=true.
+//
+// When enabled, the call to action is interest-only and version-neutral: it
+// never names a release and never claims hands-on testing is available.
+const testerInterestOpen = process.env.TESTER_INTEREST_OPEN === 'true';
+
+const testerProgramPath = '/docs/community/tester-program';
+
+const testerAnnouncementBar = testerInterestOpen
+  ? {
+      id: 'tester-interest',
+      content:
+        `🧪 Register interest in the next Ferrite candidate hardening cohort — <a href="${testerProgramPath}">see the tester program</a>. Hands-on testing has not started.`,
+      backgroundColor: '#b7410e',
+      textColor: '#ffffff',
+      isCloseable: true,
+    }
+  : undefined;
+
+const testerNavbarItems = testerInterestOpen
+  ? [{to: testerProgramPath, label: 'Test Ferrite', position: 'left' as const}]
+  : [];
+
+const testerFooterItems = testerInterestOpen
+  ? [
+      {
+        label: 'Tester Interest & Questions',
+        href: 'https://github.com/ferritelabs/ferrite/issues/new/choose',
+      },
+    ]
+  : [];
+
 const config: Config = {
   title: 'Ferrite',
   tagline: 'The speed of memory, the capacity of disk, the economics of cloud',
@@ -144,14 +183,7 @@ const config: Config = {
     //   apiKey: 'YOUR_SEARCH_API_KEY',
     //   indexName: 'ferrite',
     // },
-    announcementBar: {
-      id: 'v04-tester-recruitment',
-      content:
-        '🧪 Help test Ferrite v0.4 in a disposable environment — <a href="/docs/community/tester-program">join the external tester cohort</a>.',
-      backgroundColor: '#b7410e',
-      textColor: '#ffffff',
-      isCloseable: true,
-    },
+    ...(testerAnnouncementBar ? {announcementBar: testerAnnouncementBar} : {}),
     image: 'img/ferrite-social-card.svg',
     colorMode: {
       defaultMode: 'dark',
@@ -178,7 +210,7 @@ const config: Config = {
         {to: '/cost-calculator', label: 'Cost Calculator', position: 'left'},
         {to: '/playground', label: 'Playground', position: 'left'},
         {to: '/blog', label: 'Blog', position: 'left'},
-        {to: '/docs/community/tester-program', label: 'Test Ferrite', position: 'left'},
+        ...testerNavbarItems,
         {
           href: 'https://docs.rs/ferrite',
           label: 'API',
@@ -218,10 +250,7 @@ const config: Config = {
         {
           title: 'Community',
           items: [
-            {
-              label: 'Tester Interest & Questions',
-              href: 'https://github.com/ferritelabs/ferrite/issues/new/choose',
-            },
+            ...testerFooterItems,
             {
               label: 'Discord',
               href: 'https://discord.gg/ferrite',

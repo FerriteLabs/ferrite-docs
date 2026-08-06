@@ -33,7 +33,10 @@ jobs:
           cache-dependency-path: website/pnpm-lock.yaml
       - run: cd website && pnpm install --frozen-lockfile
       - run: cd website && pnpm run test
-      - run: cd website && pnpm run build
+      - name: Build website
+        run: cd website && pnpm run build
+        env:
+          TESTER_INTEREST_OPEN: ${{ vars.TESTER_INTEREST_OPEN || 'false' }}
       - name: Upload artifact
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v4

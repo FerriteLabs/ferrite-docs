@@ -7,26 +7,26 @@ keywords: [ferrite, external testing, redis compatibility, hardening]
 
 # Ferrite External Tester Program
 
-Ferrite is gathering interest for a small cohort of developers who can spend
+Ferrite's tester intake is open for a small cohort of developers who can spend
 60–90 minutes validating a specific candidate build in a disposable
 environment. The campaign will focus on setup, Redis-client compatibility,
 operations, safe diagnostics, performance comparisons, and IDE tooling.
 
-**Register interest for the next validation cohort now — hands-on testing
-opens only after the campaign owner publishes both required references and
-passes a clean-machine preflight** (see [Launch gate](#launch-gate) below).
+**Register interest for the next validation cohort now.** Selected testers
+receive both required immutable references after the campaign owner passes the
+[launch gate](#launch-gate).
+
 This is a **Docker/Docker Compose-only, non-production initial cohort**;
 alternative installation cohorts are deferred until maintained tooling
-exists. Registering interest does not mean testing can begin. Use only
-disposable infrastructure and synthetic data once a campaign launches.
+exists. Do not begin until you receive a campaign invitation. Use only
+disposable infrastructure and synthetic data.
 
 The canonical Tester Program is the file `TESTER_PROGRAM.md` at the root of
 the [ferrite repository](https://github.com/ferritelabs/ferrite). It contains
 the authoritative journey, safety rules, expected outcomes, severity
-definitions, privacy guidance, and completion criteria. It is referred to here
-by path and name rather than by link because it publishes together with the
-rest of the core tester intake; **the campaign invitation you receive supplies
-its published URL**, along with the campaign's exact references.
+definitions, privacy guidance, and completion criteria. Open the repository
+root and select `TESTER_PROGRAM.md`; the campaign invitation also supplies the
+program URL with the campaign's exact references.
 
 ## Launch gate
 
@@ -93,19 +93,16 @@ tooling, connects to the same running Docker Compose instance.
 
 ## Interest, questions, and reports
 
-The core tester intake (the canonical Tester Program, the Tester Interest and
-Tester Report issue forms, and issue-template configuration) has not
-published yet, so this page intentionally does not link the forms directly —
-doing so before they exist would be a broken link. Once they publish:
+The tester intake is open:
 
-- Register interest or ask a program question, and submit a completed
-  session report, by opening a
-  [new issue](https://github.com/ferritelabs/ferrite/issues/new/choose) on
-  the [ferrite repository](https://github.com/ferritelabs/ferrite) and
-  selecting the named form once those forms are published:
-  **External tester interest** or **External tester report**. Both links
-  above already exist today; the named forms appear in the chooser only
-  after the core intake merges.
+- To register interest or ask a program question, open the
+  [issue chooser](https://github.com/ferritelabs/ferrite/issues/new/choose)
+  and select **External tester interest**.
+- After a session, use the same
+  [issue chooser](https://github.com/ferritelabs/ferrite/issues/new/choose)
+  and select **External tester report**.
+- Browse the [ferrite repository](https://github.com/ferritelabs/ferrite) for
+  the canonical `TESTER_PROGRAM.md` and campaign context.
 - [Review open issues and known limitations](https://github.com/ferritelabs/ferrite/issues?q=is%3Aissue+is%3Aopen)
 - Report vulnerabilities privately using
   [GitHub private vulnerability reporting](https://github.com/ferritelabs/ferrite/security/advisories/new),

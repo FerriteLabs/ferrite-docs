@@ -54,13 +54,10 @@ describe('tester campaign documentation', () => {
     expect(testerAssets).toMatch(/not part of the required\s+core path/);
   });
 
-  it('does not link the unpublished core tester intake before it exists', () => {
-    // The canonical Tester Program and the Tester Interest/Report issue
-    // forms have not merged yet; linking directly to them (or to a
-    // template= issue URL that depends on them) would 404. The public page
-    // must reference TESTER_PROGRAM.md by name/path only, and route
-    // interest/report submission through the generic issue chooser instead
-    // of a specific, not-yet-existing template query string.
+  it('uses stable, non-404 routes for the open tester intake', () => {
+    expect(publicPage).toMatch(/tester intake is open/i);
+    expect(publicPage).not.toMatch(/has not\s+published/i);
+    expect(publicPage).not.toMatch(/once (?:they|those forms) publish/i);
     expect(publicPage).not.toContain('/blob/main/TESTER_PROGRAM.md');
     expect(publicPage).not.toContain('template=tester_interest.yml');
     expect(publicPage).not.toContain('template=tester_report.yml');
@@ -69,15 +66,15 @@ describe('tester campaign documentation', () => {
     expect(publicPage).toMatch(/External tester interest/);
     expect(publicPage).toMatch(/External tester report/);
 
-    // The canonical program is named as a repository path, and the campaign
-    // invitation — not this page — supplies its published URL.
+    // The repository root and generic issue chooser are durable even if file
+    // paths or issue-template query parameters change.
     expect(publicPage).toMatch(
       /`TESTER_PROGRAM\.md` at the root of\s+the \[ferrite repository\]/,
     );
-    expect(publicPage).toMatch(/campaign invitation you receive supplies/i);
+    expect(publicPage).toMatch(/select `TESTER_PROGRAM\.md`/i);
 
-    // The recruitment playbook uses named placeholders instead of direct
-    // links for the same not-yet-published assets.
+    // Outreach templates still require campaign owners to resolve explicit
+    // published URLs rather than sending placeholders.
     expect(recruitment).toContain('<PUBLISHED_TESTER_PROGRAM_URL>');
     expect(recruitment).toContain('<PUBLISHED_TESTER_INTEREST_URL>');
     expect(recruitment).not.toContain('/blob/main/TESTER_PROGRAM.md');
@@ -103,12 +100,12 @@ describe('tester campaign documentation', () => {
     expect(testerAssets).not.toMatch(/ghcr\.io\/ferritelabs\/ferrite:latest/);
   });
 
-  it('keeps the initial cohort Docker-only and is explicitly interest-only and version-neutral', () => {
+  it('keeps the initial cohort Docker-only with controlled campaign access', () => {
     expect(testerAssets).toMatch(/Docker\/Docker Compose.only/i);
     expect(publicPage).toMatch(/including IDE\s+tooling, connects to the same running Docker Compose instance/);
     expect(recruitment).toMatch(/\[x\] \*\*Private security intake:\*\*/);
     expect(publicPage).toMatch(/Register interest for the next validation cohort/i);
-    expect(publicPage).toMatch(/hands-on testing\s+opens only after/i);
+    expect(publicPage).toMatch(/Do not begin until you receive a campaign invitation/i);
   });
 
   it('preserves the ordered launch checklist and cohort phases', () => {
@@ -147,15 +144,19 @@ describe('tester campaign documentation', () => {
   it('gates public tester recruitment behind TESTER_INTEREST_OPEN', () => {
     expect(recruitment).toContain('TESTER_INTEREST_OPEN=true');
 
-    // The gate may only be opened after the core intake and ops tooling are
-    // merged (checklist steps 1 and 2) and the clean-machine preflight
-    // (step 4) passes, so the ordering must be stated explicitly.
+    // The repository Actions variable may only be opened after all four
+    // campaign prerequisites are complete.
     const gateStep = recruitment.slice(recruitment.indexOf('**Publication gate:**'));
-    expect(gateStep).toMatch(/only after/i);
+    expect(gateStep).toMatch(/repository Actions variable/i);
+    expect(gateStep).toMatch(/only\s+after/i);
     expect(gateStep).toMatch(/core intake/i);
     expect(gateStep).toMatch(/ops tooling/i);
+    expect(gateStep).toMatch(/exact candidate image/i);
     expect(gateStep).toMatch(/clean-machine\s+preflight/i);
-    expect(gateStep).toMatch(/interest-only and version-neutral/i);
+    expect(gateStep).toMatch(/source processing/i);
+    expect(gateStep).toMatch(/sidebar/i);
+    expect(gateStep).toMatch(/sitemap/i);
+    expect(gateStep).toMatch(/local search/i);
 
     // The publication gate step must come after the steps it depends on.
     expect(recruitment.indexOf('**Publication gate:**')).toBeGreaterThan(

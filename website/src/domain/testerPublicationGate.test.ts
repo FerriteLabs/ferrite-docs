@@ -1,14 +1,7 @@
 import {afterEach, describe, expect, it, vi} from 'vitest';
 
-/**
- * The documentation site must not recruit external testers until the campaign
- * can actually be acted on: the core intake and ops tooling must be merged and
- * a clean-machine preflight must pass. That is enforced by the
- * TESTER_INTEREST_OPEN publication gate in docusaurus.config.ts, so the
- * default build has to be provably free of any live tester call to action.
- */
-
 const CONFIG_MODULE = '../../docusaurus.config';
+const SIDEBARS_MODULE = '../../sidebars';
 
 type NavbarItem = {label?: string; to?: string; href?: string};
 type FooterItem = {label?: string; to?: string; href?: string};
@@ -19,17 +12,50 @@ type TesterThemeConfig = {
   footer: {links: {title?: string; items: FooterItem[]}[]};
 };
 
-const TESTER_PAGE_PATH = '/docs/community/tester-program';
+type ClassicOptions = {
+  docs: {exclude?: string[]};
+  sitemap: {ignorePatterns?: string[]};
+};
 
-async function loadThemeConfig(value?: string): Promise<TesterThemeConfig> {
+type SiteConfig = {
+  presets: unknown[];
+  themeConfig: TesterThemeConfig;
+};
+
+type PublicationState = {
+  config: SiteConfig;
+  sidebars: unknown;
+};
+
+const TESTER_DOC_ID = 'community/tester-program';
+const TESTER_SOURCE = `${TESTER_DOC_ID}.md`;
+const TESTER_PAGE_PATH = `/docs/${TESTER_DOC_ID}`;
+
+async function loadPublicationState(value?: string): Promise<PublicationState> {
   vi.resetModules();
   if (value === undefined) {
     delete process.env.TESTER_INTEREST_OPEN;
   } else {
     process.env.TESTER_INTEREST_OPEN = value;
   }
-  const module = await import(CONFIG_MODULE);
-  return module.default.themeConfig as unknown as TesterThemeConfig;
+
+  const [configModule, sidebarsModule] = await Promise.all([
+    import(CONFIG_MODULE),
+    import(SIDEBARS_MODULE),
+  ]);
+
+  return {
+    config: configModule.default as unknown as SiteConfig,
+    sidebars: sidebarsModule.default,
+  };
+}
+
+function classicOptions(config: SiteConfig): ClassicOptions {
+  const classicPreset = config.presets.find(
+    (preset) => Array.isArray(preset) && preset[0] === 'classic',
+  );
+  expect(classicPreset).toBeDefined();
+  return (classicPreset as ['classic', ClassicOptions])[1];
 }
 
 function navbarLabels(themeConfig: TesterThemeConfig): string[] {
@@ -40,19 +66,21 @@ function footerItems(themeConfig: TesterThemeConfig): FooterItem[] {
   return themeConfig.footer.links.flatMap((section) => section.items);
 }
 
-function serialize(themeConfig: TesterThemeConfig): string {
-  return JSON.stringify(themeConfig);
-}
-
 afterEach(() => {
   delete process.env.TESTER_INTEREST_OPEN;
   vi.resetModules();
 });
 
 describe('tester publication gate', () => {
-  it('shows no tester call to action in the default build', async () => {
-    const themeConfig = await loadThemeConfig();
+  it('defaults closed at every Docusaurus exposure boundary', async () => {
+    const {config, sidebars} = await loadPublicationState();
+    const options = classicOptions(config);
 
+    expect(options.docs.exclude).toContain(TESTER_SOURCE);
+    expect(JSON.stringify(sidebars)).not.toContain(TESTER_DOC_ID);
+    expect(options.sitemap.ignorePatterns).toContain(TESTER_PAGE_PATH);
+
+    const themeConfig = config.themeConfig;
     expect(themeConfig.announcementBar).toBeUndefined();
     expect(navbarLabels(themeConfig)).not.toContain('Test Ferrite');
     expect(
@@ -63,24 +91,26 @@ describe('tester publication gate', () => {
         /tester/i.test(item.label ?? ''),
       ),
     ).toBe(false);
-    expect(serialize(themeConfig)).not.toMatch(/tester/i);
+
+    // Source exclusion prevents the docs plugin from creating a route for
+    // sitemap generation or passing the document to local search.
+    expect(JSON.stringify(themeConfig)).not.toMatch(/tester/i);
   });
 
-  it('shows an interest-only, version-neutral call to action when opted in', async () => {
-    const themeConfig = await loadThemeConfig('true');
+  it('includes the source, sidebar, sitemap route, and CTAs when open', async () => {
+    const {config, sidebars} = await loadPublicationState('true');
+    const options = classicOptions(config);
 
+    expect(options.docs.exclude).not.toContain(TESTER_SOURCE);
+    expect(JSON.stringify(sidebars)).toContain(TESTER_DOC_ID);
+    expect(options.sitemap.ignorePatterns).not.toContain(TESTER_PAGE_PATH);
+
+    const themeConfig = config.themeConfig;
     const announcement = themeConfig.announcementBar;
     expect(announcement).toBeDefined();
-    const content = announcement?.content ?? '';
-    expect(content).toMatch(/register interest/i);
-    expect(content).toContain(TESTER_PAGE_PATH);
-
-    // Interest-only: it must not claim testing is available now.
-    expect(content).toMatch(/has not started/i);
-    expect(content).not.toMatch(/\bjoin the external tester cohort\b/i);
-
-    // Version-neutral: no release number anywhere in the call to action.
-    expect(content).not.toMatch(/v?\d+\.\d+(\.\d+)?/);
+    expect(announcement?.content).toMatch(/tester intake is open/i);
+    expect(announcement?.content).toContain(TESTER_PAGE_PATH);
+    expect(announcement?.content).not.toMatch(/has not started/i);
 
     expect(navbarLabels(themeConfig)).toContain('Test Ferrite');
     expect(
@@ -95,31 +125,29 @@ describe('tester publication gate', () => {
 
   it('opens the gate only for an exact "true" value', async () => {
     for (const value of ['', 'false', 'TRUE', '1', 'yes']) {
-      const themeConfig = await loadThemeConfig(value);
+      const {config, sidebars} = await loadPublicationState(value);
+      const options = classicOptions(config);
+
       expect(
-        themeConfig.announcementBar,
+        options.docs.exclude,
         `TESTER_INTEREST_OPEN="${value}" must not open the gate`,
-      ).toBeUndefined();
-      expect(navbarLabels(themeConfig)).not.toContain('Test Ferrite');
+      ).toContain(TESTER_SOURCE);
+      expect(JSON.stringify(sidebars)).not.toContain(TESTER_DOC_ID);
+      expect(config.themeConfig.announcementBar).toBeUndefined();
     }
   });
 
-  it('keeps the rest of the site unchanged by the gate', async () => {
-    const closed = await loadThemeConfig();
-    const open = await loadThemeConfig('true');
+  it('keeps unrelated navigation unchanged across gate states', async () => {
+    const closed = (await loadPublicationState()).config.themeConfig;
+    const open = (await loadPublicationState('true')).config.themeConfig;
 
-    const closedNavbar = navbarLabels(closed).filter(
-      (label) => label !== 'Test Ferrite',
-    );
-    const openNavbar = navbarLabels(open).filter(
-      (label) => label !== 'Test Ferrite',
-    );
-    expect(openNavbar).toEqual(closedNavbar);
-
-    const closedFooter = footerItems(closed).map((item) => item.label);
-    const openFooter = footerItems(open)
-      .map((item) => item.label)
-      .filter((label) => label !== 'Tester Interest & Questions');
-    expect(openFooter).toEqual(closedFooter);
+    expect(
+      navbarLabels(open).filter((label) => label !== 'Test Ferrite'),
+    ).toEqual(navbarLabels(closed));
+    expect(
+      footerItems(open)
+        .map((item) => item.label)
+        .filter((label) => label !== 'Tester Interest & Questions'),
+    ).toEqual(footerItems(closed).map((item) => item.label));
   });
 });

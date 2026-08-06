@@ -1,4 +1,12 @@
 import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
+import {
+  testerInterestOpen,
+  testerProgramDocId,
+} from './src/domain/testerPublicationGate';
+
+const testerProgramSidebarItems = testerInterestOpen
+  ? [testerProgramDocId]
+  : [];
 
 const sidebars: SidebarsConfig = {
   docsSidebar: [
@@ -395,7 +403,7 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Community',
       items: [
-        'community/tester-program',
+        ...testerProgramSidebarItems,
         'community/contributing',
         'community/roadmap',
         'community/faq',

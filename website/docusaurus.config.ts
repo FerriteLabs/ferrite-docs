@@ -1,27 +1,33 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import {
+  testerInterestOpen,
+  testerProgramPath,
+  testerProgramSource,
+} from './src/domain/testerPublicationGate';
 
 // Publication gate for external tester recruitment.
 //
-// The tester campaign has no published intake, ops tooling commit, or
-// candidate image yet, so the default build must not advertise it anywhere:
-// no announcement bar, no navbar entry, and no footer registration CTA. The
-// documentation page itself stays in the sidebar (it explains the launch gate
-// and is intentionally reachable), but nothing on the site actively recruits
-// until this is explicitly opted into with TESTER_INTEREST_OPEN=true.
-//
-// When enabled, the call to action is interest-only and version-neutral: it
-// never names a release and never claims hands-on testing is available.
-const testerInterestOpen = process.env.TESTER_INTEREST_OPEN === 'true';
-
-const testerProgramPath = '/docs/community/tester-program';
+// The application default is closed. In that state the docs plugin excludes
+// the tester page at its source boundary, so Docusaurus cannot create a route
+// or pass its content to sitemap and local-search plugins. Navigation and
+// promotional surfaces are gated separately below.
+const defaultDocsExclude = [
+  '**/_*.{js,jsx,ts,tsx,md,mdx}',
+  '**/_*/**',
+  '**/*.test.{js,jsx,ts,tsx}',
+  '**/__tests__/**',
+];
+const testerDocsExclude = testerInterestOpen
+  ? defaultDocsExclude
+  : [...defaultDocsExclude, testerProgramSource];
 
 const testerAnnouncementBar = testerInterestOpen
   ? {
       id: 'tester-interest',
       content:
-        `🧪 Register interest in the next Ferrite candidate hardening cohort — <a href="${testerProgramPath}">see the tester program</a>. Hands-on testing has not started.`,
+        `🧪 Ferrite tester intake is open — <a href="${testerProgramPath}">read the program and register interest</a>.`,
       backgroundColor: '#b7410e',
       textColor: '#ffffff',
       isCloseable: true,
@@ -137,6 +143,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
+          exclude: testerDocsExclude,
           editUrl: 'https://github.com/ferritelabs/ferrite-docs/tree/main/website/',
           lastVersion: 'current',
           versions: {
@@ -169,7 +176,9 @@ const config: Config = {
           lastmod: 'date',
           changefreq: 'weekly',
           priority: 0.5,
-          ignorePatterns: ['/tags/**'],
+          ignorePatterns: testerInterestOpen
+            ? ['/tags/**']
+            : ['/tags/**', testerProgramPath],
           filename: 'sitemap.xml',
         },
       } satisfies Preset.Options,

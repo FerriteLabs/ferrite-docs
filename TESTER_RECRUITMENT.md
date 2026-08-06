@@ -11,10 +11,11 @@ never a tag or a branch) and an exact, complete digest `FERRITE_TEST_IMAGE`
 (`repository@sha256:<digest>`; never a tag). Campaign builds are for
 disposable, non-production testing with synthetic data.
 
-The public documentation site does not advertise the tester program at all
-until `TESTER_INTEREST_OPEN=true` is set for its build (see the
-[Launch checklist](#launch-checklist)); the default build has no announcement
-bar, no navbar entry, and no footer registration call to action.
+The public documentation site does not process or advertise the tester program
+at all until `TESTER_INTEREST_OPEN=true` is set for its build (see the
+[Launch checklist](#launch-checklist)). The default build excludes the source
+page from Docusaurus, its sidebar, sitemap, and local search, and has no
+announcement bar, navbar entry, or footer registration call to action.
 
 Do not copy tester names, email addresses, private messages, availability, or
 other personal data into this repository. Use the public Tester Interest form
@@ -155,14 +156,15 @@ invitation goes out:
        core intake from step 1, resolving `<PUBLISHED_TESTER_PROGRAM_URL>` and
        `<PUBLISHED_TESTER_INTEREST_URL>` to their real URLs, then post the
        interest announcement.
-9. [ ] **Publication gate:** set `TESTER_INTEREST_OPEN=true` for the
-       documentation site build **only after** steps 1 (core intake) and 2
-       (ops tooling) are merged and published and step 4 (clean-machine
-       preflight) passes. Until then the site must build with the gate off, so
-       no announcement bar, navbar entry, or footer registration call to
-       action recruits testers who cannot yet act on it. The enabled call to
-       action stays interest-only and version-neutral: it never names a
-       release and never claims hands-on testing is available.
+9. [ ] **Publication gate:** set the repository Actions variable
+       `TESTER_INTEREST_OPEN=true` for the documentation site build **only
+       after** step 1 (core intake) and step 2 (ops tooling) are merged and
+       published, step 3's exact candidate image is published, and step 4's
+       clean-machine preflight passes. Until then the site must build with the
+       gate off, excluding the tester page from Docusaurus source processing,
+       the sidebar, sitemap, and local search as well as all promotional
+       surfaces. When enabled, the site states that intake is open without
+       implying that uninvited visitors should begin hands-on testing.
 
 ### During recruitment
 

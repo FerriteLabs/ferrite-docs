@@ -148,9 +148,7 @@ tls:
     ...
     -----END CERTIFICATE-----
   privateKey: |
-    -----BEGIN PRIVATE KEY-----
-    ...
-    -----END PRIVATE KEY-----
+    <private-key-pem>
 ```
 
 #### Using cert-manager (recommended for production)

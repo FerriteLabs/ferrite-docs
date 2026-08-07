@@ -295,7 +295,7 @@ if (count > 100) {
 :::info
 Edge WASM support is in the **experimental** stage. The `wasm` feature flag is available in the Ferrite build system, but the API surface and platform integrations are still evolving.
 
-Tracked in [ADR-006](https://github.com/ferritelabs/ferrite/blob/main/docs/adr/006-edge-wasm-computing.md).
+Tracked in [ADR-006](https://github.com/FerriteLabs/ferrite/blob/main/docs/adrs/adr-006-wasmtime-plugin-runtime.md).
 :::
 
 **What works today:**

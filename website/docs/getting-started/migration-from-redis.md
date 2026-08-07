@@ -27,7 +27,7 @@ redis-cli -h your-redis COMMAND LIST | ferrite-cli compat-check
 ```
 
 **Ferrite supports 100+ Redis commands.** Check the
-[compatibility matrix](https://ferritelabs.github.io/ferrite/) for per-command
+[compatibility matrix](/docs/migration/compatibility) for per-command
 status. Commands used by >95% of applications are fully supported.
 
 ### Unsupported Commands (as of v0.2.0)
@@ -196,7 +196,7 @@ redis-cli -p 6380 SHUTDOWN SAVE
 ## Troubleshooting
 
 ### "ERR unknown command"
-Check the [compatibility matrix](https://ferritelabs.github.io/ferrite/).
+Check the [compatibility matrix](/docs/migration/compatibility).
 If the command is listed as unsupported, file a GitHub issue — most commands
 can be added quickly.
 
@@ -225,4 +225,4 @@ datasets with hot/cold access patterns.
 
 - [GitHub Discussions](https://github.com/ferritelabs/ferrite/discussions) — Questions
 - [GitHub Issues](https://github.com/ferritelabs/ferrite/issues) — Bug reports
-- [Documentation](https://docs.ferrite.dev) — Full reference
+- [Documentation](https://ferrite.dev/docs) — Full reference

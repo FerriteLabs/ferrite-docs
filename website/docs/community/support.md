@@ -70,7 +70,7 @@ Generated API documentation:
 
 Example projects and configurations:
 
-[github.com/ferritelabs/examples](https://github.com/ferritelabs/examples)
+[Ferrite examples](https://github.com/FerriteLabs/ferrite/tree/main/examples)
 
 ## Reporting Issues
 
@@ -170,9 +170,9 @@ Free tutorials on our blog:
 
 ### Video Content
 
-YouTube channel with demos and tutorials:
+Community demos and walkthroughs:
 
-[youtube.com/@ferritedb](https://youtube.com/@ferritedb)
+[Ferrite Discussions](https://github.com/FerriteLabs/ferrite/discussions)
 
 ## Troubleshooting Resources
 

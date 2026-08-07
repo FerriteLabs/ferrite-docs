@@ -288,5 +288,5 @@ Ferrite follows a regular release schedule:
 ## Links
 
 - [GitHub Releases](https://github.com/ferritelabs/ferrite/releases)
-- [Docker Hub](https://hub.docker.com/r/ferrite/ferrite)
+- Container image: `ghcr.io/ferritelabs/ferrite`
 - [Upgrade Guides](/docs/migration/from-redis)

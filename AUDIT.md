@@ -29,6 +29,7 @@
 ## Out of Scope
 
 - `website/src/pages/benchmarks.tsx` remains long because it is a cohesive static benchmark-presentation page; extracting each table would create navigation without removing an actor.
-- Markdown content, historical versioned docs, and benchmark values are not rewritten because content accuracy requires product/release decisions rather than a mechanical refactor.
+- Broad Markdown reformatting and benchmark-value changes remain deferred because content accuracy requires product/release decisions rather than a mechanical refactor.
+- The legacy Markdown lint baseline (1,609 findings across 203 files) remains visible but non-blocking; resolving it belongs in a dedicated formatting-only review rather than this cross-cutting refactor PR.
 - No visual redesign, global style sweep, Docusaurus upgrade, browserslist refresh, or unrelated dependency bump is included.
 - Cross-repository command, configuration, release, and metrics drift remains governed by organization-level validation rather than docs-site runtime coupling.

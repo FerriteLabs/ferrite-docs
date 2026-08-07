@@ -540,6 +540,6 @@ impl IoManager {
 
 ## References
 
-- [io_uring documentation](https://kernel.dk/io_uring.pdf)
+- [io_uring documentation](https://www.kernel.dk/io_uring.pdf)
 - [Lord of the io_uring](https://unixism.net/loti/)
 - [tokio-uring crate](https://docs.rs/tokio-uring)

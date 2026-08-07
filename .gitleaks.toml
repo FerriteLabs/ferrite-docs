@@ -1,0 +1,10 @@
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Historical documentation placeholders"
+commits = [
+  "f4b9050cfaf0770d589695950d8c51d377b1ab8f",
+  "7e2bfdebca19abc3ddd303a7059ecbec068159dd",
+  "c7026c5c349632d616f92b510154e00492921050",
+]

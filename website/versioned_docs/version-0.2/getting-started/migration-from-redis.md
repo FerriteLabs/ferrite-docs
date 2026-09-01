@@ -225,4 +225,4 @@ datasets with hot/cold access patterns.
 
 - [GitHub Discussions](https://github.com/ferritelabs/ferrite/discussions) — Questions
 - [GitHub Issues](https://github.com/ferritelabs/ferrite/issues) — Bug reports
-- [Documentation](https://ferrite.dev/docs) — Full reference
+- [Documentation](/docs/) — Full reference

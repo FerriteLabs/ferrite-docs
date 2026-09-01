@@ -477,7 +477,7 @@ CONFIG SET auto-aof-rewrite-min-size 64mb
 1. Check [GitHub Issues](https://github.com/ferritelabs/ferrite/issues) for existing reports
 2. Gather: version, config, error messages, steps to reproduce
 3. Create a new issue with the bug report template
-4. For security issues, email security@ferrite.dev
+4. For security issues, [report the vulnerability privately](https://github.com/ferritelabs/ferrite/security/advisories/new)
 
 ```bash
 # Generate diagnostic report for bug reports
@@ -497,13 +497,7 @@ Ferrite is released under the Apache 2.0 license, which allows:
 
 ### Is there commercial support?
 
-Yes, Ferrite Enterprise includes:
-- 24/7 support
-- SLA guarantees
-- Additional features (at-rest encryption, audit logging)
-- Professional services
-
-Contact sales@ferrite.dev for information.
+FerriteLabs does not currently advertise a public commercial-support offering. Use [GitHub Discussions](https://github.com/ferritelabs/ferrite/discussions) for general project questions.
 
 ### How do I contribute?
 
@@ -518,4 +512,4 @@ See our [Contributing Guide](/docs/community/contributing). We welcome:
 - [Discord Community](https://discord.gg/ferrite)
 - [GitHub Discussions](https://github.com/ferritelabs/ferrite/discussions)
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/ferrite)
-- [Email Support](mailto:support@ferrite.dev)
+- [Ferrite documentation source](https://github.com/ferritelabs/ferrite-docs)

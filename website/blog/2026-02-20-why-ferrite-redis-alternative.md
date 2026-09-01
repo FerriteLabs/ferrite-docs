@@ -91,7 +91,7 @@ If this resonates with you, we'd love your help:
 
 - ⭐ [Star us on GitHub](https://github.com/ferritelabs/ferrite)
 - 🐛 [Browse good-first-issues](https://github.com/ferritelabs/ferrite/labels/good%20first%20issue)
-- 📖 [Read the docs](https://ferrite.rs)
+- 📖 [Read the docs](/docs/)
 - 💬 [Join the discussion](https://github.com/ferritelabs/ferrite/discussions)
 
 ---

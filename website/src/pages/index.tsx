@@ -345,7 +345,7 @@ $ cd ferrite
 $ cargo build --release
 $ ./target/release/ferrite
 
-Ferrite v0.3.0
+Ferrite v0.5.0
 Listening on 127.0.0.1:6379
 Ready to accept connections`}
               </pre>

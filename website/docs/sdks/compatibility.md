@@ -12,7 +12,7 @@ This page tracks compatibility between Ferrite server versions, official Ferrite
 
 | SDK | SDK Version | Ferrite 0.1.x | Ferrite 0.2.x | Ferrite 0.3.x (dev) | Min Language Version |
 |-----|-------------|:---:|:---:|:---:|---|
-| **ferrite-rs** (Rust) | 0.1.x | ✅ | ✅ | ✅ | Rust 1.80+ |
+| **ferrite-rs** (Rust) | 0.1.x | ✅ | ✅ | ✅ | Rust 1.88+ |
 | **ferrite-py** (Python) | 0.1.x | ✅ | ✅ | ✅ | Python 3.9+ |
 | **ferrite-node** (Node.js) | 0.1.x | ✅ | ✅ | ✅ | Node.js 18+ |
 | **ferrite-go** (Go) | 0.1.x | ✅ | ✅ | ✅ | Go 1.21+ |

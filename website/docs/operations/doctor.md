@@ -57,8 +57,8 @@ Disk space OK: 142GB available on ./data
 TLS cert OK: /etc/ferrite/tls/server.crt
 TLS key OK: /etc/ferrite/tls/server.key
 TLS OK
-Ferrite version: 0.3.0
-Rust compiler: rustc 1.80.0 (051478957 2024-07-21)
+Ferrite version: 0.5.0
+Rust compiler: rustc 1.88.0
 Doctor checks passed
 ```
 
@@ -72,8 +72,8 @@ ERROR: Port 127.0.0.1:6379 is already in use.
   Suggestion: Stop the process using port 6379 or choose a different port.
 Memory OK: 7916MB available
 Disk space WARNING: 512MB available on ./data (recommend 1GB+)
-Ferrite version: 0.3.0
-Rust compiler: rustc 1.80.0 (051478957 2024-07-21)
+Ferrite version: 0.5.0
+Rust compiler: rustc 1.88.0
 ```
 
 ## Understanding Each Check

@@ -37,7 +37,7 @@ Not ready for code? These are equally valuable:
 
 ### Prerequisites
 
-- Rust 1.80+ (we recommend 1.88+ for the full development toolchain)
+- Rust 1.88+
 - Git
 - A text editor (VS Code with our extension, or any JetBrains IDE with our plugin)
 

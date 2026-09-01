@@ -25,7 +25,7 @@ All benchmarks were run on:
 - **Memory**: 32 GB DDR4-3200
 - **Storage**: NVMe SSD (Samsung PM9A3)
 - **OS**: Ubuntu 22.04 LTS, Linux 6.1
-- **Rust**: 1.80+, compiled with `--release` (LTO, single codegen unit)
+- **Rust**: 1.88+, compiled with `--release` (LTO, single codegen unit)
 
 ### Datasets
 

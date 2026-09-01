@@ -1,4 +1,5 @@
 import type {ReactNode} from 'react';
+import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 
@@ -101,12 +102,12 @@ function CodeExample(): ReactNode {
 function CallToAction(): ReactNode {
   return (
     <section style={{ textAlign: 'center', padding: '2rem 0 4rem' }}>
-      <a
+      <Link
         className="button button--primary button--lg"
-        href="/docs/ai-ml/overview"
+        to="/docs/ai-ml/overview"
       >
         Get Started
-      </a>
+      </Link>
     </section>
   );
 }

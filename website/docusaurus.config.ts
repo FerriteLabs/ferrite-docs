@@ -23,11 +23,19 @@ const testerDocsExclude = testerInterestOpen
   ? defaultDocsExclude
   : [...defaultDocsExclude, testerProgramSource];
 
+const siteBaseUrl = (() => {
+  const configured = process.env.SITE_BASE_URL ?? '/ferrite-docs/';
+  const withLeadingSlash = configured.startsWith('/') ? configured : `/${configured}`;
+  return withLeadingSlash.endsWith('/') ? withLeadingSlash : `${withLeadingSlash}/`;
+})();
+const withBaseUrl = (path: string): string =>
+  `${siteBaseUrl}${path.replace(/^\/+/, '')}`;
+
 const testerAnnouncementBar = testerInterestOpen
   ? {
       id: 'tester-interest',
       content:
-        `🧪 Ferrite tester intake is open — <a href="${testerProgramPath}">read the program and register interest</a>.`,
+        `🧪 Ferrite tester intake is open — <a href="${withBaseUrl(testerProgramPath)}">read the program and register interest</a>.`,
       backgroundColor: '#b7410e',
       textColor: '#ffffff',
       isCloseable: true,
@@ -81,13 +89,13 @@ const config: Config = {
     ],
   ],
 
-  // Production URL
-  url: 'https://ferrite.dev',
-  baseUrl: '/',
+  // GitHub Pages is the verified fallback until an owned custom domain is configured.
+  url: process.env.SITE_URL ?? 'https://ferritelabs.github.io',
+  baseUrl: siteBaseUrl,
 
   // GitHub pages deployment config
   organizationName: 'ferritelabs',
-  projectName: 'ferrite',
+  projectName: 'ferrite-docs',
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
@@ -104,7 +112,7 @@ const config: Config = {
       tagName: 'link',
       attributes: {
         rel: 'manifest',
-        href: '/manifest.json',
+        href: withBaseUrl('/manifest.json'),
       },
     },
     {

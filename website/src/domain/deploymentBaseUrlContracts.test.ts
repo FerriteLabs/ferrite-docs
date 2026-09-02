@@ -43,6 +43,7 @@ describe('GitHub Pages deployment contracts', () => {
     expect(workflow).toContain('path: website/link-root/ferrite-docs');
     expect(workflow).toContain("website/link-root'");
     expect(workflow).toContain("'./website/link-root/ferrite-docs/**/*.html'");
+    expect(workflow).toContain("exclude '^https://ferritelabs\\.github\\.io/ferrite-docs'");
   });
 
   it('does not advertise an unsupported full-server WASM artifact', () => {

@@ -115,6 +115,7 @@ jobs:
             --exclude 'example\.com'
             --exclude 'your-domain'
             --exclude '^https://ferrite\.dev'
+            --exclude '^https://ferritelabs\.github\.io/ferrite-docs'
             './website/link-root/ferrite-docs/**/*.html'
           fail: true
         env:

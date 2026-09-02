@@ -100,14 +100,14 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: website-build
-          path: website/build
+          path: website/link-root/ferrite-docs
       - name: Link Checker
         uses: lycheeverse/lychee-action@v2
         with:
           args: >-
             --verbose
             --no-progress
-            --root-dir '${{ github.workspace }}/website/build'
+            --root-dir '${{ github.workspace }}/website/link-root'
             --fallback-extensions html
             --accept '100..=399,403'
             --exclude 'localhost'
@@ -115,7 +115,7 @@ jobs:
             --exclude 'example\.com'
             --exclude 'your-domain'
             --exclude '^https://ferrite\.dev'
-            './website/build/**/*.html'
+            './website/link-root/ferrite-docs/**/*.html'
           fail: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

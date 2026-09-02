@@ -37,6 +37,14 @@ describe('GitHub Pages deployment contracts', () => {
     expect(manifest.icons.map((icon) => icon.src)).toContain('img/logo.svg');
   });
 
+  it('checks generated links from a filesystem layout matching the Pages base path', () => {
+    const workflow = read('../.github/workflows/ci.yml');
+
+    expect(workflow).toContain('path: website/link-root/ferrite-docs');
+    expect(workflow).toContain("website/link-root'");
+    expect(workflow).toContain("'./website/link-root/ferrite-docs/**/*.html'");
+  });
+
   it('does not advertise an unsupported full-server WASM artifact', () => {
     for (const path of [
       'docs/deployment/edge-wasm.md',

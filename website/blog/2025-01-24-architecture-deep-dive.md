@@ -22,7 +22,7 @@ We wanted the best of both worlds: memory-speed for hot data, disk economics for
 
 ## Enter HybridLog
 
-HybridLog is a three-tier storage architecture inspired by [Microsoft FASTER](https://www.microsoft.com/en-us/research/publication/faster-a-concurrent-key-value-store-with-in-place-updates/). The key insight: most workloads have a small "hot" working set that's accessed frequently, while most data is rarely touched.
+HybridLog is a three-tier storage architecture inspired by [Microsoft FASTER](https://www.microsoft.com/en-us/research/publication/faster-concurrent-key-value-store-place-updates/). The key insight: most workloads have a small "hot" working set that's accessed frequently, while most data is rarely touched.
 
 ### The Three Tiers
 
@@ -205,7 +205,7 @@ We're working on:
 - [Architecture docs](/docs/core-concepts/architecture)
 - [HybridLog internals](/docs/internals/hybridlog)
 - [Epoch reclamation](/docs/internals/epoch-reclamation)
-- [FASTER paper](https://www.microsoft.com/en-us/research/publication/faster-a-concurrent-key-value-store-with-in-place-updates/)
+- [FASTER paper](https://www.microsoft.com/en-us/research/publication/faster-concurrent-key-value-store-place-updates/)
 
 ---
 

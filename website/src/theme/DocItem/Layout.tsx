@@ -5,14 +5,16 @@ import {useDoc} from '@docusaurus/plugin-content-docs/client';
 import MaturityBadge from '@site/src/components/MaturityBadge';
 
 type Props = React.ComponentProps<typeof LayoutType>;
+type MaturityLevel = 'stable' | 'beta' | 'experimental';
 
-export default function LayoutWrapper(props: Props): JSX.Element {
+function isMaturityLevel(value: unknown): value is MaturityLevel {
+  return value === 'stable' || value === 'beta' || value === 'experimental';
+}
+
+export default function LayoutWrapper(props: Props): React.ReactNode {
   const {frontMatter} = useDoc();
-  const maturity = frontMatter.maturity as
-    | 'stable'
-    | 'beta'
-    | 'experimental'
-    | undefined;
+  const maturityValue = Reflect.get(frontMatter, 'maturity');
+  const maturity = isMaturityLevel(maturityValue) ? maturityValue : undefined;
 
   return (
     <>

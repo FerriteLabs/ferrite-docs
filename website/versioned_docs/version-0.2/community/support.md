@@ -70,7 +70,7 @@ Generated API documentation:
 
 Example projects and configurations:
 
-[github.com/ferritelabs/examples](https://github.com/ferritelabs/examples)
+[Ferrite examples](https://github.com/FerriteLabs/ferrite/tree/main/examples)
 
 ## Reporting Issues
 
@@ -104,7 +104,7 @@ Include:
 
 **DO NOT** report security vulnerabilities publicly.
 
-Email: [security@ferrite.dev](mailto:security@ferrite.dev)
+[Report the vulnerability privately through GitHub Security Advisories](https://github.com/ferritelabs/ferrite/security/advisories/new).
 
 We will:
 - Acknowledge within 24 hours
@@ -113,66 +113,19 @@ We will:
 
 ## Commercial Support
 
-### Ferrite Enterprise
-
-Enterprise features and support:
-
-**Features:**
-- 24/7 support with SLA
-- At-rest encryption
-- Advanced audit logging
-- Multi-datacenter replication
-- Professional services
-
-**Support tiers:**
-
-| Tier | Response Time | Channels | Price |
-|------|---------------|----------|-------|
-| Standard | 24 hours | Email, tickets | Contact sales |
-| Premium | 4 hours | Email, tickets, phone | Contact sales |
-| Enterprise | 1 hour | Dedicated support | Contact sales |
-
-**Contact:** [sales@ferrite.dev](mailto:sales@ferrite.dev)
-
-### Professional Services
-
-- **Migration assistance**: Help migrating from Redis
-- **Architecture review**: Design review and optimization
-- **Training**: Team training on Ferrite
-- **Custom development**: Feature development
-
-### Consulting Partners
-
-Certified consulting partners:
-
-- **DataStream Consulting** - North America
-- **CloudScale Partners** - Europe
-- **TechForward** - Asia Pacific
-
-Contact [partners@ferrite.dev](mailto:partners@ferrite.dev) for introductions.
+FerriteLabs does not currently advertise a public commercial-support offering or partner directory. Use [GitHub Discussions](https://github.com/ferritelabs/ferrite/discussions) for general project questions.
 
 ## Training & Education
 
-### Official Training
-
-- **Ferrite Fundamentals** (2 days)
-- **Ferrite for Developers** (3 days)
-- **Ferrite Operations** (2 days)
-- **Ferrite Security** (1 day)
-
-Virtual and on-site options available.
-
 ### Tutorials
 
-Free tutorials on our blog:
-
-[ferrite.rs/blog](/blog)
+Free tutorials are available in the [documentation](/docs/) and [blog](/blog).
 
 ### Video Content
 
-YouTube channel with demos and tutorials:
+Community demos and walkthroughs:
 
-[youtube.com/@ferritedb](https://youtube.com/@ferritedb)
+[Ferrite Discussions](https://github.com/FerriteLabs/ferrite/discussions)
 
 ## Troubleshooting Resources
 
@@ -219,10 +172,9 @@ ferrite-cli INFO
 
 ### Release Announcements
 
-- **Blog**: [ferrite.rs/blog](/blog)
+- **Blog**: [Ferrite blog](/blog)
 - **Twitter**: [@ferritedb](https://twitter.com/ferritedb)
 - **Discord**: #announcements channel
-- **Newsletter**: [Subscribe](https://ferrite.rs/newsletter)
 
 ### Changelog
 
@@ -256,7 +208,8 @@ Ways to contribute:
 | Question | GitHub Discussions, Discord, Stack Overflow |
 | Bug report | GitHub Issues |
 | Feature request | GitHub Issues |
-| Security issue | security@ferrite.dev |
-| Commercial support | sales@ferrite.dev |
-| Partnership | partners@ferrite.dev |
-| General inquiry | hello@ferrite.dev |
+| Security issue | [Private vulnerability report](https://github.com/ferritelabs/ferrite/security/advisories/new) |
+| Commercial or partnership inquiry | [GitHub Discussions](https://github.com/ferritelabs/ferrite/discussions) |
+| General inquiry | [GitHub Discussions](https://github.com/ferritelabs/ferrite/discussions) |
+
+GitHub Discussions is public. For commercial, partnership, or general inquiries, use it only to request maintainer coordination and do not include confidential business, customer, procurement, contact, or security information.

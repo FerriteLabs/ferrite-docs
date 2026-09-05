@@ -1,6 +1,59 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import {
+  testerInterestOpen,
+  testerProgramPath,
+  testerProgramSource,
+} from './src/domain/testerPublicationGate';
+
+// Publication gate for external tester recruitment.
+//
+// The application default is closed. In that state the docs plugin excludes
+// the tester page at its source boundary, so Docusaurus cannot create a route
+// or pass its content to sitemap and local-search plugins. Navigation and
+// promotional surfaces are gated separately below.
+const defaultDocsExclude = [
+  '**/_*.{js,jsx,ts,tsx,md,mdx}',
+  '**/_*/**',
+  '**/*.test.{js,jsx,ts,tsx}',
+  '**/__tests__/**',
+];
+const testerDocsExclude = testerInterestOpen
+  ? defaultDocsExclude
+  : [...defaultDocsExclude, testerProgramSource];
+
+const siteBaseUrl = (() => {
+  const configured = process.env.SITE_BASE_URL ?? '/ferrite-docs/';
+  const withLeadingSlash = configured.startsWith('/') ? configured : `/${configured}`;
+  return withLeadingSlash.endsWith('/') ? withLeadingSlash : `${withLeadingSlash}/`;
+})();
+const withBaseUrl = (path: string): string =>
+  `${siteBaseUrl}${path.replace(/^\/+/, '')}`;
+
+const testerAnnouncementBar = testerInterestOpen
+  ? {
+      id: 'tester-interest',
+      content:
+        `🧪 Ferrite tester intake is open — <a href="${withBaseUrl(testerProgramPath)}">read the program and register interest</a>.`,
+      backgroundColor: '#b7410e',
+      textColor: '#ffffff',
+      isCloseable: true,
+    }
+  : undefined;
+
+const testerNavbarItems = testerInterestOpen
+  ? [{to: testerProgramPath, label: 'Test Ferrite', position: 'left' as const}]
+  : [];
+
+const testerFooterItems = testerInterestOpen
+  ? [
+      {
+        label: 'Tester Interest & Questions',
+        href: 'https://github.com/ferritelabs/ferrite/issues/new/choose',
+      },
+    ]
+  : [];
 
 const config: Config = {
   title: 'Ferrite',
@@ -36,13 +89,13 @@ const config: Config = {
     ],
   ],
 
-  // Production URL
-  url: 'https://ferrite.dev',
-  baseUrl: '/',
+  // GitHub Pages is the verified fallback until an owned custom domain is configured.
+  url: process.env.SITE_URL ?? 'https://ferritelabs.github.io',
+  baseUrl: siteBaseUrl,
 
   // GitHub pages deployment config
   organizationName: 'ferritelabs',
-  projectName: 'ferrite',
+  projectName: 'ferrite-docs',
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
@@ -59,7 +112,7 @@ const config: Config = {
       tagName: 'link',
       attributes: {
         rel: 'manifest',
-        href: '/manifest.json',
+        href: withBaseUrl('/manifest.json'),
       },
     },
     {
@@ -98,11 +151,12 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
+          exclude: testerDocsExclude,
           editUrl: 'https://github.com/ferritelabs/ferrite-docs/tree/main/website/',
           lastVersion: 'current',
           versions: {
             current: {
-              label: 'v0.3 (Next)',
+              label: 'v0.5',
               path: '',
             },
             '0.2': {
@@ -130,7 +184,9 @@ const config: Config = {
           lastmod: 'date',
           changefreq: 'weekly',
           priority: 0.5,
-          ignorePatterns: ['/tags/**'],
+          ignorePatterns: testerInterestOpen
+            ? ['/tags/**']
+            : ['/tags/**', testerProgramPath],
           filename: 'sitemap.xml',
         },
       } satisfies Preset.Options,
@@ -144,14 +200,7 @@ const config: Config = {
     //   apiKey: 'YOUR_SEARCH_API_KEY',
     //   indexName: 'ferrite',
     // },
-    announcementBar: {
-      id: 'announcement',
-      content:
-        '⭐️ If you like Ferrite, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/ferritelabs/ferrite">GitHub</a>!',
-      backgroundColor: '#b7410e',
-      textColor: '#ffffff',
-      isCloseable: true,
-    },
+    ...(testerAnnouncementBar ? {announcementBar: testerAnnouncementBar} : {}),
     image: 'img/ferrite-social-card.svg',
     colorMode: {
       defaultMode: 'dark',
@@ -178,6 +227,7 @@ const config: Config = {
         {to: '/cost-calculator', label: 'Cost Calculator', position: 'left'},
         {to: '/playground', label: 'Playground', position: 'left'},
         {to: '/blog', label: 'Blog', position: 'left'},
+        ...testerNavbarItems,
         {
           href: 'https://docs.rs/ferrite',
           label: 'API',
@@ -217,10 +267,7 @@ const config: Config = {
         {
           title: 'Community',
           items: [
-            {
-              label: 'GitHub Discussions',
-              href: 'https://github.com/ferritelabs/ferrite/discussions',
-            },
+            ...testerFooterItems,
             {
               label: 'Discord',
               href: 'https://discord.gg/ferrite',

@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, type ReactNode, KeyboardEvent, useCallback } from 'react';
+import Link from '@docusaurus/Link';
 import styles from './styles.module.css';
 
 interface CommandResult {
@@ -103,7 +104,7 @@ function executeCommand(cmd: string, state: MockState): { response: string; isEr
 
       case 'INFO': {
         const section = args[0]?.toLowerCase() || 'server';
-        const ferriteVersion = '0.4.0';
+        const ferriteVersion = '0.5.0';
         const info = `# ${section}
 ferrite_version:${ferriteVersion}
 redis_version:7.0.0
@@ -1381,7 +1382,7 @@ export default function Playground(): ReactNode {
       <div className={styles.footer}>
         <p>
           This playground runs entirely in your browser using mock responses.
-          For production use, <a href="/docs/getting-started/installation">install Ferrite</a> on your server.
+          For production use, <Link to="/docs/getting-started/installation">install Ferrite</Link> on your server.
         </p>
       </div>
     </div>

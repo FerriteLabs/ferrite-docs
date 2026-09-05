@@ -1,7 +1,7 @@
 ---
 sidebar_position: 7
 title: Edge & WASM Runtime
-description: Run Ferrite at the edge compiled to WebAssembly. Experimental support for Cloudflare Workers, Vercel Edge, and Fastly Compute@Edge.
+description: Planned Ferrite edge-runtime design for WebAssembly platforms. No supported full-server edge artifact is currently published.
 keywords: [wasm, webassembly, edge, cloudflare, vercel, fastly, serverless, experimental]
 maturity: experimental
 ---
@@ -12,18 +12,18 @@ This feature is in the **Experimental** tier (🔬). APIs will change and it is 
 
 # Edge & WASM Runtime
 
-Run Ferrite at the edge as a WebAssembly module — lightweight, memory-only caching inside edge runtimes.
+This page describes the planned Ferrite edge runtime. Ferrite 0.5.0 does not ship a supported full-server WebAssembly artifact.
 
 ## Overview
 
-Ferrite can be compiled to WebAssembly (WASM) and embedded directly in edge runtime environments. This gives you a local, in-memory key-value store running at the edge — no external cache service required.
+The planned runtime embeds a local, in-memory key-value store directly in edge environments. The current browser playground uses a TypeScript mock rather than a compiled Ferrite server, and the native Ferrite dependency graph does not yet compile for a supported WASM edge target.
 
-**Key benefits:**
+**Design goals:**
 
 - **Edge-local caching** — sub-millisecond access without origin round-trips
 - **No infrastructure** — runs inside the edge runtime itself
 - **Redis-compatible API subset** — use familiar commands (GET, SET, EXPIRE, INCR, etc.)
-- **Tiny footprint** — compiled WASM binary under 2 MB
+- **Small footprint target** — size must be measured after a dedicated edge-safe artifact exists
 
 ## How It Works
 
@@ -49,15 +49,15 @@ Ferrite can be compiled to WebAssembly (WASM) and embedded directly in edge runt
 └──────────────────────────────────────────────────┘
 ```
 
-Ferrite is compiled with the `lite` feature flag to `wasm32-wasi`, producing a compact binary that runs within the WASM sandbox. The edge runtime instantiates the module per-isolate, providing a fast in-memory cache without network calls.
+The intended design compiles a dedicated edge-safe crate to WebAssembly and instantiates it per isolate. It must not reuse the native server dependency graph until networking, TLS, and platform-specific dependencies are separated behind a verified WASM build.
 
 ## Supported Platforms
 
 | Platform | Status | Notes |
 |----------|--------|-------|
-| Cloudflare Workers | 🧪 Experimental | Via `wasm-bindgen`, memory-only |
-| Vercel Edge Functions | 🧪 Experimental | WASI-compatible runtime |
-| Fastly Compute@Edge | 🧪 Experimental | Native WASI support |
+| Cloudflare Workers | 🔬 Planned | Dedicated `wasm-bindgen` build required |
+| Vercel Edge Functions | 🔬 Planned | Dedicated edge-safe build required |
+| Fastly Compute@Edge | 🔬 Planned | Dedicated WASI build required |
 | Deno Deploy | 🔬 Planned | WASM import support |
 | AWS Lambda@Edge | 🔬 Planned | Via custom runtime |
 
@@ -79,41 +79,19 @@ Running Ferrite as WASM in an edge runtime has inherent constraints compared to 
 | Lua/JS scripting | ✅ | ❌ No nested runtimes |
 | Full command set | ✅ | ⚠️ Subset only |
 
-**Available commands in WASM mode:** `GET`, `SET`, `DEL`, `EXISTS`, `EXPIRE`, `TTL`, `INCR`, `DECR`, `MGET`, `MSET`, `HGET`, `HSET`, `HGETALL`, `LPUSH`, `LPOP`, `RPUSH`, `RPOP`, `LRANGE`, `SADD`, `SMEMBERS`, `SISMEMBER`, `KEYS`, `DBSIZE`, `FLUSHDB`, `PING`.
+**Planned command subset:** `GET`, `SET`, `DEL`, `EXISTS`, `EXPIRE`, `TTL`, `INCR`, `DECR`, `MGET`, `MSET`, `HGET`, `HSET`, `HGETALL`, `LPUSH`, `LPOP`, `RPUSH`, `RPOP`, `LRANGE`, `SADD`, `SMEMBERS`, `SISMEMBER`, `KEYS`, `DBSIZE`, `FLUSHDB`, `PING`.
 
 ## Build Instructions
 
-### Prerequisites
+There is no supported full-server WASM build command in Ferrite 0.5.0. `cargo build --target wasm32-wasip1 --features lite` still selects native networking and TLS dependencies and is expected to fail. Do not publish an edge artifact until CI contains a dedicated target that builds and exercises the exact output.
 
-- Rust 1.80+ with the `wasm32-wasi` target
-- `wasm-opt` (from [binaryen](https://github.com/WebAssembly/binaryen)) for optimization
+Ferrite's separate Forge function SDK supports WebAssembly user functions; see [Forge](/docs/moonshots/forge) for its verified module workflow.
 
-### Compile to WASM
+## Non-Runnable Platform Design Sketches
 
-```bash
-# Add the WASM target
-rustup target add wasm32-wasi
-
-# Build with the lite feature flag (minimal dependencies, no io_uring)
-cargo build --target wasm32-wasi --features lite --release
-
-# The output binary
-ls target/wasm32-wasi/release/ferrite.wasm
-```
-
-### Optimize the Binary
-
-```bash
-# Optimize for size (recommended for edge deployment)
-wasm-opt -Os -o ferrite-optimized.wasm \
-  target/wasm32-wasi/release/ferrite.wasm
-
-# Check the size
-ls -lh ferrite-optimized.wasm
-# Typically ~1.5–2 MB
-```
-
-## Platform Guides
+:::warning[Design sketches only]
+The following platform snippets are non-runnable architecture sketches. They reference artifacts and APIs such as `ferrite-optimized.wasm`, `./ferrite-wasm`, `@ferrite/edge`, and `ferrite_wasm::Cache` that are not shipped or supported. Do not use them as deployment instructions until CI publishes and tests the referenced artifact for that platform.
+:::
 
 ### Cloudflare Workers
 
@@ -293,19 +271,19 @@ if (count > 100) {
 ## Current Status
 
 :::info
-Edge WASM support is in the **experimental** stage. The `wasm` feature flag is available in the Ferrite build system, but the API surface and platform integrations are still evolving.
+Edge WASM support is **planned**, not a supported release artifact. The existing `ferrite-wasm` binary is a prototype placeholder, and the `wasm` feature flag enables the native Wasmtime plugin runtime rather than a verified edge-server target.
 
-Tracked in [ADR-006](https://github.com/ferritelabs/ferrite/blob/main/docs/adr/006-edge-wasm-computing.md).
+Tracked in [ADR-006](https://github.com/FerriteLabs/ferrite/blob/main/docs/adrs/adr-006-wasmtime-plugin-runtime.md).
 :::
 
 **What works today:**
-- Compiling Ferrite to `wasm32-wasi` with `--features lite`
-- Basic key-value operations (strings, hashes, lists, sets)
-- TTL / expiration
-- LRU eviction
+- Browser documentation playground with mock responses
+- Native Ferrite server deployments
+- Forge WebAssembly user-function modules through their separate SDK and runtime
 
 **In progress:**
 - Official `@ferrite/edge` npm package for JS/TS bindings
+- Dedicated edge-safe crate and CI build target
 - Platform-specific integration guides with tested examples
 - Memory usage profiling and optimization for edge constraints
 

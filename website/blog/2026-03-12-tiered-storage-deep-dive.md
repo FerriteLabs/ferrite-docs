@@ -141,4 +141,4 @@ redis-cli INFO storage
 # tier_cold_keys: 3,000,000
 ```
 
-For detailed tuning of tier thresholds, eviction policies, and compaction settings, see our [Tiered Storage guide](https://ferrite.dev/docs/advanced/tiered-storage).
+For detailed tuning of tier thresholds, eviction policies, and compaction settings, see our [Tiered Storage guide](/docs/advanced/tiered-storage).

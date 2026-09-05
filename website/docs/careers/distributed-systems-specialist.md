@@ -47,10 +47,4 @@ Public salary band with an options grant on employee-friendly terms (non-restric
 
 ## How to Apply
 
-Send an email to **careers@ferrite.dev** with:
-
-- Your CV or LinkedIn profile
-- Links to relevant distributed-systems work (code, papers, talks)
-- A short note on your experience with CRDTs or consensus protocols
-
-Or open a GitHub Discussion in the [Ferrite repository](https://github.com/FerriteLabs/ferrite) with the `hiring` label.
+Applications are temporarily paused until FerriteLabs configures a verified private hiring channel. Do not post CVs or other personal application materials in public issues or discussions. Hiring updates will be published through [Ferrite Discussions](https://github.com/FerriteLabs/ferrite/discussions).

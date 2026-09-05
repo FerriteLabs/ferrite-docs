@@ -10,11 +10,11 @@ maturity: stable
 
 This roadmap outlines planned features and improvements for Ferrite. Items are organized by release version, with feature maturity tracked using our standard tiers: 🟢 Stable, 📊 Beta, 🔬 Experimental.
 
-> **Last updated:** March 2026 · See the [Feature Maturity Matrix](/docs/reference/feature-matrix) for current status of all features.
+> **Last updated:** September 2026 · See the [Feature Maturity Matrix](/docs/reference/feature-matrix) and [Changelog](/docs/community/changelog) for shipped behavior.
 
-## Current Release: v0.3.0
+## Release in Preparation: v0.5.0
 
-Ferrite v0.3.0 is the current release. Core features are stable and production-ready:
+The coordinated release branches target Ferrite v0.5.0. The capability list below describes the release candidate; maturity labels remain authoritative over roadmap headings, and unchecked roadmap items are not release commitments:
 
 - 🟢 **Full Redis protocol compatibility** — 100+ commands, RESP2/RESP3
 - 🟢 **Three-tier HybridLog storage** — Memory → mmap → Disk with auto-tiering
@@ -31,7 +31,7 @@ Ferrite v0.3.0 is the current release. Core features are stable and production-r
 - 🔬 **WASM functions** — User-defined functions via WebAssembly
 - 🔬 **Multi-tenancy** — Namespace isolation and resource quotas
 
-## v0.4.0 — Depth & Polish
+## Historical v0.4.0 Planning Target — Depth & Polish
 
 **Focus:** Promote 📊 Beta features to 🟢 Stable. Fix edge cases, improve error messages, expand test coverage.
 
@@ -59,7 +59,7 @@ Ferrite v0.3.0 is the current release. Core features are stable and production-r
 - [ ] Shell completion generation for Bash/Zsh/Fish
 - [ ] Interactive TUI dashboard improvements
 
-## v0.5.0 — AI & Intelligence
+## v0.5.0 Planning Themes — AI & Intelligence
 
 **Focus:** Make AI/ML features production-grade. Built-in embeddings without external API dependencies.
 

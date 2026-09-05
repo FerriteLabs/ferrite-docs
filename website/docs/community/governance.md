@@ -123,7 +123,7 @@ Key principles:
 - Assume good intent
 - No harassment or discrimination
 
-Violations should be reported to conduct@ferrite.dev.
+Private conduct-report intake is temporarily unavailable while FerriteLabs establishes a verified private channel. Do not post complaint details, personal information, or other sensitive material in a public issue or discussion. Use GitHub's report and block tools, or make a non-sensitive request for a maintainer to arrange private coordination.
 
 ## Contribution Process
 
@@ -181,7 +181,7 @@ Ferrite follows [Semantic Versioning](https://semver.org/):
 
 **DO NOT** create public issues for security vulnerabilities.
 
-Email: security@ferrite.dev
+[Report vulnerabilities privately through GitHub Security Advisories](https://github.com/ferritelabs/ferrite/security/advisories/new).
 
 Include:
 - Description of vulnerability

@@ -120,9 +120,10 @@ The `ferrite-ops` repository includes a pre-built dashboard at `grafana/ferrite-
 ### Import via Grafana API
 
 ```bash
+export GRAFANA_SERVICE_ACCOUNT_TOKEN="<grafana-service-account-token>"
 curl -X POST \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer YOUR_GRAFANA_API_KEY" \
+  --oauth2-bearer "$GRAFANA_SERVICE_ACCOUNT_TOKEN" \
   -d @ferrite-ops/grafana/ferrite-dashboard.json \
   http://localhost:3000/api/dashboards/import
 ```

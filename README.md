@@ -3,13 +3,13 @@
 [![CI](https://github.com/ferritelabs/ferrite-docs/actions/workflows/ci.yml/badge.svg)](https://github.com/ferritelabs/ferrite-docs/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue)](LICENSE)
 [![Docusaurus](https://img.shields.io/badge/Docusaurus-3.9-3ECC5F)](https://docusaurus.io/)
-[![Website](https://img.shields.io/badge/docs-ferrite.dev-blue)](https://ferrite.dev)
+[![Documentation](https://img.shields.io/badge/docs-source-blue)](https://github.com/ferritelabs/ferrite-docs)
 
 Official documentation for [Ferrite](https://github.com/ferritelabs/ferrite) — a high-performance, tiered-storage key-value store designed as a drop-in Redis replacement.
 
 ## 📚 Live Site
 
-Visit the documentation at **[ferrite.dev](https://ferrite.dev)**.
+Browse the documentation source in this repository. GitHub Pages is the deployment fallback; advertise a custom domain only after it is configured and verified.
 
 ## Structure
 
@@ -30,6 +30,12 @@ Visit the documentation at **[ferrite.dev](https://ferrite.dev)**.
 - **Advanced** — Tiered storage, security, encryption, RDMA
 - **Comparisons** — vs Redis, Dragonfly, KeyDB, Valkey, Garnet, Memcached
 - **Use Cases** — Caching, session management, real-time analytics, ML feature stores
+- **Community** — Contributing, roadmap, FAQ, governance, and the
+  [external tester program](website/docs/community/tester-program.md)
+
+Maintainers planning a cohort should also use
+[TESTER_RECRUITMENT.md](TESTER_RECRUITMENT.md) for honest recruitment copy,
+screening, triage suggestions, and the launch checklist.
 
 ## Development
 

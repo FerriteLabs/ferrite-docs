@@ -21,7 +21,7 @@ This guide covers setting up a development environment, understanding the codeba
 
 ### Prerequisites
 
-- **Rust**: 1.80+ (MSRV enforced in CI; install via [rustup](https://rustup.rs/); rust-toolchain.toml pins the dev toolchain)
+- **Rust**: 1.88+ (MSRV enforced in CI; install via [rustup](https://rustup.rs/); rust-toolchain.toml pins the dev toolchain)
 - **Git**: For version control
 - **Redis CLI**: For testing (optional but recommended)
 - **LLVM tools**: For coverage reports (optional, CI uses `cargo llvm-cov`)

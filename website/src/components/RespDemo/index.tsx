@@ -1,21 +1,6 @@
 import {useState, type ReactNode} from 'react';
+import {encodeResp} from '@site/src/domain/resp';
 import styles from './styles.module.css';
-
-function encodeResp(input: string): string {
-  const parts = input.trim().split(/\s+/);
-  if (parts.length === 0 || (parts.length === 1 && parts[0] === '')) {
-    return '';
-  }
-
-  const lines: string[] = [`*${parts.length}`];
-
-  for (const part of parts) {
-    lines.push(`$${part.length}`);
-    lines.push(part);
-  }
-
-  return lines.join('\\r\\n') + '\\r\\n';
-}
 
 function formatRespForDisplay(encoded: string): ReactNode[] {
   const parts = encoded.split('\\r\\n');

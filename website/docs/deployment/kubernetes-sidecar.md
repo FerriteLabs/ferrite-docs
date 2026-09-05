@@ -89,7 +89,7 @@ spec:
             - name: REDIS_URL
               value: "redis://localhost:6379"
         - name: ferrite-sidecar
-          image: ghcr.io/ferritelabs/ferrite:0.3.0
+          image: ghcr.io/ferritelabs/ferrite:0.5.0
           ports:
             - containerPort: 6379
               name: ferrite
